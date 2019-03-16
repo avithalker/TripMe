@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripMeWebApi", "TripMeServer\TripMeWebApi.csproj", "{AD762339-A55A-45B2-A8FA-5032E83BFB88}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{20CB7C12-45C6-4341-A985-489594766198}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{AD762339-A55A-45B2-A8FA-5032E83BFB88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD762339-A55A-45B2-A8FA-5032E83BFB88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD762339-A55A-45B2-A8FA-5032E83BFB88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20CB7C12-45C6-4341-A985-489594766198}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20CB7C12-45C6-4341-A985-489594766198}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20CB7C12-45C6-4341-A985-489594766198}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20CB7C12-45C6-4341-A985-489594766198}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
