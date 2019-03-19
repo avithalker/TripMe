@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using TripMe.Model.EntitySets;
 
 namespace TripMe.Model
 {
@@ -14,6 +11,7 @@ namespace TripMe.Model
             Database.SetInitializer<TripMeContext>(null);
         }
 
-        //public DbSet<Diary> Diaries { get; set; }
+        public DbSet<Diary> Diaries { get; set; }
+        public DbSet<DiaryLocation> DiaryLocations { get; set; }
     }
 }

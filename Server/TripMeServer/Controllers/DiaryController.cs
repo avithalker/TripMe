@@ -1,6 +1,8 @@
 ﻿using System.Web.Http;
 using TripMe.Contracts.Requestes;
 using TripMe.Model;
+using TripMe.Repositories;
+using TripMe.Service;
 
 namespace TripMeServer.Controllers
 {
@@ -10,10 +12,9 @@ namespace TripMeServer.Controllers
         [Route("AddNewDiary")]
         public void AddNewDiary(AddNewDiaryRequest addNewDiaryRequest)
         {
-            using (var dbContext = new TripMeContext())
-            {
-               // var result = dbContext.Diaries.FirstOrDefault(d => d.Id == 1);
-            }
+            DiaryEditor diaryEditor = new DiaryEditor();
+
+            diaryEditor.CreateNewDiary(addNewDiaryRequest);
         }
     }
 }

@@ -44,6 +44,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=8.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.8.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -58,6 +61,9 @@
       <HintPath>..\packages\Swashbuckle.Core.5.6.0\lib\net40\Swashbuckle.Core.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -102,6 +108,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\MappingConfig\MapperConfig.cs" />
+    <Compile Include="App_Start\MappingConfig\Profiles\DiaryProfile.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\DiaryController.cs" />
@@ -131,6 +139,18 @@
     <ProjectReference Include="..\TripMe.Contracts\TripMe.Contracts.csproj">
       <Project>{082686A4-0A45-4A2E-952B-617D81E4BF6C}</Project>
       <Name>TripMe.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TripMe.Enums\TripMe.Enums.csproj">
+      <Project>{80A35F91-AEC1-42F6-9BCD-DDA20E39D5A8}</Project>
+      <Name>TripMe.Enums</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TripMe.Repositories\TripMe.Repositories.csproj">
+      <Project>{BB5DA3FB-36E9-42E0-873B-2B1D49378407}</Project>
+      <Name>TripMe.Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TripMe.Service\TripMe.Service.csproj">
+      <Project>{42CF8E79-822D-4471-9BE2-B82456FA6C94}</Project>
+      <Name>TripMe.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

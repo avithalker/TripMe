@@ -13,7 +13,7 @@ namespace TripMe.Contracts.Requestes
         public DateTime EndDate { get; set; }
         public TripType TripType { get; set; }
         public int NumberOfTravelers { get; set; }
-        public int TotalCost { get; set; }
+        public int ApproximatePrice { get; set; }
         public string Description { get; set; }
     }
 }
