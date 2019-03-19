@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+﻿using System.Web.Http;
+using TripMe.Contracts.Requestes;
 using TripMe.Model;
 
 namespace TripMeServer.Controllers
 {
     public class DiaryController : ApiController
     {
-        [HttpGet]
-        [Route("testMe")]
-        public void TestMe()
+        [HttpPost]
+        [Route("AddNewDiary")]
+        public void AddNewDiary(AddNewDiaryRequest addNewDiaryRequest)
         {
             using (var dbContext = new TripMeContext())
             {

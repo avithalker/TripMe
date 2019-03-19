@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripMeWebApi", "TripMeServe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{20CB7C12-45C6-4341-A985-489594766198}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripMe.Enums", "TripMe.Enums\TripMe.Enums.csproj", "{80A35F91-AEC1-42F6-9BCD-DDA20E39D5A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripMe.Contracts", "TripMe.Contracts\TripMe.Contracts.csproj", "{082686A4-0A45-4A2E-952B-617D81E4BF6C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{20CB7C12-45C6-4341-A985-489594766198}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20CB7C12-45C6-4341-A985-489594766198}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20CB7C12-45C6-4341-A985-489594766198}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80A35F91-AEC1-42F6-9BCD-DDA20E39D5A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80A35F91-AEC1-42F6-9BCD-DDA20E39D5A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80A35F91-AEC1-42F6-9BCD-DDA20E39D5A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80A35F91-AEC1-42F6-9BCD-DDA20E39D5A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{082686A4-0A45-4A2E-952B-617D81E4BF6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{082686A4-0A45-4A2E-952B-617D81E4BF6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{082686A4-0A45-4A2E-952B-617D81E4BF6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{082686A4-0A45-4A2E-952B-617D81E4BF6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -128,6 +128,10 @@
       <Project>{20cb7c12-45c6-4341-a985-489594766198}</Project>
       <Name>Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TripMe.Contracts\TripMe.Contracts.csproj">
+      <Project>{082686A4-0A45-4A2E-952B-617D81E4BF6C}</Project>
+      <Name>TripMe.Contracts</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
