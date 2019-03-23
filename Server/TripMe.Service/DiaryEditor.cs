@@ -22,7 +22,8 @@ namespace TripMe.Service
         public long CreateNewDiary(AddNewDiaryRequest newDiaryRequest)
         {
             Diary diary= Mapper.Map<AddNewDiaryRequest, Diary>(newDiaryRequest);
-            return 1;
+            _diaryModifier.CreateNewDiary(diary);
+            return diary.Id;
         }
     }
 }

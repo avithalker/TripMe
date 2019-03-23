@@ -10,11 +10,11 @@ namespace TripMeServer.Controllers
     {
         [HttpPost]
         [Route("AddNewDiary")]
-        public void AddNewDiary(AddNewDiaryRequest addNewDiaryRequest)
+        public long AddNewDiary(AddNewDiaryRequest addNewDiaryRequest)
         {
             DiaryEditor diaryEditor = new DiaryEditor();
 
-            diaryEditor.CreateNewDiary(addNewDiaryRequest);
+            return diaryEditor.CreateNewDiary(addNewDiaryRequest);
         }
     }
 }

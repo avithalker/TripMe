@@ -8,6 +8,7 @@ namespace TripMe.Model.EntitySets
     public class Diary
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
         public string Name { get; set; }
         public DateTime StartDate { get; set; }
