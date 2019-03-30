@@ -1,0 +1,6 @@
+C:\TripMe\TripMe\Server\TripMe.Enums\bin\Debug\TripMe.Enums.dll
+C:\TripMe\TripMe\Server\TripMe.Enums\bin\Debug\TripMe.Enums.pdb
+C:\TripMe\TripMe\Server\TripMe.Enums\obj\Debug\TripMe.Enums.csprojAssemblyReference.cache
+C:\TripMe\TripMe\Server\TripMe.Enums\obj\Debug\TripMe.Enums.csproj.CoreCompileInputs.cache
+C:\TripMe\TripMe\Server\TripMe.Enums\obj\Debug\TripMe.Enums.dll
+C:\TripMe\TripMe\Server\TripMe.Enums\obj\Debug\TripMe.Enums.pdb
