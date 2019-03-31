@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DiaryEditor.cs" />
+    <Compile Include="DiaryGetter.cs" />
     <Compile Include="Modifiers\DiaryModifier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

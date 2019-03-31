@@ -89,3 +89,6 @@ C:\TripMe\TripMe\Server\TripMeServer\bin\System.ValueTuple.xml
 C:\TripMe\TripMe\Server\TripMeServer\bin\TripMe.Service.dll
 C:\TripMe\TripMe\Server\TripMeServer\bin\TripMe.Service.pdb
 C:\TripMe\TripMe\Server\TripMeServer\bin\TripMe.Service.dll.config
+C:\TripMe\TripMe\Server\TripMeServer\bin\System.Web.Cors.dll
+C:\TripMe\TripMe\Server\TripMeServer\bin\System.Web.Http.Cors.dll
+C:\TripMe\TripMe\Server\TripMeServer\bin\System.Web.Http.Cors.xml
