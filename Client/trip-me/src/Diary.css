@@ -1,0 +1,6 @@
+@import "~react-datepicker/dist/react-datepicker.css";
+
+.container {
+    max-width: 70%;
+    align-content: flex-start;
+}
