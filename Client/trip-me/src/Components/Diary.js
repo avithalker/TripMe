@@ -9,16 +9,22 @@ class Diary extends Component {
 
     constructor(props) {
       super(props);
-      this.handleSubmit = this.handleSubmit.bind(this);
       this.state = {
-        startDate: new Date(),
-        endDate: new Date()
+        DiaryName: '',
+        Description:'',
+        NumberOfTravelers:'',
+        StartDate: new Date(),
+        EndDate: new Date(),
+        ApproximatePrice: '',
+        Countries: '',
+        TripType:''
       }
     }
     
-    handleSubmit(event) {
+    handleSubmit = (event) =>{
       event.preventDefault();
       const data = new FormData(event.target);
+      debugger;
       axios({
           method: 'post',
           url: 'http://localhost:65273/AddNewDIary',
@@ -28,6 +34,24 @@ class Diary extends Component {
                             'Access-Control-Allow-Origin': true}}
         })
     }
+    
+    onChangeInput = (event) => {
+      this.setState(
+        {[event.target.name]: event.target.value}
+      )
+    }
+
+    onStartDateChangeInput = (date) => {
+      this.setState(
+        {StartDate: date}
+      )
+    }
+
+    onEndDateChangeInput = (date) => {
+      this.setState(
+        {EndDate: date}
+      )
+    }
 
     render(){
         return(
@@ -36,28 +60,31 @@ class Diary extends Component {
               <form onSubmit={this.handleSubmit}>
               <div className="form-group row">
                 <label>Diary Name</label>
-                <input id="DiaryName" type="text" className="form-control" placeholder="Enter your diary name"/>
+                <input name="DiaryName" type="text" className="form-control" placeholder="Enter your diary name" 
+                 onChange = {this.onChangeInput} value= {this.state.DiaryName}/>
               </div>
               <div className="form-group row">
                 <label>Description</label>
-                <textarea id="Description" type="text" className="form-control" placeholder="Describe your trip"/>
+                <textarea name="Description" type="text" className="form-control" placeholder="Describe your trip"
+                 onChange={this.onChangeInput} value={this.state.Description}/>
               </div>
               <div className="form-group row">
                 <label>Number of travelers</label>
-                <input id="NumberOfTravelers"type="text" className="form-control" placeholder="Enter a number"/>
+                <input name="NumberOfTravelers" type="text" className="form-control" placeholder="Enter a number"
+                 onChange={this.onChangeInput} value={this.state.NumberOfTravelers}/>
                 <label>Approximate Price</label>
-                <input id="ApproximatePrice" type="text" className="form-control" placeholder="Enter a price"/>
+                <input name="ApproximatePrice" type="text" className="form-control" placeholder="Enter a price"
+                onChange={this.onChangeInput} value={this.state.ApproximatePrice}/>
               </div>
               <div className="form-group row">
                 <label>From:</label>
-                <DatePicker id="StartDate" selected={this.state.startDate} onChange= {(date)=>{this.setState({startDate: date})}
-                }/>
+                <DatePicker name="StartDate" selected={this.state.StartDate} onChange={this.onStartDateChangeInput}/>
                 <label>To:</label>
-                <DatePicker id="EndDate" selected={this.state.endDate} onChange= {(date)=>{this.setState({endDate: date})}} />
+                <DatePicker name="EndDate" selected={this.state.EndDate} onChange={this.onEndDateChangeInput} />
               </div>
               <div className="form-group row">
                 <label className="form-check-label">Countries</label>                
-                  <select className="form-control" id="Countries">
+                  <select className="form-control" name="Countries" value={this.Countries} onChange={this.onChangeInput}>
                   <option value="AFG">Afghanistan</option>
                   <option value="ALA">Åland Islands</option>
                   <option value="ALB">Albania</option>
@@ -311,7 +338,7 @@ class Diary extends Component {
                 </div>
                 <div className="form-group row">
                 <label className="form-check-label">Trip Type:</label>
-                <select className="form-control" id="Countries">
+                <select className="form-control" name="TripType" value={this.state.TripType} onChange={this.onChangeInput}>
                   <option value="-1">NONE</option>
                   <option value="0">SOLO</option>
                   <option value="2">Couples</option>
