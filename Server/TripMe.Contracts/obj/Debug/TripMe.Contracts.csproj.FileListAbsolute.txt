@@ -7,3 +7,12 @@ C:\TripMe\TripMe\Server\TripMe.Contracts\obj\Debug\TripMe.Contracts.csproj.CoreC
 C:\TripMe\TripMe\Server\TripMe.Contracts\obj\Debug\TripMe.Contracts.csproj.CopyComplete
 C:\TripMe\TripMe\Server\TripMe.Contracts\obj\Debug\TripMe.Contracts.dll
 C:\TripMe\TripMe\Server\TripMe.Contracts\obj\Debug\TripMe.Contracts.pdb
+C:\ComputerScienceYear4\FinalProj\TripMe\Server\TripMe.Contracts\bin\Debug\TripMe.Contracts.dll
+C:\ComputerScienceYear4\FinalProj\TripMe\Server\TripMe.Contracts\bin\Debug\TripMe.Contracts.pdb
+C:\ComputerScienceYear4\FinalProj\TripMe\Server\TripMe.Contracts\bin\Debug\TripMe.Enums.dll
+C:\ComputerScienceYear4\FinalProj\TripMe\Server\TripMe.Contracts\bin\Debug\TripMe.Enums.pdb
+C:\ComputerScienceYear4\FinalProj\TripMe\Server\TripMe.Contracts\obj\Debug\TripMe.Contracts.csprojResolveAssemblyReference.cache
+C:\ComputerScienceYear4\FinalProj\TripMe\Server\TripMe.Contracts\obj\Debug\TripMe.Contracts.csproj.CoreCompileInputs.cache
+C:\ComputerScienceYear4\FinalProj\TripMe\Server\TripMe.Contracts\obj\Debug\TripMe.Contracts.csproj.CopyComplete
+C:\ComputerScienceYear4\FinalProj\TripMe\Server\TripMe.Contracts\obj\Debug\TripMe.Contracts.dll
+C:\ComputerScienceYear4\FinalProj\TripMe\Server\TripMe.Contracts\obj\Debug\TripMe.Contracts.pdb
