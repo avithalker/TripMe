@@ -5,7 +5,7 @@ import '../Diary.css';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
 
-class Diary extends Component {
+class DiaryForm extends Component {
 
     constructor(props) {
       super(props);
@@ -365,4 +365,4 @@ class Diary extends Component {
       );
     }
 }
-export default Diary
+export default DiaryForm
