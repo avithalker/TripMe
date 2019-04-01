@@ -17,6 +17,22 @@ namespace TripMe.Repositories
                 return dbContext.Diaries.FirstOrDefault(x => x.Id == id);
             }
         }
+        
+        public List<DiaryCountry>GetDiaryCountries(long diaryId)
+        {
+            using (var dbContext = new TripMeContext())
+            {
+                return dbContext.DiaryCountries.Where(x => x.DiaryId == diaryId).ToList();
+            }
+        }
+
+        public List<DiaryCity> GetDiaryCities(long diaryId)
+        {
+            using (var dbContext = new TripMeContext())
+            {
+                return dbContext.DiaryCities.Where(x => x.DiaryId == diaryId).ToList();
+            }
+        }
 
         public List<DiaryLocation> GetDiaryLocations(long diaryId)
         {

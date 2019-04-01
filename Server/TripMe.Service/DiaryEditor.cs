@@ -22,7 +22,19 @@ namespace TripMe.Service
         public long CreateNewDiary(AddNewDiaryRequest newDiaryRequest)
         {
             Diary diary= Mapper.Map<AddNewDiaryRequest, Diary>(newDiaryRequest);
+
             _diaryModifier.CreateNewDiary(diary);
+            if (newDiaryRequest.Countries != null && newDiaryRequest.Countries.Count > 0)
+            {
+                _diaryModifier.AddDiaryCountries(newDiaryRequest.Countries.Select(
+                    x => new DiaryCountry { DiaryId = diary.Id, Country = x }).ToList());
+            }
+
+            if (newDiaryRequest.Cities != null && newDiaryRequest.Cities.Count > 0)
+            {
+               _diaryModifier.AddDiaryCities(newDiaryRequest.Cities.Select(
+                x => new DiaryCity { DiaryId = diary.Id, City = x }).ToList());
+            }
             return diary.Id;
         }
     }
