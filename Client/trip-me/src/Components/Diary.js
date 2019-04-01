@@ -23,17 +23,25 @@ class Diary extends Component {
     
     handleSubmit = (event) =>{
       event.preventDefault();
-      const data = new FormData(event.target);
-      debugger;
-      axios({
-          method: 'post',
-          url: 'http://localhost:65273/AddNewDIary',
-          data: data,
-          withCredentials: true,
-          config: {headers: {'Content-Type': 'application/json',
-                            'Access-Control-Allow-Origin': true}}
-        })
-    }
+
+      let data = {'NumberOfTravelers': this.state.NumberOfTravelers, 
+              'DiaryName': this.state.DiaryName,
+              'Description': this.state.Description,
+              'StartDate': this.state.StartDate,
+              'EndDate': this.state.EndDate,
+              'ApproximatePrice':this.state.ApproximatePrice,
+              'Countries': this.state.Countries,
+              'TripType': this.state.TripType
+               };
+
+      return fetch('http://localhost:65273/AddNewDiary',{
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json'
+        }});
+      }
+ 
     
     onChangeInput = (event) => {
       this.setState(
