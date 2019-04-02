@@ -27,5 +27,23 @@ namespace TripMe.Service.Modifiers
                 dbContext.SaveChanges();
             }
         }
+
+        public void AddDiaryCountries(List<DiaryCountry> countries)
+        {
+            using (var dbContext = new TripMeContext())
+            {
+                dbContext.DiaryCountries.AddRange(countries);
+                dbContext.SaveChanges();
+            }
+        }
+
+        public void AddDiaryCities(List<DiaryCity> cities)
+        {
+            using (var dbContext = new TripMeContext())
+            {
+                dbContext.DiaryCities.AddRange(cities);
+                dbContext.SaveChanges();
+            }
+        }
     }
 }

@@ -41,12 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dtos\DiaryDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Requestes\AddNewDiaryRequest.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Dtos\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\TripMe.Enums\TripMe.Enums.csproj">
       <Project>{80A35F91-AEC1-42F6-9BCD-DDA20E39D5A8}</Project>

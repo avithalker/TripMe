@@ -13,5 +13,7 @@ namespace TripMe.Model
 
         public DbSet<Diary> Diaries { get; set; }
         public DbSet<DiaryLocation> DiaryLocations { get; set; }
+        public DbSet<DiaryCountry> DiaryCountries { get; set; }
+        public DbSet<DiaryCity> DiaryCities { get; set; }
     }
 }
