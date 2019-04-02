@@ -44,7 +44,7 @@ export default class DiaryByIdPage extends Component
             <div>
             <h1>Show A Diary</h1>
             <div class="form-group">
-            <label htmlfor='diaryId'>Requested diary ID: </label>
+            <label htmlFor='diaryId'>Requested diary ID: </label>
             <input type="text" class="form-control" id="diaryId"  name='id' value={this.state.id} onChange={this.onIdChange} placeholder="insert here your desired diary's ID"/>
             </div>
             <button type="submit" class="btn btn-primary mb-2" onClick={this.fetchDiary}>Show My Diary!</button>
