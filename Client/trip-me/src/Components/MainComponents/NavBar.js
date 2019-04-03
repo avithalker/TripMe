@@ -11,7 +11,7 @@ export default class NavBar extends Component {
             <li className="nav-item active">
               <Link to={'/ShowDiary'} className="nav-link">Show Diary<span className="sr-only">(current)</span></Link>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
              <Link to={'/CreateDiary'} className='nav-link'>Add New Diary<span className="sr-only">(current)</span></Link>
             </li>
           </ul>

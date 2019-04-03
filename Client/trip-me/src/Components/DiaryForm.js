@@ -16,14 +16,14 @@ class DiaryForm extends Component {
         StartDate: new Date(),
         EndDate: new Date(),
         ApproximatePrice: '',
-        Countries: '',
+        Countries: [],
         TripType:''
       }
     }
     
     handleSubmit = (event) =>{
       event.preventDefault();
-
+debugger;
       let data = {'NumberOfTravelers': this.state.NumberOfTravelers, 
               'DiaryName': this.state.DiaryName,
               'Description': this.state.Description,
@@ -34,7 +34,7 @@ class DiaryForm extends Component {
               'TripType': this.state.TripType
                };
 
-      return fetch('http://localhost:65273/AddNewDiary',{
+      return fetch('http://localhost:1802/AddNewDiary',{
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -349,14 +349,14 @@ class DiaryForm extends Component {
                 <select className="form-control" name="TripType" value={this.state.TripType} onChange={this.onChangeInput}>
                   <option value="-1">NONE</option>
                   <option value="0">SOLO</option>
-                  <option value="2">Couples</option>
-                  <option value="3">HoneyMoon</option>
-                  <option value="4">Family</option>
-                  <option value="5">Friends</option>
-                  <option value="6">Road Trip</option>
-                  <option value="7">Extream</option>
-                  <option value="8">Camping</option>
-                  <option value="9">Photoshooting</option>
+                  <option value="1">Couples</option>
+                  <option value="2">HoneyMoon</option>
+                  <option value="3">Family</option>
+                  <option value="4">Friends</option>
+                  <option value="5">Road Trip</option>
+                  <option value="6">Extream</option>
+                  <option value="7">Camping</option>
+                  <option value="8">Photoshooting</option>
                 </select>
                 </div>
               <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Submit</button>
