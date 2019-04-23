@@ -4,6 +4,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 import '../Diary.css';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
+import TripMeHttpClient from '../Services/TripMeHttpClient.js'
+
+const tripMeHttpClient = new TripMeHttpClient();
 
 class DiaryForm extends Component {
 
@@ -23,8 +26,7 @@ class DiaryForm extends Component {
     
     handleSubmit = (event) =>{
       event.preventDefault();
-debugger;
-      let data = {'NumberOfTravelers': this.state.NumberOfTravelers, 
+      var data = {'NumberOfTravelers': this.state.NumberOfTravelers, 
               'DiaryName': this.state.DiaryName,
               'Description': this.state.Description,
               'StartDate': this.state.StartDate,
@@ -33,13 +35,9 @@ debugger;
               'Countries': this.state.Countries,
               'TripType': this.state.TripType
                };
-
-      return fetch('http://localhost:1802/AddNewDiary',{
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-            'Content-Type': 'application/json'
-        }});
+        
+        tripMeHttpClient.createNewDiary(data);
+        return;
       }
  
     

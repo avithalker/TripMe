@@ -3,8 +3,10 @@ import 'bootstrap/dist/css/bootstrap.css';
 import axios from 'axios';
 import {getTripType} from '../../Utils/Utils';
 import { throws } from 'assert';
+import TripMeHttpClient from '../../Services/TripMeHttpClient.js'
 
 
+const tripMeHttpClient = new TripMeHttpClient();
 
 export default class DiaryByIdPage extends Component
 {
@@ -20,17 +22,10 @@ export default class DiaryByIdPage extends Component
     }
 
     fetchDiary = () =>
-    {
-        debugger
-        axios.get('http://localhost:1802/DiaryById', {
-            params: 
-                {
-                    id: this.state.id
-                }
-            }
-        ).then(function(response){
-            this.setState( {selectedDiary: response.data, isDiarySelected: true});
-        }.bind(this));
+    {   
+        tripMeHttpClient.getDiaryById(this.state.id).then((response)=>{
+           this.setState({selectedDiary: response, isDiarySelected: true}); 
+        });
     }
 
     onIdChange = (event) =>
