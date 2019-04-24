@@ -1,5 +1,4 @@
-﻿
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using TripMe.Model.EntitySets;
 
 namespace TripMe.Model
@@ -15,5 +14,7 @@ namespace TripMe.Model
         public DbSet<DiaryLocation> DiaryLocations { get; set; }
         public DbSet<DiaryCountry> DiaryCountries { get; set; }
         public DbSet<DiaryCity> DiaryCities { get; set; }
+        public DbSet<ReviewType> ReviewTypes { get; set; }
+        public DbSet<ReviewField> ReviewFields { get; set; }
     }
 }
