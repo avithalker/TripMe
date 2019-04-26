@@ -16,5 +16,6 @@ namespace TripMe.Model
         public DbSet<DiaryCity> DiaryCities { get; set; }
         public DbSet<ReviewType> ReviewTypes { get; set; }
         public DbSet<ReviewField> ReviewFields { get; set; }
+        public DbSet<DiaryPage> DiaryPages { get; set; }
     }
 }

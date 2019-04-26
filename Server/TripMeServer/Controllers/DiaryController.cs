@@ -28,5 +28,12 @@ namespace TripMeServer.Controllers
 
             return diaryGetter.GetDiaryById(id);
         }
+
+        [HttpPost]
+        [Route("AddNewPage")]
+        public long AddNewPage(AddNewPageRequest addNewPageRequest)
+        {
+            return 1;
+        }
     }
 }

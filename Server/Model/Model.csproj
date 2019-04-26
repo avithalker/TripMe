@@ -52,6 +52,7 @@
     <Compile Include="EntitySets\DiaryCity.cs" />
     <Compile Include="EntitySets\DiaryCountry.cs" />
     <Compile Include="EntitySets\DiaryLocation.cs" />
+    <Compile Include="EntitySets\DiaryPage.cs" />
     <Compile Include="EntitySets\ReviewField.cs" />
     <Compile Include="EntitySets\ReviewType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

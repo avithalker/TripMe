@@ -42,11 +42,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dtos\DiaryDto.cs" />
+    <Compile Include="Dtos\DiaryPageDto.cs" />
     <Compile Include="Dtos\ReviewFieldDto.cs" />
+    <Compile Include="Dtos\ReviewQuestionnaireAnswerDto.cs" />
     <Compile Include="Dtos\ReviewQuestionnaireDto.cs" />
     <Compile Include="Dtos\ReviewTypeDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Requestes\AddNewDiaryRequest.cs" />
+    <Compile Include="Requestes\AddNewPageRequest.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
