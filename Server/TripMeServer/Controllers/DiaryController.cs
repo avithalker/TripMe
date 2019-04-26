@@ -33,7 +33,9 @@ namespace TripMeServer.Controllers
         [Route("AddNewPage")]
         public long AddNewPage(AddNewPageRequest addNewPageRequest)
         {
-            return 1;
+            DiaryEditor diaryEditor = new DiaryEditor();
+
+            return diaryEditor.CreateNewDiaryPage(addNewPageRequest);
         }
     }
 }

@@ -45,5 +45,14 @@ namespace TripMe.Service.Modifiers
                 dbContext.SaveChanges();
             }
         }
+
+        public void CreateNewPage(DiaryPage page)
+        {
+            using (var dbContext = new TripMeContext())
+            {
+                dbContext.DiaryPages.Add(page);
+                dbContext.SaveChanges();
+            }
+        }
     }
 }

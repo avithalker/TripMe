@@ -37,5 +37,13 @@ namespace TripMe.Service
             }
             return diary.Id;
         }
+
+        public long CreateNewDiaryPage(AddNewPageRequest newPageRequest)
+        {
+            DiaryPage newPage= Mapper.Map<DiaryPage>(newPageRequest);
+
+            _diaryModifier.CreateNewPage(newPage);
+            return newPage.PageId;
+        }
     }
 }
