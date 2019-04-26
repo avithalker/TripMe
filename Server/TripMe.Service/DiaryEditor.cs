@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TripMe.Contracts.Dtos;
 using TripMe.Contracts.Requestes;
 using TripMe.Model.EntitySets;
 using TripMe.Service.Modifiers;
@@ -43,7 +44,35 @@ namespace TripMe.Service
             DiaryPage newPage= Mapper.Map<DiaryPage>(newPageRequest);
 
             _diaryModifier.CreateNewPage(newPage);
+            StorePageReviews(newPage.PageId, newPageRequest.Reviews);
             return newPage.PageId;
+        }
+
+        private void StorePageReviews(long pageId, List<ReviewQuestionnaireAnswerDto> completedReviews)
+        {
+            List<Review> reviews = new List<Review>(completedReviews.Count);
+            List<ReviewAnswer> reviewAnswers = new List<ReviewAnswer>();
+
+            foreach (var completedReview in completedReviews)
+            {
+                reviews.Add(new Review
+                {
+                    Id = completedReview.ReviewId,
+                    PageId = pageId,
+                    ReviewTypeId = completedReview.ReviewType,
+                    IsActive = true
+                });
+
+                reviewAnswers.AddRange(completedReview.Answers.Select(answer => new ReviewAnswer
+                {
+                    ReviewId = completedReview.ReviewId,
+                    QuestionId = answer.Key,
+                    Answer = answer.Value
+                }).ToList());
+            }
+
+            _diaryModifier.CreateNewReviews(reviews);
+            _diaryModifier.UpdateReviewAnswers(reviewAnswers);
         }
     }
 }

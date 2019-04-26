@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TripMe.Model;
 using TripMe.Model.EntitySets;
+using System.Data.Entity.Migrations;
 
 namespace TripMe.Service.Modifiers
 {
@@ -51,6 +52,24 @@ namespace TripMe.Service.Modifiers
             using (var dbContext = new TripMeContext())
             {
                 dbContext.DiaryPages.Add(page);
+                dbContext.SaveChanges();
+            }
+        }
+
+        public void CreateNewReviews(List<Review> reviews)
+        {
+            using (var dbContext = new TripMeContext())
+            {
+                dbContext.Reviews.AddRange(reviews);
+                dbContext.SaveChanges();
+            }
+        }
+
+        public void UpdateReviewAnswers(List<ReviewAnswer> answers)
+        {
+            using (var dbContext = new TripMeContext())
+            {
+                dbContext.ReviewAnswers.AddOrUpdate(answers.ToArray());
                 dbContext.SaveChanges();
             }
         }

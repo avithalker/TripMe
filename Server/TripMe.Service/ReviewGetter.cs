@@ -28,7 +28,7 @@ namespace TripMe.Service
 
         public List<ReviewQuestionnaireDto> GetReviewsQuestionnaires()
         {
-            List<ReviewField> reviewFields = _reviewRepository.GetReviewFields();
+            List<ReviewQuestion> reviewFields = _reviewRepository.GetReviewFields();
 
             List<ReviewQuestionnaireDto> reviewQuestionnaireDtos = reviewFields.GroupBy(x => x.ReviewTypeId).Select(reviewFieldsGroup =>
             {
@@ -44,7 +44,7 @@ namespace TripMe.Service
 
         public ReviewQuestionnaireDto ReviewQuestionnaireById(int reviewTypeId)
         {
-            List<ReviewField> reviewFields = _reviewRepository.GetReviewFieldsByReviewTypeId(reviewTypeId);
+            List<ReviewQuestion> reviewFields = _reviewRepository.GetReviewFieldsByReviewTypeId(reviewTypeId);
             if(reviewFields.Count == 0)
             {
                 return null;

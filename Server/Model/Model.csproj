@@ -53,7 +53,9 @@
     <Compile Include="EntitySets\DiaryCountry.cs" />
     <Compile Include="EntitySets\DiaryLocation.cs" />
     <Compile Include="EntitySets\DiaryPage.cs" />
-    <Compile Include="EntitySets\ReviewField.cs" />
+    <Compile Include="EntitySets\Review.cs" />
+    <Compile Include="EntitySets\ReviewAnswer.cs" />
+    <Compile Include="EntitySets\ReviewQuestion.cs" />
     <Compile Include="EntitySets\ReviewType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TripMeContext.cs" />

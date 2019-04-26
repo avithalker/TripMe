@@ -8,6 +8,6 @@ namespace TripMe.Contracts.Requestes
         public long DiaryId { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
-        List<ReviewQuestionnaireAnswerDto> Reviews { get; set; }
+        public List<ReviewQuestionnaireAnswerDto> Reviews { get; set; }
     }
 }

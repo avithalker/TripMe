@@ -15,19 +15,19 @@ namespace TripMe.Repositories
             }
         }
 
-        public List<ReviewField> GetReviewFields()
+        public List<ReviewQuestion> GetReviewFields()
         {
             using (var dbContext = new TripMeContext())
             {
-                return dbContext.ReviewFields.ToList();
+                return dbContext.ReviewQuestions.ToList();
             }
         }
 
-        public List<ReviewField> GetReviewFieldsByReviewTypeId(int reviewTypeId)
+        public List<ReviewQuestion> GetReviewFieldsByReviewTypeId(int reviewTypeId)
         {
             using (var dbContext = new TripMeContext())
             {
-                return dbContext.ReviewFields.Where(x => x.ReviewTypeId == reviewTypeId).ToList();
+                return dbContext.ReviewQuestions.Where(x => x.ReviewTypeId == reviewTypeId).ToList();
             }
         }
     }

@@ -7,6 +7,6 @@ namespace TripMe.Contracts.Dtos
     {
         public Guid ReviewId { get; set; }
         public int ReviewType { get; set; }
-        Dictionary<int, string> FieldAnswers { get; set; }
+        public Dictionary<int, string> Answers { get; set; }
     }
 }

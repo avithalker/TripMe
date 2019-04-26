@@ -3,8 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TripMe.Model.EntitySets
 {
-    [Table("ReviewField")]
-    public class ReviewField
+    [Table("ReviewQuestion")]
+    public class ReviewQuestion
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
