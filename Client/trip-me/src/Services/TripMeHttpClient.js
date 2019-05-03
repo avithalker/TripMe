@@ -30,6 +30,17 @@ class TripMeHttpClient{
             })
             });
         }
+    
+    getReviewTypes = ()=>{
+        var promise = new Promise((resolve,reject)=>{
+           var url = new URL('http://localhost/TripMeWebApi/ReviewTypes');
+            
+            fetch(url).then((response)=>{
+               resolve(response.json()); 
+            });
+        });
+        return promise;
+    }
 }
 
 export default TripMeHttpClient;
