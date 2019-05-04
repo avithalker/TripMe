@@ -17,7 +17,7 @@ class ReviewSelector extends Component{
         return(
             <div className = "container-fluid">
                 <div className = "row">
-                    <ReviewItems reviewTypes ={this.state.reviewTypes}/>
+                    {this.ReviewItems()}
                 </div>
             </div>
         );
@@ -30,17 +30,17 @@ class ReviewSelector extends Component{
            }); 
         });
     }
-}
-
-const ReviewItems = (props) =>{
-    const items = props.reviewTypes.map((reviewType, index) =>{
-        return(
-            <div key = {reviewType.TypeId} className = "col-sm-4">
-                <button type="button" className = "btn btn-primary reviewItemBtn">{reviewType.Description}</button>
-            </div>
-        );
-    });
-    return items;
+    
+     ReviewItems = () =>{
+        const items = this.state.reviewTypes.map((reviewType, index) =>{
+            return(
+                <div key = {reviewType.TypeId} className = "col-sm-4">
+                    <button type="button" className = "btn btn-primary reviewItemBtn">{reviewType.Description}</button>
+                </div>
+            );
+        });
+        return items;
+    }
 }
 
 export default ReviewSelector;
