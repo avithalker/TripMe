@@ -1,0 +1,8 @@
+.reviewField{
+    margin-top: 1rem;
+}
+
+.multilineTextReviewField{
+    width: 100%;
+    min-height: 6rem;
+}

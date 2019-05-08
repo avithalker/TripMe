@@ -41,6 +41,20 @@ class TripMeHttpClient{
         });
         return promise;
     }
+    
+    getReviewQuestionnaireById = (reviewTypeId) =>{
+        var promise =new Promise((resolve, reject) =>{
+            var url = new URL('http://localhost/TripMeWebApi/ReviewQuestionnaireById');
+            var httpQueryParams = {reviewTypeId: reviewTypeId};
+            url.search = new URLSearchParams(httpQueryParams);
+            
+            fetch(url).then((response)=>{
+                resolve(response.json());
+            }); 
+        });
+        
+        return promise;
+    }
 }
 
 export default TripMeHttpClient;

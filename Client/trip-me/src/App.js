@@ -4,7 +4,8 @@ import './App.css';
 import Diary from './Components/DiaryForm';
 import NavBar from './Components/MainComponents/NavBar';
 import AppRouter from './Components/MainComponents/AppRouter';
-import ReviewSelector from './Components/ReviewSelector/ReviewSelector.js'
+import ReviewSelector from './Components/ReviewSelector/ReviewSelector.js';
+import ReviewQuestionnaire from './Components/ReviewQuestionnaire/ReviewQuestionnaire.js';
 import 'bootstrap/dist/css/bootstrap.css';
 
 class App extends Component {
@@ -13,6 +14,7 @@ class App extends Component {
         <div className={"container"}>
           <NavBar/>
           <AppRouter/>
+        <ReviewQuestionnaire/>
         </div>
     );
   }
