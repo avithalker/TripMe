@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {ReviewFieldType} from '../../Enums/ReviewFieldTypeEnum.js';
+import RatingField from '../RatingField/RatingField.js';
 import './ReviewField.css';
 
 class ReviewField extends Component{
@@ -22,7 +23,7 @@ class ReviewField extends Component{
             case ReviewFieldType.INPUT_RANK:
                 {
                     return(
-                        <input type = "text" className = "form-control"></input>
+                        <RatingField/>
                     );
                 }
             case ReviewFieldType.INPUT_MULTILINE_TEXT:
