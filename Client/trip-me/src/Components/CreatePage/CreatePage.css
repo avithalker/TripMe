@@ -1,0 +1,12 @@
+
+.PageTitle{
+    
+}
+
+.PageContent{
+    
+}
+
+.PageTitle, .PageContent{
+    width: inherit;
+}

@@ -35,7 +35,7 @@ class ReviewSelector extends Component{
         const items = this.state.reviewTypes.map((reviewType, index) =>{
             return(
                 <div key = {reviewType.TypeId} className = "col-sm-4">
-                    <button type="button" className = "btn btn-primary reviewItemBtn">{reviewType.Description}</button>
+                    <button type="button" className = "btn btn-primary reviewItemBtn" img>{reviewType.Description}</button>
                 </div>
             );
         });

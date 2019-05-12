@@ -6,6 +6,7 @@ import NavBar from './Components/MainComponents/NavBar';
 import AppRouter from './Components/MainComponents/AppRouter';
 import ReviewSelector from './Components/ReviewSelector/ReviewSelector.js';
 import ReviewQuestionnaire from './Components/ReviewQuestionnaire/ReviewQuestionnaire.js';
+import CreatePage from './Components/CreatePage/CreatePage.js'
 import 'bootstrap/dist/css/bootstrap.css';
 
 class App extends Component {
@@ -14,7 +15,9 @@ class App extends Component {
         <div className={"container"}>
           <NavBar/>
           <AppRouter/>
-        <ReviewQuestionnaire/>
+        <ReviewQuestionnaire ReviewTypeId={1}/>
+        <ReviewSelector/>
+        <CreatePage/>
         </div>
     );
   }

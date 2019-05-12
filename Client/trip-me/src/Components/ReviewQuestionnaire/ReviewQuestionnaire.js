@@ -9,8 +9,9 @@ class ReviewQuestionnaire extends Component{
     
     constructor(props){
         super(props);     
-        this.state = {questionnaire: []}
-        this.fetchQuestionnaire(1);
+        this.state = {ReviewTypeId: props.ReviewTypeId,
+            questionnaire: []}
+        this.fetchQuestionnaire(props.ReviewTypeId);
     }
     
     fetchQuestionnaire = (reviewTypeId) =>{
