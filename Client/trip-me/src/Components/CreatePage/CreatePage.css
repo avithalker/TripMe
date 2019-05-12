@@ -10,3 +10,17 @@
 .PageTitle, .PageContent{
     width: 100%;
 }
+
+.div-review-expender{
+    position: fixed;
+    bottom: 3%;
+    right: 3%;
+}
+
+.btn-reviews-expender{
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    font-weight: bold;
+}

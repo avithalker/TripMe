@@ -16,7 +16,6 @@ class App extends Component {
           <NavBar/>
           <AppRouter/>
         <ReviewQuestionnaire ReviewTypeId={1}/>
-        <ReviewSelector/>
         <CreatePage/>
         </div>
     );
