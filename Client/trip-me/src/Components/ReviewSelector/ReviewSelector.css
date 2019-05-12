@@ -1,5 +1,5 @@
 .reviewItemBtn{
     margin-top: 2rem;
-    width: 100%;
+    width: inherit;
     max-width: 10rem;
 }
