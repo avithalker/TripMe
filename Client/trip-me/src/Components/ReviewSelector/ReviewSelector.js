@@ -9,7 +9,8 @@ class ReviewSelector extends Component{
     
     constructor(props){
         super(props);
-        this.state = {reviewTypes:[]}
+        this.state = {reviewTypes:[],
+                     onReviewSelected: props.onReviewSelected}
         this.fetchReviewTypes();
     }
     
@@ -35,7 +36,7 @@ class ReviewSelector extends Component{
         const items = this.state.reviewTypes.map((reviewType, index) =>{
             return(
                 <div key = {reviewType.TypeId} className = "col-sm-4">
-                    <button type="button" className = "btn btn-primary reviewItemBtn">{reviewType.Description}</button>
+                    <button type="button" className = "btn btn-primary reviewItemBtn" onClick= {() => this.state.onReviewSelected(reviewType.TypeId)}>{reviewType.Description}</button>
                 </div>
             );
         });

@@ -15,7 +15,7 @@ class App extends Component {
         <div className={"container"}>
           <NavBar/>
           <AppRouter/>
-        <ReviewQuestionnaire ReviewTypeId={1}/>
+            {/* <ReviewQuestionnaire ReviewTypeId={1}/> */}
         <CreatePage/>
         </div>
     );

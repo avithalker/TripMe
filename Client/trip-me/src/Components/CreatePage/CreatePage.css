@@ -3,12 +3,17 @@
     
 }
 
-.PageContent{
-    
+.pageReview{
+    border-style: solid;
+    border-color:darkseagreen;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    padding-right: 5rem;
+    padding-bottom: 1rem;
 }
 
-.PageTitle, .PageContent{
-    width: 100%;
+.PageContent{
+    
 }
 
 .div-review-expender{

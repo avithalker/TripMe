@@ -21,9 +21,9 @@ class ReviewQuestionnaire extends Component{
     }
     
     QuestionnaireFields = ()=>{
-        var fields = this.state.questionnaire.map((field) => {
+        var fields = this.state.questionnaire.map((field,index) => {
             return(
-                <ReviewField FieldTypeId = {field.FieldTypeId} DisplayText = {field.DisplayText}/>
+                <ReviewField key={index} FieldTypeId = {field.FieldTypeId} DisplayText = {field.DisplayText}/>
             );
         });
         return fields;
