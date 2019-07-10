@@ -10,8 +10,19 @@ class ReviewQuestionnaire extends Component{
     constructor(props){
         super(props);     
         this.state = {ReviewTypeId: props.ReviewTypeId,
-            questionnaire: []}
+                    questionnaire: [],
+                     answers:{}}
+        
+        this.onAnswerChanged= this.onAnswerChanged.bind(this);
         this.fetchQuestionnaire(props.ReviewTypeId);
+    }
+    
+    render(){
+        return(
+            <div className = "container-fluid">
+                {this.QuestionnaireFields()}
+            </div>   
+        );
     }
     
     fetchQuestionnaire = (reviewTypeId) =>{
@@ -23,18 +34,15 @@ class ReviewQuestionnaire extends Component{
     QuestionnaireFields = ()=>{
         var fields = this.state.questionnaire.map((field,index) => {
             return(
-                <ReviewField key={index} FieldTypeId = {field.FieldTypeId} DisplayText = {field.DisplayText}/>
+                <ReviewField key={index} FieldTypeId = {field.FieldTypeId} DisplayText = {field.DisplayText} onFieldValueChanged = {answer => this.onAnswerChanged(field.QuestionId,answer)}/>
             );
         });
         return fields;
     }
     
-    render(){
-        return(
-            <div className = "container-fluid">
-                {this.QuestionnaireFields()}
-            </div>   
-        );
+    onAnswerChanged = (fieldId, answer) =>{
+        this.state.answers[fieldId] = answer;
+        this.setState({});
     }
 }
 

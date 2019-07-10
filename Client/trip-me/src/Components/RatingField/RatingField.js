@@ -6,14 +6,16 @@ class RatingField extends Component{
     
     constructor(props){
         super(props);
-        this.state = {rating:0}
+        this.state = {rating:0,
+                     onRatingValueChanged: props.onRatingValueChanged}
         this.changeRating = this.changeRating.bind(this);
     }
     
     changeRating( newRating, name ) {
-      this.setState({
-        rating: newRating
-      });
+        this.state.onRatingValueChanged(newRating);
+        this.setState({
+            rating: newRating
+          });
     }
  
     render() {

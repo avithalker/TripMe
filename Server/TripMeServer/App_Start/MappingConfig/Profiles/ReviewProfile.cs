@@ -9,7 +9,7 @@ namespace TripMeServer.App_Start.MappingConfig.Profiles
         public ReviewProfile()
         {
             CreateMap<ReviewType, ReviewTypeDto>();
-            CreateMap<ReviewQuestion, ReviewFieldDto>();
+            CreateMap<ReviewQuestion, ReviewFieldDto>().ForMember(dest => dest.QuestionId, opt => opt.MapFrom(src => src.Id));
         }
     }
 }

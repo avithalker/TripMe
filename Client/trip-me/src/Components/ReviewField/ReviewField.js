@@ -7,8 +7,37 @@ class ReviewField extends Component{
     
     constructor(props){
         super(props);
+
         this.state = {FieldTypeId: props.FieldTypeId,
-                     DisplayText: props.DisplayText}
+                     DisplayText: this.adjustDisplayText(props.DisplayText),
+                     onFieldValueChanged: props.onFieldValueChanged}
+        
+        this.onInputFieldChanged = this.onInputFieldChanged.bind(this);
+        this.onRatingValueChanged =this.onRatingValueChanged.bind(this);
+    }
+    
+        
+    render(){
+        return(
+            <div className = "row reviewField">
+                <div className ="col-sm-2">
+                    {this.state.DisplayText}
+                </div>
+                <div className = "col-sm-10">
+                    {this.Field()}
+                </div>
+            </div>
+        );
+    }
+    
+    
+    
+    adjustDisplayText = (displayText) =>{
+        if(displayText && displayText !== ""){
+            return displayText + ':';
+        }
+        
+        return '';
     }
     
     Field = () =>{
@@ -17,35 +46,30 @@ class ReviewField extends Component{
             case ReviewFieldType.INPUT_TEXT:
                 {
                     return(
-                        <input type = "text" className = "form-control"></input>
+                        <input type = "text" className = "form-control" onChange = {this.onInputFieldChanged}></input>
                     );
                 }
             case ReviewFieldType.INPUT_RANK:
                 {
                     return(
-                        <RatingField/>
+                        <RatingField onRatingValueChanged = {this.onRatingValueChanged}/>
                     );
                 }
             case ReviewFieldType.INPUT_MULTILINE_TEXT:
                 {
                     return(
-                    <textarea className = "from-control multilineTextReviewField"></textarea>
+                    <textarea className = "from-control multilineTextReviewField" onChange = {this.onInputFieldChanged}></textarea>
                     );
                 }
         }
     }
     
-    render(){
-        return(
-            <div className = "row reviewField">
-                <div className ="col-sm-2">
-                    {this.state.DisplayText}: 
-                </div>
-                <div className = "col-sm-10">
-                    {this.Field()}
-                </div>
-            </div>
-        );
+    onInputFieldChanged = event =>{
+        this.state.onFieldValueChanged(event.target.value);
+    }
+    
+    onRatingValueChanged = ratingValue =>{
+        this.state.onFieldValueChanged(ratingValue);
     }
 }
 
