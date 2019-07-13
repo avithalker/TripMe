@@ -11,7 +11,8 @@ class ReviewQuestionnaire extends Component{
         super(props);     
         this.state = {ReviewTypeId: props.ReviewTypeId,
                     questionnaire: [],
-                     answers:{}}
+                     answers:{},
+                     onQuestionnaireAnswersChanged: props.onQuestionnaireAnswersChanged}
         
         this.onAnswerChanged= this.onAnswerChanged.bind(this);
         this.fetchQuestionnaire(props.ReviewTypeId);
@@ -41,8 +42,13 @@ class ReviewQuestionnaire extends Component{
     }
     
     onAnswerChanged = (fieldId, answer) =>{
-        this.state.answers[fieldId] = answer;
-        this.setState({});
+        let answers = Object.assign({},this.state.answers);
+        answers[fieldId] = answer;
+        
+        this.setState({answers: answers},()=>{
+            this.state.onQuestionnaireAnswersChanged(this.state.answers);
+        });
+        
     }
 }
 

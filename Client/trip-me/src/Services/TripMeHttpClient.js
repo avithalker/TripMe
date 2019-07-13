@@ -29,7 +29,21 @@ class TripMeHttpClient{
                 resolve(response);
             })
             });
-        }
+    }
+    
+    addNewPage = (addNewPageRequest) =>{
+        var promise = new Promise((resolve, reject) =>{
+            var url = new URL('http://localhost/TripMeWebApi/AddNewPage');
+            
+            fetch(url, {
+                method: 'POST',
+                headers:{'Content-Type':'application/json'},
+                body: JSON.stringify(addNewPageRequest)
+            }).then((response)=>{
+                resolve(response);
+            });
+        });
+    }
     
     getReviewTypes = ()=>{
         var promise = new Promise((resolve,reject)=>{

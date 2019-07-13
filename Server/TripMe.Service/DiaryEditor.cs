@@ -55,9 +55,10 @@ namespace TripMe.Service
 
             foreach (var completedReview in completedReviews)
             {
+                Guid reviewId = Guid.NewGuid();
                 reviews.Add(new Review
                 {
-                    Id = completedReview.ReviewId,
+                    Id = reviewId,
                     PageId = pageId,
                     ReviewTypeId = completedReview.ReviewType,
                     IsActive = true
@@ -65,7 +66,7 @@ namespace TripMe.Service
 
                 reviewAnswers.AddRange(completedReview.Answers.Select(answer => new ReviewAnswer
                 {
-                    ReviewId = completedReview.ReviewId,
+                    ReviewId = reviewId,
                     QuestionId = answer.Key,
                     Answer = answer.Value
                 }).ToList());

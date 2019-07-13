@@ -16,7 +16,7 @@ class App extends Component {
           <NavBar/>
           <AppRouter/>
             {/* <ReviewQuestionnaire ReviewTypeId={1}/> */}
-        <CreatePage/>
+        <CreatePage diaryId = '2'/>
         </div>
     );
   }
