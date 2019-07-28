@@ -8,8 +8,16 @@
     border-color:darkseagreen;
     border-radius: 5px;
     margin-bottom: 1rem;
-    padding-right: 5rem;
+    padding-top: 0.5rem;
     padding-bottom: 1rem;
+}
+
+.deleteReview{
+    border-radius: 100px;
+    height: 2rem;
+    width: 2rem;
+    font-size: 0.7rem;
+    margin-left: 75%;
 }
 
 .PageContent{

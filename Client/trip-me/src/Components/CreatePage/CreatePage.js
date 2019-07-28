@@ -21,11 +21,12 @@ class CreatePage extends Component{
         this.changeReviewSelectorState = this.changeReviewSelectorState.bind(this);
         this.onReviewSelected = this.onReviewSelected.bind(this);
         this.onQuestionnaireAnswersChanged =this.onQuestionnaireAnswersChanged.bind(this);
+        this.onReviewDeleted = this.onReviewDeleted.bind(this);
     }
     
         render(){
         return(
-            <div>
+            <div className = 'container-fluid'>
                 <div>
                     <form>
                         <div className = 'form-group row'>
@@ -56,8 +57,13 @@ class CreatePage extends Component{
     getPageReviews = () =>{
         const pageReviews = this.state.pageReviews.map((pageReview, index) =>{
             return(
-            <div key={index} className = 'row pageReview'>
-                <ReviewQuestionnaire ReviewTypeId = {pageReview.ReviewType} onQuestionnaireAnswersChanged = {(answers)=> this.onQuestionnaireAnswersChanged(pageReview.objectId, answers)}/>
+            <div key={index} className = 'row pageReview'>   
+                <div className = 'col-sm-10'>
+                    <ReviewQuestionnaire ReviewTypeId = {pageReview.ReviewType} onQuestionnaireAnswersChanged = {(answers)=> this.onQuestionnaireAnswersChanged(pageReview.objectId, answers)}/>
+                </div>
+                <div className = 'col-sm-2'>
+                    <button className = 'btn btn-danger deleteReview' onClick = {()=> this.onReviewDeleted(pageReview.objectId)}>X</button>
+                </div>
             </div>
             );
         });
@@ -76,6 +82,13 @@ class CreatePage extends Component{
             pageReviews.push(pageReview);
             return {pageReviews: pageReviews,
                    nextReviewObjectId: state.nextReviewObjectId + 1}
+        });
+    }
+    
+    onReviewDeleted = (objectId) =>{
+        this.setState((state,props)=>{
+            let filteredPageReviews = state.pageReviews.filter(review => review.objectId !== objectId);
+            return {pageReviews: filteredPageReviews}
         });
     }
     
