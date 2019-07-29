@@ -17,6 +17,14 @@ namespace TripMe.Repositories
                 return dbContext.Diaries.FirstOrDefault(x => x.Id == id);
             }
         }
+
+        public List<Diary> GetDiariesByUser()
+        {
+            using (var dbContext = new TripMeContext())
+            {
+                return dbContext.Diaries.AsQueryable().OrderByDescending(x => x.Id).Take(5).ToList();
+            }
+        }
         
         public List<DiaryCountry>GetDiaryCountries(long diaryId)
         {

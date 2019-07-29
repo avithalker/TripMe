@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using TripMe.Model;
 using TripMe.Model.EntitySets;
 using System.Data.Entity.Migrations;

@@ -19,6 +19,19 @@ namespace TripMe.Service
             _diaryRepository = new DiaryRepository();
         }
 
+        public List<DiaryDto> GetDiariesByUser()
+        {
+            List<Diary> diaries = _diaryRepository.GetDiariesByUser();
+            List<DiaryDto> diariesDtos = Mapper.Map<List<DiaryDto>>(diaries);
+
+            foreach (DiaryDto diaryDto in diariesDtos)
+            {
+                SetDiaryDtoLocations(diaryDto.Id, diaryDto);
+            }
+
+            return diariesDtos;
+        }
+
         public DiaryDto GetDiaryById(long id)
         {
             Diary diary = _diaryRepository.GetDiary(id);
@@ -29,11 +42,11 @@ namespace TripMe.Service
             }
 
             DiaryDto diaryDto = Mapper.Map<DiaryDto>(diary);
-            SetDiaryDtoLocations(id, ref diaryDto);
+            SetDiaryDtoLocations(id, diaryDto);
             return diaryDto;
         }
 
-        private void SetDiaryDtoLocations(long diaryId, ref DiaryDto diaryDto)
+        private void SetDiaryDtoLocations(long diaryId, DiaryDto diaryDto)
         {
             List<DiaryCountry> diaryCountries = _diaryRepository.GetDiaryCountries(diaryId);
             List<DiaryCity> diaryCities = _diaryRepository.GetDiaryCities(diaryId);

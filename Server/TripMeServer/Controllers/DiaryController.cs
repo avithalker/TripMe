@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System.Collections.Generic;
+using System.Web.Http;
 using System.Web.Http.Cors;
 using TripMe.Contracts.Dtos;
 using TripMe.Contracts.Requestes;
@@ -27,6 +28,15 @@ namespace TripMeServer.Controllers
             DiaryGetter diaryGetter = new DiaryGetter();
 
             return diaryGetter.GetDiaryById(id);
+        }
+
+        [HttpGet]
+        [Route("DiariesByUser")]
+        public List<DiaryDto> DiariesByUser()
+        {
+            DiaryGetter diaryGetter = new DiaryGetter();
+
+            return diaryGetter.GetDiariesByUser();
         }
 
         [HttpPost]
