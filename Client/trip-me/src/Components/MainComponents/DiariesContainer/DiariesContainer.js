@@ -3,6 +3,9 @@ import "bootstrap/dist/css/bootstrap.css";
 import DiaryEntry from "../../DiaryEntry/DiaryEntry";
 import TripMeHttpClient from "../../../Services/TripMeHttpClient.js";
 import TripTypeEnum from "../../../Enums/TripTypeEnum.js";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from "react-loader-spinner";
+import "./DiariesContainer.css";
 
 export default class DiariesContainer extends Component {
   constructor(props) {
@@ -40,13 +43,13 @@ export default class DiariesContainer extends Component {
   };
 
   renderDiaries = () => {
-    debugger;
-    if (this.state.Diaries.length == 0) {
-      return <DiaryEntry />;
-    }
-    return this.state.Diaries.map(diary => {
-      return this.renderDiary(diary);
-    });
+    return (
+      <div className="row">
+        {this.state.Diaries.map(diary => {
+          return <div className="col-sm-4">{this.renderDiary(diary)}</div>;
+        })}
+      </div>
+    );
   };
 
   // renderDiaries = () => {
@@ -71,6 +74,18 @@ export default class DiariesContainer extends Component {
   // };
 
   render() {
-    return <div>{this.renderDiaries()}</div>;
+    if (this.state.Diaries.length == 0) {
+      return (
+        <div>
+          <Loader className="loader" type="ThreeDots" color="#00BFFF" />
+        </div>
+      );
+    }
+
+    return (
+      <div>
+        <div>{this.renderDiaries()}</div>
+      </div>
+    );
   }
 }
