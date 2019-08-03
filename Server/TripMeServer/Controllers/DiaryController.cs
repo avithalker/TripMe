@@ -13,7 +13,7 @@ namespace TripMeServer.Controllers
     public class DiaryController : ApiController
     {
         [HttpPost]
-        [Route("AddNewDiary")]
+        [Route("Diary/AddNewDiary")]
         public long AddNewDiary(AddNewDiaryRequest addNewDiaryRequest)
         {
             DiaryEditor diaryEditor = new DiaryEditor();
@@ -22,7 +22,7 @@ namespace TripMeServer.Controllers
         }
 
         [HttpGet]
-        [Route("DiaryById")]
+        [Route("Diary/DiaryById")]
         public DiaryDto DiaryById(long id)
         {
             DiaryGetter diaryGetter = new DiaryGetter();
@@ -31,7 +31,7 @@ namespace TripMeServer.Controllers
         }
 
         [HttpGet]
-        [Route("DiariesByUser")]
+        [Route("Diary/DiariesByUser")]
         public List<DiaryDto> DiariesByUser()
         {
             DiaryGetter diaryGetter = new DiaryGetter();
@@ -40,7 +40,7 @@ namespace TripMeServer.Controllers
         }
 
         [HttpPost]
-        [Route("AddNewPage")]
+        [Route("Diary/AddNewPage")]
         public long AddNewPage(AddNewPageRequest addNewPageRequest)
         {
             DiaryEditor diaryEditor = new DiaryEditor();

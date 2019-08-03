@@ -14,7 +14,7 @@ namespace TripMeServer.Controllers
     public class ReviewController : ApiController
     {
         [HttpGet]
-        [Route("ReviewTypes")]
+        [Route("Review/ReviewTypes")]
         public List<ReviewTypeDto> ReviewTypes()
         {
             ReviewGetter reviewGetter = new ReviewGetter();
@@ -23,7 +23,7 @@ namespace TripMeServer.Controllers
         }
 
         [HttpGet]
-        [Route("ReviewQuestionnaire")]
+        [Route("Review/ReviewQuestionnaire")]
         public List<ReviewQuestionnaireDto> ReviewQuestionnaire()
         {
             ReviewGetter reviewGetter = new ReviewGetter();
@@ -32,7 +32,7 @@ namespace TripMeServer.Controllers
         }
 
         [HttpGet]
-        [Route("ReviewQuestionnaireById")]
+        [Route("Review/ReviewQuestionnaireById")]
         public ReviewQuestionnaireDto ReviewQuestionnaireById(int reviewTypeID)
         {
             ReviewGetter reviewGetter = new ReviewGetter();

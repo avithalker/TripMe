@@ -21,3 +21,4 @@ C:\ComputerScienceYear4\FinalProj\TripMe\Server\Model\obj\Debug\Model.csproj.Cor
 C:\ComputerScienceYear4\FinalProj\TripMe\Server\Model\obj\Debug\Model.csproj.CopyComplete
 C:\ComputerScienceYear4\FinalProj\TripMe\Server\Model\obj\Debug\TripMe.Model.dll
 C:\ComputerScienceYear4\FinalProj\TripMe\Server\Model\obj\Debug\TripMe.Model.pdb
+C:\ComputerScienceYear4\FinalProj\TripMe\Server\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
