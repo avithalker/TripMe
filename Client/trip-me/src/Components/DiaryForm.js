@@ -4,6 +4,7 @@ import "../Diary.css";
 import axios from "axios";
 import DatePicker from "react-datepicker";
 import TripMeHttpClient from "../Services/TripMeHttpClient.js";
+import ImageUploader from "react-images-upload";
 
 const tripMeHttpClient = new TripMeHttpClient();
 
@@ -18,7 +19,8 @@ class DiaryForm extends Component {
       EndDate: new Date(),
       ApproximatePrice: "",
       Countries: [],
-      TripType: ""
+      TripType: "",
+      Pages: []
     };
   }
 
@@ -406,6 +408,17 @@ class DiaryForm extends Component {
               <option value="7">Camping</option>
               <option value="8">Photoshooting</option>
             </select>
+          </div>
+          <div className="form-group row">
+            <ImageUploader
+              withIcon={true}
+              buttonText="upload cover photo"
+              onChange={this.onDrop}
+              imgExtension={[".jpg", ".gif", ".png", ".gif"]}
+              maxFileSize={5242880}
+              withPreview={true}
+              singleImage={true}
+            />
           </div>
           <button
             type="submit"
