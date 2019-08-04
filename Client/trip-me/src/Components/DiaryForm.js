@@ -423,9 +423,8 @@ class DiaryForm extends Component {
           <button
             type="submit"
             className="btn btn-primary"
-            onClick={this.handleSubmit}
-          >
-            Submit
+            onClick={this.handleSubmit}          >
+            Finish
           </button>
         </form>
       </div>

@@ -3,8 +3,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import DiaryEntry from "../../DiaryEntry/DiaryEntry";
 import TripMeHttpClient from "../../../Services/TripMeHttpClient.js";
 import TripTypeEnum from "../../../Enums/TripTypeEnum.js";
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-import Loader from "react-loader-spinner";
+import AppLoader from "../../Shared/AppLoader/AppLoader";
 import "./DiariesContainer.css";
 
 export default class DiariesContainer extends Component {
@@ -46,40 +45,15 @@ export default class DiariesContainer extends Component {
     return (
       <div className="row">
         {this.state.Diaries.map(diary => {
-          return <div className="col-sm-4">{this.renderDiary(diary)}</div>;
+          return <div className="col-4 p-3">{this.renderDiary(diary)}</div>;
         })}
       </div>
     );
   };
 
-  // renderDiaries = () => {
-  //   var size = this.state.Diaries.length;
-  //   var startIndex = 0;
-  //   var endIndex = 3;
-  //   var subArray = this.state.Diaries.slice(0, 3);
-  //   var diariesView = [];
-  //   var diaryRender;
-
-  //   while (endIndex <= size) {
-  //     subArray = this.state.Diaries.slice(startIndex, endIndex);
-  //     diaryRender = subArray.map(diary => {
-  //       return <col>{this.renderDiary(diary)}</col>;
-  //     });
-  //     diariesView.push(<row>{diaryRender}</row>);
-  //     startIndex = startIndex + 3;
-  //     endIndex = endIndex + 3;
-  //   }
-  //   debugger;
-  //   return diariesView;
-  // };
-
   render() {
     if (this.state.Diaries.length == 0) {
-      return (
-        <div>
-          <Loader className="loader" type="ThreeDots" color="#00BFFF" />
-        </div>
-      );
+      return <AppLoader />;
     }
 
     return (
