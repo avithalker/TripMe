@@ -5,6 +5,7 @@ import axios from "axios";
 import DatePicker from "react-datepicker";
 import TripMeHttpClient from "../Services/TripMeHttpClient.js";
 import ImageUploader from "react-images-upload";
+import PopUp from "../Components/Shared/Popup";
 
 const tripMeHttpClient = new TripMeHttpClient();
 
@@ -20,7 +21,7 @@ class DiaryForm extends Component {
       ApproximatePrice: "",
       Countries: [],
       TripType: "",
-      Pages: []
+      IsSubmitted: false
     };
   }
 
@@ -37,7 +38,9 @@ class DiaryForm extends Component {
       TripType: this.state.TripType
     };
 
-    tripMeHttpClient.createNewDiary(data);
+    tripMeHttpClient
+      .createNewDiary(data)
+      .then(this.setState({ IsSubmitted: true }));
     return;
   };
 
@@ -61,9 +64,24 @@ class DiaryForm extends Component {
     });
   };
 
+  GoToDiary = () => {
+    return;
+  };
+
   render() {
+    if (this.state.IsSubmitted) {
+      return (
+        <PopUp
+          textButton="Show Diary"
+          popupText="The diary has been created successfully!!"
+          show={true}
+          handleClick={this.GoToDiary}
+        />
+      );
+    }
     return (
       <div className="container">
+        <PopUp />
         <h1>Diary</h1>
         <form onSubmit={this.handleSubmit}>
           <div className="form-group row">
@@ -423,7 +441,8 @@ class DiaryForm extends Component {
           <button
             type="submit"
             className="btn btn-primary"
-            onClick={this.handleSubmit}          >
+            onClick={this.handleSubmit}
+          >
             Finish
           </button>
         </form>
