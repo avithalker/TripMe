@@ -21,7 +21,7 @@ class DiaryForm extends Component {
       ApproximatePrice: "",
       Countries: [],
       TripType: "",
-      IsSubmitted: false
+      IsSubmitted: true
     };
   }
 
@@ -65,7 +65,7 @@ class DiaryForm extends Component {
   };
 
   GoToDiary = () => {
-    return;
+    document.location.href = "/#/MyDiaries";
   };
 
   render() {
@@ -81,7 +81,6 @@ class DiaryForm extends Component {
     }
     return (
       <div className="container">
-        <PopUp />
         <h1>Diary</h1>
         <form onSubmit={this.handleSubmit}>
           <div className="form-group row">
