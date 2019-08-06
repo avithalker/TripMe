@@ -11,10 +11,11 @@ using TripMe.Service;
 namespace TripMeServer.Controllers
 {
     [EnableCors(origins: "http://localhost:3000", headers: "*", methods: "*")]
+    [RoutePrefix("Review")]
     public class ReviewController : ApiController
     {
         [HttpGet]
-        [Route("Review/ReviewTypes")]
+        [Route("ReviewTypes")]
         public List<ReviewTypeDto> ReviewTypes()
         {
             ReviewGetter reviewGetter = new ReviewGetter();
@@ -23,7 +24,7 @@ namespace TripMeServer.Controllers
         }
 
         [HttpGet]
-        [Route("Review/ReviewQuestionnaire")]
+        [Route("ReviewQuestionnaire")]
         public List<ReviewQuestionnaireDto> ReviewQuestionnaire()
         {
             ReviewGetter reviewGetter = new ReviewGetter();
@@ -32,7 +33,7 @@ namespace TripMeServer.Controllers
         }
 
         [HttpGet]
-        [Route("Review/ReviewQuestionnaireById")]
+        [Route("ReviewQuestionnaireById")]
         public ReviewQuestionnaireDto ReviewQuestionnaireById(int reviewTypeID)
         {
             ReviewGetter reviewGetter = new ReviewGetter();

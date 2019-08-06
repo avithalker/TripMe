@@ -10,10 +10,11 @@ using TripMe.Service;
 namespace TripMeServer.Controllers
 {
     [EnableCors(origins: "http://localhost:3000", headers:"*",methods:"*")]
+    [RoutePrefix("Diary")]
     public class DiaryController : ApiController
     {
         [HttpPost]
-        [Route("Diary/AddNewDiary")]
+        [Route("AddNewDiary")]
         public long AddNewDiary(AddNewDiaryRequest addNewDiaryRequest)
         {
             DiaryEditor diaryEditor = new DiaryEditor();
@@ -22,7 +23,7 @@ namespace TripMeServer.Controllers
         }
 
         [HttpGet]
-        [Route("Diary/DiaryById")]
+        [Route("DiaryById")]
         public DiaryDto DiaryById(long id)
         {
             DiaryGetter diaryGetter = new DiaryGetter();
@@ -31,7 +32,7 @@ namespace TripMeServer.Controllers
         }
 
         [HttpGet]
-        [Route("Diary/DiariesByUser")]
+        [Route("DiariesByUser")]
         public List<DiaryDto> DiariesByUser()
         {
             DiaryGetter diaryGetter = new DiaryGetter();
@@ -40,7 +41,7 @@ namespace TripMeServer.Controllers
         }
 
         [HttpPost]
-        [Route("Diary/AddNewPage")]
+        [Route("AddNewPage")]
         public long AddNewPage(AddNewPageRequest addNewPageRequest)
         {
             DiaryEditor diaryEditor = new DiaryEditor();
