@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "../Diary.css";
-import axios from "axios";
 import DatePicker from "react-datepicker";
 import TripMeHttpClient from "../Services/TripMeHttpClient.js";
 import ImageUploader from "react-images-upload";
 import PopUp from "../Components/Shared/Popup";
+import DiaryFullView from "../Components/DiaryFullView/DiaryFullView.js";
 
 const tripMeHttpClient = new TripMeHttpClient();
 
@@ -21,7 +21,8 @@ class DiaryForm extends Component {
       ApproximatePrice: "",
       Countries: [],
       TripType: "",
-      IsSubmitted: true
+      IsSubmitted: true,
+      ShowDiary: true
     };
   }
 
@@ -65,10 +66,13 @@ class DiaryForm extends Component {
   };
 
   GoToDiary = () => {
-    document.location.href = "/#/MyDiaries";
+    this.setState({ ShowDiary: true });
   };
 
   render() {
+    if (this.state.ShowDiary) {
+      return <DiaryFullView />;
+    }
     if (this.state.IsSubmitted) {
       return (
         <PopUp
