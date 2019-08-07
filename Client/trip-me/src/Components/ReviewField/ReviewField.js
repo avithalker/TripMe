@@ -20,10 +20,10 @@ class ReviewField extends Component {
   render() {
     return (
       <div className="row reviewField">
-        <div className="col-4">
+        <div className="col-md-4">
           <div className="fieldText">{this.state.DisplayText}</div>
         </div>
-        <div className="col-7">{this.Field()}</div>
+        <div className="col-md-8 input-group-sm">{this.Field()}</div>
       </div>
     );
   }

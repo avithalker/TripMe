@@ -22,15 +22,15 @@ class ReviewQuestionnaire extends Component {
   render() {
     return (
       <div className="row">
-        <div className="col-4">
+        <div className="col-sm-7">
           <div className="card">
             <div className="card-body">
               <div className="row">{this.QuestionnaireFields()}</div>
             </div>
           </div>
         </div>
-        <div className="col-4">
-          <textarea className="reviewTextArea w-100 h-100" />
+        <div className="col-sm-5">
+          <textarea className="reviewTextArea w-100 h-100" placeholder="Write your caption here..." />
         </div>
       </div>
     );

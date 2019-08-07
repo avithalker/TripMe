@@ -99,18 +99,19 @@ class CreatePage extends Component {
 
   render() {
     return (
-      <div className="container-fluid">
+      <div className="container">
         <div>
           <form>
             <div className="form-group row">
-              <input
-                type="text"
-                className="form-control PageTitle"
-                placeholder="Page title"
-                onChange={this.onPageTitleChange}
-              />
+                <div className="col-12">               
+                    <input
+                        type="text"
+                        className="form-control pageTitle"
+                        placeholder="Page title"
+                        onChange={this.onPageTitleChange}></input>
+                </div>
             </div>
-            <div className="PageView">{this.getPageReviews()}</div>
+            <div>{this.getPageReviews()}</div>
             <div className="row">
               <button
                 className="btn btn-primary"
