@@ -1,8 +1,12 @@
-.reviewField{
-    margin-top: 1rem;
+.reviewField {
+  padding: 4px;
 }
 
-.multilineTextReviewField{
-    width: 100%;
-    min-height: 6rem;
+.multilineTextReviewField {
+  width: 100%;
+  min-height: 6rem;
+}
+
+.fieldText {
+  font-size: 0.8rem;
 }

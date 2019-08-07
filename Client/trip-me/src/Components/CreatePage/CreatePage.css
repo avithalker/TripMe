@@ -1,39 +1,39 @@
-
-.PageTitle{
-    
+.pageView {
+  top: 50%;
+  left: 50%;
+  margin: auto;
 }
 
-.pageReview{
-    border-style: solid;
-    border-color:darkseagreen;
-    border-radius: 5px;
-    margin-bottom: 1rem;
-    padding-top: 0.5rem;
-    padding-bottom: 1rem;
+.pageReview {
+  border-style: solid;
+  border-color: darkseagreen;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
 }
 
-.deleteReview{
-    border-radius: 100px;
-    height: 2rem;
-    width: 2rem;
-    font-size: 0.7rem;
-    margin-left: 75%;
+.deleteReview {
+  border-radius: 100px;
+  height: 2rem;
+  width: 2rem;
+  font-size: 0.7rem;
+  margin-left: 75%;
 }
 
-.PageContent{
-    
+.PageContent {
 }
 
-.div-review-expender{
-    position: fixed;
-    bottom: 3%;
-    right: 3%;
+.div-review-expender {
+  position: fixed;
+  bottom: 3%;
+  right: 3%;
 }
 
-.btn-reviews-expender{
-    width: 3.5rem;
-    height: 3.5rem;
-    font-size: 1.5rem;
-    border-radius: 50%;
-    font-weight: bold;
+.btn-reviews-expender {
+  width: 3.5rem;
+  height: 3.5rem;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  font-weight: bold;
 }
