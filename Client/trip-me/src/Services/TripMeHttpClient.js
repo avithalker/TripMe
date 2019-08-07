@@ -42,7 +42,7 @@ class TripMeHttpClient {
 
   getReviewTypes = () => {
     var promise = new Promise((resolve, reject) => {
-      var url = new URL("http://localhost/TripMeWebApi/ReviewTypes");
+      var url = new URL("http://localhost/TripMeWebApi/Review/ReviewTypes");
 
       fetch(url).then(response => {
         resolve(response.json());
