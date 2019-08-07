@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Dtos\DiaryDto.cs" />
     <Compile Include="Dtos\DiaryPageDto.cs" />
+    <Compile Include="Dtos\MinimizedDiaryPageDto.cs" />
     <Compile Include="Dtos\ReviewFieldDto.cs" />
     <Compile Include="Dtos\ReviewQuestionnaireAnswerDto.cs" />
     <Compile Include="Dtos\ReviewQuestionnaireDto.cs" />

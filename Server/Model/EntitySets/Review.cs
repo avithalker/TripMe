@@ -12,5 +12,7 @@ namespace TripMe.Model.EntitySets
         public long PageId { get; set; }
         public int ReviewTypeId { get; set; }
         public bool IsActive { get; set; }
+        public short DisplayOrder { get; set; }
+        public string Caption { get; set; }
     }
 }

@@ -48,5 +48,23 @@ namespace TripMeServer.Controllers
 
             return diaryEditor.CreateNewDiaryPage(addNewPageRequest);
         }
+
+        [HttpGet]
+        [Route("Page")]
+        public DiaryPageDto GetPageById(long diaryId, long pageId)
+        {
+            PageGetter pageGetter = new PageGetter();
+
+            return pageGetter.GetPageById(diaryId, pageId);
+        }
+
+        [HttpGet]
+        [Route("DiaryMinimizedPageList")]
+        public List<MinimizedDiaryPageDto> GetDiaryMinimizedPageList(long diaryId)
+        {
+            PageGetter pageGetter = new PageGetter();
+
+            return pageGetter.GetMinimizedDiaryPages(diaryId);
+        }
     }
 }

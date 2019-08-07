@@ -55,7 +55,30 @@ namespace TripMe.Service
                 ReviewTypeId = reviewTypeId,
                 Fields = Mapper.Map<List<ReviewFieldDto>>(reviewFields)
             };
+        }
 
+        public Dictionary<Guid,ReviewQuestionnaireAnswerDto> GetPageReviews(long pageId)
+        {
+            ReviewRepository reviewRepository = new ReviewRepository();
+            Dictionary<Review,List<ReviewAnswer>> pageReviews = reviewRepository.GetPageCompleteReviews(pageId);
+            Dictionary<Guid, ReviewQuestionnaireAnswerDto> structuredPageReviews = new Dictionary<Guid, ReviewQuestionnaireAnswerDto>();
+
+            foreach (var review in pageReviews)
+            {
+                ReviewQuestionnaireAnswerDto questionAnswersDto = new ReviewQuestionnaireAnswerDto();
+
+                questionAnswersDto.ReviewType = review.Key.ReviewTypeId;
+                questionAnswersDto.DisplayOrder = review.Key.DisplayOrder;
+                questionAnswersDto.Caption = review.Key.Caption;
+                foreach (var questionAnswer in review.Value)
+                {
+                    questionAnswersDto.Answers.Add(questionAnswer.QuestionId, questionAnswer.Answer);
+                }
+
+                structuredPageReviews.Add(review.Key.Id, questionAnswersDto);
+            }
+
+            return structuredPageReviews;
         }
     }
 }

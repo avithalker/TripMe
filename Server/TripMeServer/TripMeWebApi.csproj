@@ -116,6 +116,7 @@
   <ItemGroup>
     <Compile Include="App_Start\MappingConfig\MapperConfig.cs" />
     <Compile Include="App_Start\MappingConfig\Profiles\DiaryProfile.cs" />
+    <Compile Include="App_Start\MappingConfig\Profiles\PageProfile.cs" />
     <Compile Include="App_Start\MappingConfig\Profiles\ReviewProfile.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />

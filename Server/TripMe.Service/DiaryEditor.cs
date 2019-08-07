@@ -61,6 +61,8 @@ namespace TripMe.Service
                     Id = reviewId,
                     PageId = pageId,
                     ReviewTypeId = completedReview.ReviewType,
+                    Caption = completedReview.Caption,
+                    DisplayOrder = completedReview.DisplayOrder,
                     IsActive = true
                 });
 

@@ -15,8 +15,6 @@ namespace TripMeServer.App_Start.MappingConfig.Profiles
                 .ForMember(dest => dest.TripType, opt => opt.MapFrom(src => (short)src.TripType));
 
             CreateMap<Diary, DiaryDto>();
-
-            CreateMap<AddNewPageRequest, DiaryPage>();
         }
     }
 }
