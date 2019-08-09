@@ -17,6 +17,6 @@ namespace TripMe.Model.EntitySets
         public int ApproximatePrice { get; set; }
         public short TravelersCount { get; set; }
         public string Description { get; set; }
-        public byte[] CoverPhoto { get; set; }
+        public string CoverPhotoUrl { get; set; }
     }
 }
