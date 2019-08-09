@@ -15,5 +15,6 @@ namespace TripMe.Contracts.Requestes
         public int NumberOfTravelers { get; set; }
         public int ApproximatePrice { get; set; }
         public string Description { get; set; }
+        public string CoverPhotoUrl { get; set;}
     }
 }

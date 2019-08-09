@@ -3,71 +3,33 @@ import "bootstrap/dist/css/bootstrap.css";
 import "../Diary.css";
 import DatePicker from "react-datepicker";
 import TripMeHttpClient from "../Services/TripMeHttpClient.js";
+import CloudinaryHttpClient from "../Services/CloudinaryHttpClient.js";
 import ImageUploader from "react-images-upload";
 import PopUp from "../Components/Shared/Popup";
 import DiaryFullView from "../Components/DiaryFullView/DiaryFullView.js";
 
 const tripMeHttpClient = new TripMeHttpClient();
+const cloudinaryHttpClient = new CloudinaryHttpClient();
 
 class DiaryForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      DiaryName: "",
-      Description: "",
-      NumberOfTravelers: "",
-      StartDate: new Date(),
-      EndDate: new Date(),
-      ApproximatePrice: "",
-      Countries: [],
-      TripType: "",
-      IsSubmitted: true,
-      ShowDiary: true
+        DiaryName: "",
+        Description: "",
+        NumberOfTravelers: "",
+        StartDate: new Date(),
+        EndDate: new Date(),
+        ApproximatePrice: "",
+        Countries: [],
+        TripType: "",
+        CoverPhoto: null,
+        IsSubmitted: false,
+        ShowDiary: false,
+    
     };
+      this.handleSubmit = this.handleSubmit.bind(this);
   }
-
-  handleSubmit = event => {
-    event.preventDefault();
-    var data = {
-      NumberOfTravelers: this.state.NumberOfTravelers,
-      DiaryName: this.state.DiaryName,
-      Description: this.state.Description,
-      StartDate: this.state.StartDate,
-      EndDate: this.state.EndDate,
-      ApproximatePrice: this.state.ApproximatePrice,
-      Countries: this.state.Countries,
-      TripType: this.state.TripType
-    };
-
-    tripMeHttpClient
-      .createNewDiary(data)
-      .then(this.setState({ IsSubmitted: true }));
-    return;
-  };
-
-  onChangeInput = event => {
-    debugger;
-    this.setState({ [event.target.name]: event.target.value });
-  };
-
-  onStartDateChangeInput = date => {
-    this.setState({ StartDate: date });
-  };
-
-  onEndDateChangeInput = date => {
-    this.setState({ EndDate: date });
-  };
-
-  onCountryChangeInput = countryEvent => {
-    debugger;
-    this.setState({
-      Countries: this.state.Countries.concat(countryEvent.target.value)
-    });
-  };
-
-  GoToDiary = () => {
-    this.setState({ ShowDiary: true });
-  };
 
   render() {
     if (this.state.ShowDiary) {
@@ -434,7 +396,7 @@ class DiaryForm extends Component {
             <ImageUploader
               withIcon={true}
               buttonText="upload cover photo"
-              onChange={this.onDrop}
+              onChange={this.onPhotoSelected}
               imgExtension={[".jpg", ".gif", ".png", ".gif"]}
               maxFileSize={5242880}
               withPreview={true}
@@ -452,5 +414,61 @@ class DiaryForm extends Component {
       </div>
     );
   }
+    
+   async handleSubmit (event) {     
+    event.preventDefault();
+
+    let coverPhotoUrl = await this.uploadDiaryCoverPhoto();    
+    var data = {
+      NumberOfTravelers: this.state.NumberOfTravelers,
+      DiaryName: this.state.DiaryName,
+      Description: this.state.Description,
+      StartDate: this.state.StartDate,
+      EndDate: this.state.EndDate,
+      ApproximatePrice: this.state.ApproximatePrice,
+      Countries: this.state.Countries,
+      TripType: this.state.TripType,
+      CoverPhotoUrl: coverPhotoUrl
+    };
+
+    tripMeHttpClient
+      .createNewDiary(data)
+      .then(this.setState({ IsSubmitted: true }));
+    return; 
+  }
+
+  onChangeInput = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
+  onStartDateChangeInput = date => {
+    this.setState({ StartDate: date });
+  };
+
+  onEndDateChangeInput = date => {
+    this.setState({ EndDate: date });
+  };
+
+  onCountryChangeInput = countryEvent => {
+    this.setState({
+      Countries: this.state.Countries.concat(countryEvent.target.value)
+    });
+  };
+
+onPhotoSelected = (photoArray)=>{
+    this.setState({CoverPhoto: (photoArray.length === 0)? null: photoArray[0]});
+}
+
+  uploadDiaryCoverPhoto = ()=>{
+      if(this.state.CoverPhoto === null){
+          return Promise.resolve(null);
+      }
+      
+    return cloudinaryHttpClient.uploadPhoto(this.state.CoverPhoto);
+  }
+  
+  GoToDiary = () => {
+    this.setState({ ShowDiary: true });
+  };
 }
 export default DiaryForm;
