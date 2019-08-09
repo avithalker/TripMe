@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "../DiaryForm/DiaryForm.css";
 import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker-cssmodules.css";
 import TripMeHttpClient from "../../Services/TripMeHttpClient.js";
 import CloudinaryHttpClient from "../../Services/CloudinaryHttpClient.js";
 import ImageUploader from "react-images-upload";
@@ -47,7 +48,7 @@ class DiaryForm extends Component {
     return (
       <div className="card diary-root">
         <div className="card-header diary-form">
-          <h1>Diary</h1>
+          <h1>Create Your Diary...</h1>
           <form onSubmit={this.handleSubmit}>
             <div className="form-group row">
               <div className="col-12">
