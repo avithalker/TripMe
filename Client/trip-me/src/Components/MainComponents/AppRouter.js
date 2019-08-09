@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
-import DiaryForm from "../DiaryForm";
-import DiaryPage from "../ShowDiaryPage/DiaryPage";
+import DiaryForm from "../DiaryForm/DiaryForm.js";
 import DiariesContainer from "./DiariesContainer/DiariesContainer";
 import DiaryFullView from "../DiaryFullView/DiaryFullView";
-import queryString from "query-string";
-import CreatePage from "../CreatePage/CreatePage";
 
 export default class AppRouter extends Component {
   render() {
