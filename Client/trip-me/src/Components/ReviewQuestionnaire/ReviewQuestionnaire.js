@@ -9,28 +9,30 @@ class ReviewQuestionnaire extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ReviewTypeId: props.ReviewTypeId,
       questionnaire: [],
-      answers: {},
-      onQuestionnaireAnswersChanged: props.onQuestionnaireAnswersChanged
+      answers: {}
     };
+  }
 
-    this.onAnswerChanged = this.onAnswerChanged.bind(this);
-    this.fetchQuestionnaire(props.ReviewTypeId);
+  componentDidMount() {
+    this.fetchQuestionnaire(this.props.ReviewTypeId);
   }
 
   render() {
     return (
       <div className="row">
-        <div className="col-sm-7">
-          <div className="card">
+        <div className="col-sm-7 p-0">
+          <div className="card review">
             <div className="card-body">
               <div className="row">{this.QuestionnaireFields()}</div>
             </div>
           </div>
         </div>
-        <div className="col-sm-5">
-          <textarea className="reviewTextArea w-100 h-100" placeholder="Write your caption here..." />
+        <div className="col-sm-5 p-0">
+          <textarea
+            className="TextReview w-100 h-100"
+            placeholder="Write your caption here..."
+          />
         </div>
       </div>
     );
@@ -55,6 +57,7 @@ class ReviewQuestionnaire extends Component {
             onFieldValueChanged={answer =>
               this.onAnswerChanged(field.QuestionId, answer)
             }
+            EditMode={true}
           />
         </div>
       );
@@ -67,7 +70,7 @@ class ReviewQuestionnaire extends Component {
     answers[fieldId] = answer;
 
     this.setState({ answers: answers }, () => {
-      this.state.onQuestionnaireAnswersChanged(this.state.answers);
+      this.props.onQuestionnaireAnswersChanged(this.state.answers);
     });
   };
 }

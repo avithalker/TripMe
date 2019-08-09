@@ -12,11 +12,10 @@ import "bootstrap/dist/css/bootstrap.css";
 class App extends Component {
   render() {
     return (
-      // <div className="container">
-      //   <NavBar />
-      //   <AppRouter />
-      // </div>
-      <CreatePage />
+      <div className="container-fluid main">
+        <NavBar />
+        <AppRouter />
+      </div>
     );
   }
 }

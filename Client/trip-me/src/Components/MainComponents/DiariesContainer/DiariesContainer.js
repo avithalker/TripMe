@@ -5,6 +5,7 @@ import TripMeHttpClient from "../../../Services/TripMeHttpClient.js";
 import TripTypeEnum from "../../../Enums/TripTypeEnum.js";
 import AppLoader from "../../Shared/AppLoader/AppLoader";
 import "./DiariesContainer.css";
+import DiaryFullView from "../../DiaryFullView/DiaryFullView";
 
 export default class DiariesContainer extends Component {
   constructor(props) {
@@ -31,12 +32,12 @@ export default class DiariesContainer extends Component {
 
   renderDiary = diary => {
     var tripType = diary.TripType + 1;
-    debugger;
     return (
       <DiaryEntry
         Name={diary.Name}
         Destination={diary.Countries}
         Type={TripTypeEnum[tripType]}
+        Id={diary.Id}
       />
     );
   };

@@ -1,17 +1,14 @@
 import React, { Component } from "react";
 import "./DiaryEntry.css";
+import DiaryFullView from "../DiaryFullView/DiaryFullView";
+import Button from "react-bootstrap/Button";
 
 class DiaryEntry extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      Name: "sahar's diary",
-      Destination: "Italy",
-      Type: "HoneyMoon",
-      Writer: "Sahar",
-      ImageURL: "/images/sahar.jpg"
-    };
   }
+
+  fullDiaryUrl = "http://localhost:3000/#/ShowDiary?Id=" + this.props.Id;
 
   render() {
     return (
@@ -31,9 +28,9 @@ class DiaryEntry extends Component {
               <h7 className="property">Writer:</h7> {this.props.Writer}{" "}
             </li>
           </p>
-          <a href="#" className="btn btn-primary">
+          <Button href={this.fullDiaryUrl} className="btn btn-primary">
             Show Diary
-          </a>
+          </Button>
         </div>
       </div>
     );

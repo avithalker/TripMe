@@ -1,15 +1,18 @@
 import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
 import DiaryForm from "../DiaryForm";
-import DiaryByIdPage from "../ShowDiaryPage/DiaryByIdPage";
+import DiaryPage from "../ShowDiaryPage/DiaryPage";
 import DiariesContainer from "./DiariesContainer/DiariesContainer";
+import DiaryFullView from "../DiaryFullView/DiaryFullView";
+import queryString from "query-string";
+import CreatePage from "../CreatePage/CreatePage";
 
 export default class AppRouter extends Component {
   render() {
     return (
       <Switch>
         <Route exact path="/CreateDiary" component={DiaryForm} />
-        <Route exact path="/ShowDiary" component={DiaryByIdPage} />
+        <Route exact path="/ShowDiary" component={DiaryFullView} />
         <Route exact path="/MyDiaries" component={DiariesContainer} />
       </Switch>
     );

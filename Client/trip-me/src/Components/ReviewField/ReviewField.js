@@ -2,19 +2,16 @@ import React, { Component } from "react";
 import { ReviewFieldType } from "../../Enums/ReviewFieldTypeEnum.js";
 import RatingField from "../RatingField/RatingField.js";
 import "./ReviewField.css";
+import { id } from "date-fns/esm/locale";
 
 class ReviewField extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      FieldTypeId: props.FieldTypeId,
       DisplayText: this.adjustDisplayText(props.DisplayText),
       onFieldValueChanged: props.onFieldValueChanged
     };
-
-    this.onInputFieldChanged = this.onInputFieldChanged.bind(this);
-    this.onRatingValueChanged = this.onRatingValueChanged.bind(this);
   }
 
   render() {
@@ -37,8 +34,11 @@ class ReviewField extends Component {
   };
 
   Field = () => {
-    switch (this.state.FieldTypeId) {
+    switch (this.props.FieldTypeId) {
       case ReviewFieldType.INPUT_TEXT: {
+        if (!this.props.EditMode) {
+          return <label>{this.props.Answer}</label>;
+        }
         return (
           <input
             type="text"
@@ -48,6 +48,11 @@ class ReviewField extends Component {
         );
       }
       case ReviewFieldType.INPUT_RANK: {
+        if (!this.props.EditMode) {
+          return (
+            <RatingField isSelectable={false} rating={this.props.Answer} />
+          );
+        }
         return <RatingField onRatingValueChanged={this.onRatingValueChanged} />;
       }
       case ReviewFieldType.INPUT_MULTILINE_TEXT: {
@@ -60,6 +65,9 @@ class ReviewField extends Component {
         );
       }
       case ReviewFieldType.NUMBER: {
+        if (!this.props.EditMode) {
+          return <label>{this.props.Answer}</label>;
+        }
         return (
           <input
             type="number"

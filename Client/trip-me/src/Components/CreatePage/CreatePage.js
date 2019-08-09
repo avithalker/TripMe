@@ -3,6 +3,8 @@ import ReviewSelector from "../ReviewSelector/ReviewSelector.js";
 import { Collapse } from "react-collapse";
 import ReviewQuestionnaire from "../ReviewQuestionnaire/ReviewQuestionnaire.js";
 import TripMeHttpClient from "../../Services/TripMeHttpClient.js";
+import DiaryPage from "../ShowDiaryPage/DiaryPage";
+import PopUp from "../Shared/Popup";
 import "./CreatePage.css";
 
 const tripMeHttpClient = new TripMeHttpClient();
@@ -12,10 +14,12 @@ class CreatePage extends Component {
     super(props);
     this.state = {
       isReviewSelectorOpen: false,
-      diaryId: props.diaryId,
       pageTitle: "",
       pageReviews: [],
-      nextReviewObjectId: 1
+      nextReviewObjectId: 1,
+      pageCreated: false,
+      showPageClicked: false,
+      id: null
     };
   }
 
@@ -76,6 +80,7 @@ class CreatePage extends Component {
     let pageReview = pageReviews.find(
       pageReview => pageReview.objectId === objectId
     );
+    debugger;
     pageReview.Answers = questionnaireAnswers;
     this.setState({ pageReviews: pageReviews });
   };
@@ -90,26 +95,51 @@ class CreatePage extends Component {
       return { ReviewType: pageReview.ReviewType, Answers: pageReview.Answers };
     });
     let createPageRequest = new CreatePageRequest(
-      this.state.diaryId,
+      this.props.diaryId,
       this.state.pageTitle,
       pageReviews
     );
-    tripMeHttpClient.addNewPage(createPageRequest);
+    tripMeHttpClient.addNewPage(createPageRequest).then(response => {
+      this.setState({ pageCreated: true, id: response });
+    });
+    debugger;
+  };
+
+  getPopUpMessage = () => {
+    var message = this.state.pageTitle + " Created Successfully!!";
+    return message;
+  };
+
+  showPage = () => {
+    this.setState({ showPageClicked: true });
   };
 
   render() {
+    if (this.state.showPageClicked) {
+      return <DiaryPage id={this.state.id} />;
+    }
+    if (this.state.pageCreated) {
+      return (
+        <PopUp
+          popupText={this.getPopUpMessage()}
+          show={true}
+          handleClick={this.showPage}
+        />
+      );
+    }
     return (
       <div className="container">
         <div>
           <form>
             <div className="form-group row">
-                <div className="col-12">               
-                    <input
-                        type="text"
-                        className="form-control pageTitle"
-                        placeholder="Page title"
-                        onChange={this.onPageTitleChange}></input>
-                </div>
+              <div className="col-12">
+                <input
+                  type="text"
+                  className="form-control pageTitle"
+                  placeholder="Page title"
+                  onChange={this.onPageTitleChange}
+                />
+              </div>
             </div>
             <div>{this.getPageReviews()}</div>
             <div className="row">
