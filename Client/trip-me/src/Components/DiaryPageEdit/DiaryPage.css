@@ -1,0 +1,10 @@
+.pageReviews {
+  background-color: red;
+  width: 100%;
+  left: 50%;
+  right: 50%;
+}
+
+.pageNew {
+  justify-content: center;
+}

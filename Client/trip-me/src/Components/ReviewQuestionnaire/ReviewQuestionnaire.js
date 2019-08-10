@@ -20,19 +20,19 @@ class ReviewQuestionnaire extends Component {
 
   render() {
     return (
-      <div className="row">
-        <div className="col-sm-7 p-0">
-          <div className="card review">
-            <div className="card-body">
-              <div className="row">{this.QuestionnaireFields()}</div>
+      <div className="shadow p-2 mb-3 bg-white rounded">
+        <div className="card position-relative">
+          <div className="card-header">
+            <div className="row">
+              <div className="col-5">{this.QuestionnaireFields()}</div>
+              <div className="col-7">
+                <textarea
+                  className="TextReview w-100 h-100"
+                  placeholder="Write your caption here..."
+                />
+              </div>
             </div>
           </div>
-        </div>
-        <div className="col-sm-5 p-0">
-          <textarea
-            className="TextReview w-100 h-100"
-            placeholder="Write your caption here..."
-          />
         </div>
       </div>
     );

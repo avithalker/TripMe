@@ -27,15 +27,13 @@ class CreatePage extends Component {
     const pageReviews = this.state.pageReviews.map((pageReview, index) => {
       return (
         <div key={index} className="row">
-          <div className="col-11">
+          <div className="col-12 position-relative">
             <ReviewQuestionnaire
               ReviewTypeId={pageReview.ReviewType}
               onQuestionnaireAnswersChanged={answers =>
                 this.onQuestionnaireAnswersChanged(pageReview.objectId, answers)
               }
             />
-          </div>
-          <div className="col-1">
             <button
               className="btn btn-danger deleteReview"
               onClick={() => this.onReviewDeleted(pageReview.objectId)}
@@ -141,7 +139,7 @@ class CreatePage extends Component {
                 />
               </div>
             </div>
-            <div>{this.getPageReviews()}</div>
+            {this.getPageReviews()}
             <div className="row">
               <button
                 className="btn btn-primary"
