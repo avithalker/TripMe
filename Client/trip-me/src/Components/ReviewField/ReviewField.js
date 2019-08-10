@@ -34,6 +34,7 @@ class ReviewField extends Component {
   };
 
   Field = () => {
+    debugger;
     switch (this.props.FieldTypeId) {
       case ReviewFieldType.INPUT_TEXT: {
         if (!this.props.EditMode) {
@@ -49,11 +50,14 @@ class ReviewField extends Component {
       }
       case ReviewFieldType.INPUT_RANK: {
         if (!this.props.EditMode) {
-          return (
-            <RatingField isSelectable={false} rating={this.props.Answer} />
-          );
+          return <RatingField EditMode={false} Answer={this.props.Answer} />;
         }
-        return <RatingField onRatingValueChanged={this.onRatingValueChanged} />;
+        return (
+          <RatingField
+            EditMode={true}
+            onRatingValueChanged={this.onRatingValueChanged}
+          />
+        );
       }
       case ReviewFieldType.INPUT_MULTILINE_TEXT: {
         return (

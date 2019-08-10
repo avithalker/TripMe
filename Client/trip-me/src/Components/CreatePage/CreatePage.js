@@ -19,7 +19,7 @@ class CreatePage extends Component {
       nextReviewObjectId: 1,
       pageCreated: false,
       showPageClicked: false,
-      id: null
+      Pageid: -1
     };
   }
 
@@ -98,9 +98,9 @@ class CreatePage extends Component {
       pageReviews
     );
     tripMeHttpClient.addNewPage(createPageRequest).then(response => {
-      this.setState({ pageCreated: true, id: response });
+      debugger;
+      this.setState({ pageCreated: true, Pageid: response });
     });
-    debugger;
   };
 
   getPopUpMessage = () => {
@@ -114,7 +114,10 @@ class CreatePage extends Component {
 
   render() {
     if (this.state.showPageClicked) {
-      return <DiaryPage id={this.state.id} />;
+      debugger;
+      return (
+        <DiaryPage PageId={this.state.Pageid} DiaryId={this.props.diaryId} />
+      );
     }
     if (this.state.pageCreated) {
       return (

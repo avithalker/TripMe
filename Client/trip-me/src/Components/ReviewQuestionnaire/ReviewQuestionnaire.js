@@ -20,7 +20,7 @@ class ReviewQuestionnaire extends Component {
 
   render() {
     return (
-      <div className="shadow p-2 mb-3 bg-white rounded">
+      <div className="shadow p-3 mb-5 bg-white rounded">
         <div className="card position-relative">
           <div className="card-header">
             <div className="row">

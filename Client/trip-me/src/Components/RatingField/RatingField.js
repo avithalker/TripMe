@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import StarRatings from "react-star-ratings";
+import StarRatingComponent from "react-star-rating-component";
 import "./RatingField.css";
 
 class RatingField extends Component {
@@ -20,6 +21,17 @@ class RatingField extends Component {
   }
 
   render() {
+    if (!this.props.EditMode) {
+      return (
+        <div className="rating-stars">
+          <StarRatingComponent
+            editing={false}
+            startCount={5}
+            value={this.props.Answer}
+          />
+        </div>
+      );
+    }
     return (
       <StarRatings
         rating={this.state.rating}
@@ -30,6 +42,7 @@ class RatingField extends Component {
         starDimension="20px"
         numberOfStars={5}
         name="rating"
+        editing={this.props.EditMode}
       />
     );
   }

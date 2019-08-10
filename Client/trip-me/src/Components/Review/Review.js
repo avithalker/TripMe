@@ -1,31 +1,41 @@
 import React, { Component } from "react";
 import ReviewField from "../ReviewField/ReviewField";
 import TripMeHttpClient from "../../Services/TripMeHttpClient";
+import AppLoader from "../Shared/AppLoader/AppLoader";
 
 class Review extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      Fields: []
+      Fields: [],
+      ReviewLoaded: false
     };
+  }
+
+  componentDidMount() {
+    debugger;
+    this.getReviewByTypeId(this.props.review.ReviewType);
   }
 
   getReviewByTypeId = reviewId => {
     var tripMeHttpClient = new TripMeHttpClient();
     tripMeHttpClient.getReviewQuestionnaireById(reviewId).then(response => {
-      return response.Fields;
+      this.setState({ Fields: response.Fields, isReviewLoaded: true });
+      debugger;
     });
   };
 
   ReviewFields = fields => {
+    debugger;
     var fields = fields.map((field, index) => {
+      debugger;
       return (
         <div className="col-12">
           <ReviewField
             key={index}
             FieldTypeId={field.FieldTypeId}
             DisplayText={field.DisplayText}
-            Answer={this.props.review.Answers[field.FieldTypeId]}
+            Answer={this.props.review.Answers[field.QuestionId]}
             EditMode={false}
           />
         </div>
@@ -35,12 +45,21 @@ class Review extends Component {
   };
 
   render() {
+    debugger;
+    if (this.state.ReviewLoaded) {
+      return <AppLoader />;
+    }
     return (
-      <div className="row">
-        <div className="col-sm-7 p-0">
-          <div className="card review">
-            <div className="card-body">
-              <div className="row">{this.QuestionnaireFields()}</div>
+      <div className="shadow p-2 mb-3 bg-white rounded">
+        <div className="card position-relative">
+          <div className="card-header">
+            <div className="row">
+              <div className="col-5">
+                {this.ReviewFields(this.state.Fields)}
+              </div>
+              <div className="col-7">
+                <label>{this.props.review.Caption}</label>
+              </div>
             </div>
           </div>
         </div>
