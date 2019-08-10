@@ -9,6 +9,7 @@ import ImageUploader from "react-images-upload";
 import PopUp from "../Shared/Popup";
 import { Redirect } from "react-router";
 import DiaryFullView from "../DiaryFullView/DiaryFullView.js";
+import AppLoader from "../Shared/AppLoader/AppLoader";
 
 const tripMeHttpClient = new TripMeHttpClient();
 const cloudinaryHttpClient = new CloudinaryHttpClient();
@@ -28,12 +29,16 @@ class DiaryForm extends Component {
       CoverPhoto: null,
       IsSubmitted: false,
       ShowDiary: false,
+      isLoading: false,
       Id: -1
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   render() {
+    if (this.state.isLoading) {
+      return <AppLoader />;
+    }
     if (this.state.ShowDiary) {
       this.MoveToDiary();
     }
@@ -442,6 +447,7 @@ class DiaryForm extends Component {
 
   async handleSubmit(event) {
     event.preventDefault();
+    this.setState({ isLoading: true });
 
     let coverPhotoUrl = await this.uploadDiaryCoverPhoto();
     var data = {
@@ -457,7 +463,7 @@ class DiaryForm extends Component {
     };
     debugger;
     tripMeHttpClient.createNewDiary(data).then(response => {
-      this.setState({ IsSubmitted: true, Id: response });
+      this.setState({ IsSubmitted: true, Id: response, isLoading: false });
     });
   }
 
