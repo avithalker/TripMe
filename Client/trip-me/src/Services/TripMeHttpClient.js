@@ -15,14 +15,17 @@ class TripMeHttpClient {
   };
 
   createNewDiary = diary => {
-    var url = new URL("http://localhost/TripMeWebApi/Diary/AddNewDiary");
-    return fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(diary)
+    var promise = new Promise((resolve, reject) => {
+      var url = new URL("http://localhost/TripMeWebApi/Diary/AddNewDiary");
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(diary)
+      }).then(response => resolve(response.json()));
     });
+    return promise;
   };
 
   addNewPage = addNewPageRequest => {

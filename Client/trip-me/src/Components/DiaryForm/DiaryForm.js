@@ -7,6 +7,7 @@ import TripMeHttpClient from "../../Services/TripMeHttpClient.js";
 import CloudinaryHttpClient from "../../Services/CloudinaryHttpClient.js";
 import ImageUploader from "react-images-upload";
 import PopUp from "../Shared/Popup";
+import { Redirect } from "react-router";
 import DiaryFullView from "../DiaryFullView/DiaryFullView.js";
 
 const tripMeHttpClient = new TripMeHttpClient();
@@ -26,14 +27,15 @@ class DiaryForm extends Component {
       TripType: "",
       CoverPhoto: null,
       IsSubmitted: false,
-      ShowDiary: false
+      ShowDiary: false,
+      Id: -1
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   render() {
     if (this.state.ShowDiary) {
-      return <DiaryFullView />;
+      this.MoveToDiary();
     }
     if (this.state.IsSubmitted) {
       return (
@@ -433,6 +435,11 @@ class DiaryForm extends Component {
     );
   }
 
+  MoveToDiary = () => {
+    var url = "/ShowDiary?Id=" + this.state.Id;
+    this.props.history.push(url);
+  };
+
   async handleSubmit(event) {
     event.preventDefault();
 
@@ -448,11 +455,10 @@ class DiaryForm extends Component {
       TripType: this.state.TripType,
       CoverPhotoUrl: coverPhotoUrl
     };
-
-    tripMeHttpClient
-      .createNewDiary(data)
-      .then(this.setState({ IsSubmitted: true }));
-    return;
+    debugger;
+    tripMeHttpClient.createNewDiary(data).then(response => {
+      this.setState({ IsSubmitted: true, Id: response });
+    });
   }
 
   onChangeInput = event => {

@@ -10,7 +10,12 @@ export default class AppRouter extends Component {
       <Switch>
         <Route exact path="/CreateDiary" component={DiaryForm} />
         <Route exact path="/ShowDiary" component={DiaryFullView} />
-        <Route exact path="/MyDiaries" component={DiariesContainer} />
+        <Route
+          exact
+          path="/MyDiaries"
+          component={DiariesContainer}
+          render={props => <DiariesContainer {...props} />}
+        />
       </Switch>
     );
   }
