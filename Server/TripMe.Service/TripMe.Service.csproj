@@ -55,11 +55,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DiaryEditor.cs" />
-    <Compile Include="DiaryGetter.cs" />
+    <Compile Include="Getters\DiaryGetter.cs" />
     <Compile Include="Modifiers\DiaryModifier.cs" />
-    <Compile Include="PageGetter.cs" />
+    <Compile Include="Getters\PageGetter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReviewGetter.cs" />
+    <Compile Include="Getters\ReviewGetter.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj">
