@@ -9,6 +9,7 @@ using TripMe.Contracts.Requestes;
 using TripMe.Enums;
 using TripMe.Model;
 using TripMe.Repositories;
+using TripMe.SearchEngine.SearchFilters;
 using TripMe.Service;
 using TripMe.Service.Getters;
 
@@ -76,16 +77,9 @@ namespace TripMeServer.Controllers
         [Route("test")]
         public int test()
         {
-            Dictionary<SearchParameter, object> dic = new Dictionary<SearchParameter, object>();
-            dic.Add(SearchParameter.BY_CITY, 2);
-            dic.Add(SearchParameter.BY_CONTINENT, new DiaryDto());
-
-            string a=JsonConvert.SerializeObject(dic);
-
-            dic = JsonConvert.DeserializeObject<Dictionary<SearchParameter, object>>(a);
-            int number = Convert.ToInt32(dic[SearchParameter.BY_CITY]);
-            DiaryDto d = ((JObject)dic[SearchParameter.BY_CONTINENT]).ToObject<DiaryDto>();
+            DiarySearcher a = new DiarySearcher();
+            a.SearchDiaries();
             return 1;
         }
-    }
+}
 }

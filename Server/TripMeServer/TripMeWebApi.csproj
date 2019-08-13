@@ -158,6 +158,10 @@
       <Project>{BB5DA3FB-36E9-42E0-873B-2B1D49378407}</Project>
       <Name>TripMe.Repositories</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TripMe.SearchEngine\TripMe.SearchEngine.csproj">
+      <Project>{B187FADA-6AB2-44C6-A43C-D3D7A3469B0D}</Project>
+      <Name>TripMe.SearchEngine</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TripMe.Service\TripMe.Service.csproj">
       <Project>{42CF8E79-822D-4471-9BE2-B82456FA6C94}</Project>
       <Name>TripMe.Service</Name>
