@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GeoData.cs" />
     <Compile Include="SearchParameter.cs" />
     <Compile Include="TripType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

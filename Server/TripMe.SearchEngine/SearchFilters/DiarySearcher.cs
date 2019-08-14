@@ -16,7 +16,7 @@ namespace TripMe.SearchEngine.SearchFilters
             using (var dbContext = new TripMeContext())
             {
                 IQueryable<DiarySearchResult> searchQuery = BuildBasicSearchQuery(dbContext);
-                //searchQuery = new TripTypeFilter().AddFilterToSearchQuery((object)2, searchQuery);
+                //searchQuery = new ContinentFilter().AddFilterToSearchQuery((object)"AS", searchQuery);
                 //var a = searchQuery.ToList();
             }
             return null;

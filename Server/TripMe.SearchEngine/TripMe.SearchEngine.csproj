@@ -52,11 +52,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchFilters\CityFilter.cs" />
+    <Compile Include="SearchFilters\ContinentFilter.cs" />
+    <Compile Include="SearchFilters\CountryFilter.cs" />
     <Compile Include="SearchFilters\DiarySearcher.cs" />
     <Compile Include="SearchFilters\DurationDaysFilter.cs" />
     <Compile Include="SearchFilters\MonthFilter.cs" />
     <Compile Include="SearchFilters\PriceFilter.cs" />
     <Compile Include="SearchFilters\SearchFilter.cs" />
+    <Compile Include="SearchFilters\TravelersCountFilter.cs" />
     <Compile Include="SearchFilters\TripTypeFilter.cs" />
     <Compile Include="SearchObjects\DiarySearchResult.cs" />
   </ItemGroup>
