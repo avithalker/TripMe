@@ -125,6 +125,7 @@ class CreatePage extends Component {
           popupText={this.getPopUpMessage()}
           show={true}
           handleClick={this.showPage}
+          textButton="Show my page!"
         />
       );
     }

@@ -5,6 +5,12 @@ import queryString from "query-string";
 import TripMeHttpClient from "../../Services/TripMeHttpClient";
 import AppLoader from "../Shared/AppLoader/AppLoader";
 import { Button } from "react-bootstrap";
+import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
+import Collapse from "react-bootstrap/Collapse";
+import IconButton from "@material-ui/core/IconButton";
+import DiaryAdditionalData from "../DiaryAdditionalData/DiaryAdditionalData";
+import { Card, CardBody } from "reactstrap";
+import "../DiaryFullView/DiaryFullView.css";
 
 class DiaryFullView extends Component {
   constructor(props) {
@@ -12,7 +18,8 @@ class DiaryFullView extends Component {
     this.state = {
       addPage: false,
       diary: null,
-      isLoading: true
+      isLoading: true,
+      ShowDiaryData: false
     };
   }
 
@@ -39,31 +46,42 @@ class DiaryFullView extends Component {
     }
     return (
       <div>
-        <div className="jumbotron jumbotron-fluid">
-          <div className="container">
-            <h1 className="display-4">{this.state.diary.Name}</h1>
-            <p className="lead">{this.state.diary.Description}</p>
-            <div className="row p-3">
-              <div className="col sm-3">
-                Countries: {this.state.diary.Countries}
+        <div className="card">
+          <div className="card-header">
+            <div className="row">
+              <div className="col-12">
+                <h4>{this.state.diary.Name}</h4>
               </div>
-              <div className="col sm-3">
-                Trip Type: {this.state.diary.TripType}
-              </div>
-              <div className="col sm-3">
-                Start Date: {this.state.diary.StartDate}
-              </div>
-              <div className="col sm-3">
-                End Date: {this.state.diary.EndDate}
-              </div>
-              <div className="col sm-3">
-                Approximate Price: {this.state.diary.ApproximatePrice}
-              </div>
-              <div className="col sm-3">
-                Number of travelers: {this.state.diary.TravelersCount}
+              <div className="col-2">
+                <div className="row">
+                  <div className="col-2">
+                    <IconButton size="small">
+                      <ArrowDownwardIcon
+                        fontSize="inherit"
+                        aria-controls="additional-diary-data"
+                        aria-expanded={this.state.ShowDiaryData}
+                        onClick={() => {
+                          this.setState({
+                            ShowDiaryData: !this.state.ShowDiaryData
+                          });
+                        }}
+                      />
+                    </IconButton>
+                  </div>
+                  <div className="col-6">
+                    <label>More info...</label>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+        </div>
+        <div>
+          <Collapse in={this.state.ShowDiaryData}>
+            <div className="card-header diary-additional-container">
+              <DiaryAdditionalData />
+            </div>
+          </Collapse>
         </div>
         <div className="addPageButton">
           <Button onClick={this.addPage}>Add New Page</Button>
@@ -71,5 +89,7 @@ class DiaryFullView extends Component {
       </div>
     );
   }
+
+  ShowDiaryData = () => {};
 }
 export default DiaryFullView;
