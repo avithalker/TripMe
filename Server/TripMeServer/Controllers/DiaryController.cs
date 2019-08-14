@@ -1,11 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using TripMe.Contracts.Dtos;
 using TripMe.Contracts.Requestes;
+using TripMe.Enums;
 using TripMe.Model;
 using TripMe.Repositories;
+using TripMe.SearchEngine.SearchFilters;
 using TripMe.Service;
+using TripMe.Service.Getters;
 
 namespace TripMeServer.Controllers
 {
@@ -66,5 +72,14 @@ namespace TripMeServer.Controllers
 
             return pageGetter.GetMinimizedDiaryPages(diaryId);
         }
-    }
+
+        [HttpGet]
+        [Route("test")]
+        public int test()
+        {
+            DiarySearcher a = new DiarySearcher();
+            a.SearchDiaries();
+            return 1;
+        }
+}
 }

@@ -2,13 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TripMe.Contracts.Dtos;
 using TripMe.Model.EntitySets;
 using TripMe.Repositories;
 
-namespace TripMe.Service
+namespace TripMe.Service.Getters
 {
     public class ReviewGetter
     {

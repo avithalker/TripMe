@@ -57,6 +57,9 @@
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
       <HintPath>..\packages\Swashbuckle.Core.5.6.0\lib\net40\Swashbuckle.Core.dll</HintPath>
     </Reference>
@@ -154,6 +157,10 @@
     <ProjectReference Include="..\TripMe.Repositories\TripMe.Repositories.csproj">
       <Project>{BB5DA3FB-36E9-42E0-873B-2B1D49378407}</Project>
       <Name>TripMe.Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TripMe.SearchEngine\TripMe.SearchEngine.csproj">
+      <Project>{B187FADA-6AB2-44C6-A43C-D3D7A3469B0D}</Project>
+      <Name>TripMe.SearchEngine</Name>
     </ProjectReference>
     <ProjectReference Include="..\TripMe.Service\TripMe.Service.csproj">
       <Project>{42CF8E79-822D-4471-9BE2-B82456FA6C94}</Project>
