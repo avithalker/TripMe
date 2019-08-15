@@ -7,9 +7,11 @@ import "bootstrap/dist/css/bootstrap.css";
 class App extends Component {
   render() {
     return (
-      <div className="container-fluid main">
+      <div>
         <NavBar />
-        <AppRouter />
+        <main class="container">
+          <AppRouter />
+        </main>
       </div>
     );
   }

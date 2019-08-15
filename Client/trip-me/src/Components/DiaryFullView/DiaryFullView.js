@@ -11,6 +11,7 @@ import IconButton from "@material-ui/core/IconButton";
 import DiaryAdditionalData from "../DiaryAdditionalData/DiaryAdditionalData";
 import { Card, CardBody } from "reactstrap";
 import "../DiaryFullView/DiaryFullView.css";
+import DiaryPage from "../ShowDiaryPage/DiaryPage";
 
 class DiaryFullView extends Component {
   constructor(props) {
@@ -45,46 +46,48 @@ class DiaryFullView extends Component {
       return <CreatePage diaryId={this.state.diary.Id} />;
     }
     return (
-      <div>
-        <div className="card">
-          <div className="card-header">
-            <div className="row">
-              <div className="col-12">
-                <h4>{this.state.diary.Name}</h4>
+      <div className="diary">
+        <div className="row">
+          <div className="col-2 p-2">
+            <h2>Diary Name</h2>
+          </div>
+          <div className="col-12">
+            <button
+              className="btn"
+              onClick={() => {
+                this.setState({
+                  ShowDiaryData: !this.state.ShowDiaryData
+                });
+              }}
+            >
+              {!this.state.ShowDiaryData ? "+ show more" : "- close"}
+            </button>
+            <Collapse in={this.state.ShowDiaryData}>
+              <div className="card-header diary-additional-container">
+                <DiaryAdditionalData />
               </div>
-              <div className="col-2">
-                <div className="row">
-                  <div className="col-2">
-                    <IconButton size="small">
-                      <ArrowDownwardIcon
-                        fontSize="inherit"
-                        aria-controls="additional-diary-data"
-                        aria-expanded={this.state.ShowDiaryData}
-                        onClick={() => {
-                          this.setState({
-                            ShowDiaryData: !this.state.ShowDiaryData
-                          });
-                        }}
-                      />
-                    </IconButton>
-                  </div>
-                  <div className="col-6">
-                    <label>More info...</label>
-                  </div>
-                </div>
+            </Collapse>
+          </div>
+        </div>
+        <div className="pages">
+          <div className="row justify-content-between">
+            <div className="col mr-auto p-2">
+              <h4>Diary Pages:</h4>
+            </div>
+            <div className="col-auto">
+              <div className="addPageButton">
+                <Button variant="success" onClick={this.addPage}>
+                  + Add New Page
+                </Button>
               </div>
             </div>
           </div>
-        </div>
-        <div>
-          <Collapse in={this.state.ShowDiaryData}>
-            <div className="card-header diary-additional-container">
-              <DiaryAdditionalData />
-            </div>
-          </Collapse>
-        </div>
-        <div className="addPageButton">
-          <Button onClick={this.addPage}>Add New Page</Button>
+          <hr />
+          <div className="page shadow p-2 mb-3 bg-white rounded">
+            <DiaryPage PageId={40} DiaryId={40} />
+          </div>
+          <hr />
+          <p>Next Page ></p>
         </div>
       </div>
     );

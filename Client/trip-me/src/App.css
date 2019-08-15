@@ -24,6 +24,7 @@
 
 .main {
   background-color: white;
+  height: 100%;
 }
 
 @keyframes App-logo-spin {

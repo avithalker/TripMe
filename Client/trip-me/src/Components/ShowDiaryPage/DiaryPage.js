@@ -47,9 +47,9 @@ export default class DiaryPage extends Component {
       return <AppLoader />;
     }
     return (
-      <div className="container">
+      <div className="diaryPage">
         <div className="position-relative">
-          <h4 className="PageTitle card-header">{this.state.Page.Title}</h4>
+          <h4 className="PageTitle">{this.state.Page.Title}</h4>
         </div>
         <div className="reviews position-relative">{this.renderReviews()}</div>
       </div>
