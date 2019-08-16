@@ -33,16 +33,24 @@ class DiaryFullView extends Component {
 
     caller.getDiaryById(values.Id).then(diaryResponse => {
       caller.getPageList(values.Id).then(PageResponse => {
-        caller
-          .getPageById(values.Id, PageResponse[0].PageId)
-          .then(SinglePageResponse => {
-            this.setState({
-              diary: diaryResponse,
-              pages: PageResponse,
-              SelectedPage: SinglePageResponse,
-              isLoading: false
+        if (PageResponse.length > 0) {
+          caller
+            .getPageById(values.Id, PageResponse[0].PageId)
+            .then(SinglePageResponse => {
+              this.setState({
+                diary: diaryResponse,
+                pages: PageResponse,
+                SelectedPage: SinglePageResponse,
+                isLoading: false
+              });
             });
+        } else {
+          this.setState({
+            diary: diaryResponse,
+            pages: PageResponse,
+            isLoading: false
           });
+        }
       });
     });
   }
@@ -65,6 +73,13 @@ class DiaryFullView extends Component {
   };
 
   ShowSelectedPage = () => {
+    if (this.state.SelectedPage == null) {
+      return (
+        <div className="emptyPage text-center text-secondary">
+          <h2>There are no pages in this diary... </h2>
+        </div>
+      );
+    }
     return <DiaryPage Page={this.state.SelectedPage} />;
   };
 

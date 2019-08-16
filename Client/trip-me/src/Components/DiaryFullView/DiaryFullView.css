@@ -22,3 +22,10 @@
 .pagination {
   justify-content: center;
 }
+
+.emptyPage {
+  background-color: gainsboro;
+  font-style: italic;
+  padding-top: 20%;
+  height: 100%;
+}
