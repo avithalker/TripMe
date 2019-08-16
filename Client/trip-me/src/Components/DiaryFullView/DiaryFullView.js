@@ -21,8 +21,9 @@ class DiaryFullView extends Component {
       addPage: false,
       diary: null,
       isLoading: true,
-      ShowDiaryData: false
-      //pages: null
+      ShowDiaryData: false,
+      pages: null,
+      SelectedPage: null
     };
   }
 
@@ -30,21 +31,42 @@ class DiaryFullView extends Component {
     var values = queryString.parse(this.props.location.search);
     var caller = new TripMeHttpClient();
 
-    caller.getDiaryById(values.Id).then(response => {
-      this.setState({ diary: response, isLoading: false });
+    caller.getDiaryById(values.Id).then(diaryResponse => {
+      caller.getPageList(values.Id).then(PageResponse => {
+        caller
+          .getPageById(values.Id, PageResponse[0].PageId)
+          .then(SinglePageResponse => {
+            this.setState({
+              diary: diaryResponse,
+              pages: PageResponse,
+              SelectedPage: SinglePageResponse,
+              isLoading: false
+            });
+          });
+      });
     });
-
-    // if(pages == null)
-    // {
-    //   caller.getPages()
-    // }
   }
+
+  fetchPageByIndex = index => {
+    var caller = new TripMeHttpClient();
+    caller
+      .getPageById(this.state.diary.Id, this.state.pages[index].PageId)
+      .then(response => {
+        this.setState({ SelectedPage: response });
+      });
+  };
+
+  ChangeSelectedPage = index => {
+    this.fetchPageByIndex(index);
+  };
 
   addPage = () => {
     this.setState({ addPage: true });
   };
 
-  ShowSelectedPage = pageNumber => {};
+  ShowSelectedPage = () => {
+    return <DiaryPage Page={this.state.SelectedPage} />;
+  };
 
   render() {
     debugger;
@@ -57,34 +79,30 @@ class DiaryFullView extends Component {
     return (
       <div className="diary">
         <div className="row">
-          <div className="col-2 p-2">
-            <h2>Diary Name</h2>
-          </div>
-          <div className="col-12">
-            <div className="col-2">
-              <IconButton size="small">
-                <ArrowDownwardIcon
-                  fontSize="inherit"
-                  aria-controls="additional-diary-data"
-                  aria-expanded={this.state.ShowDiaryData}
-                  onClick={() => {
-                    this.setState({
-                      ShowDiaryData: !this.state.ShowDiaryData
-                    });
-                  }}
-                />
-              </IconButton>
-            </div>
-            <div className="col-2">
-              <label>More info...</label>
-            </div>
-            <Collapse in={this.state.ShowDiaryData}>
-              <div className="card-header diary-additional-container">
-                <DiaryAdditionalData />
-              </div>
-            </Collapse>
-          </div>
+          <h2>Diary Name</h2>
         </div>
+        <div className="row">
+          <div className="col-xs-1 p-0">
+            <IconButton size="small">
+              <ArrowDownwardIcon
+                fontSize="inherit"
+                aria-controls="additional-diary-data"
+                aria-expanded={this.state.ShowDiaryData}
+                onClick={() => {
+                  this.setState({
+                    ShowDiaryData: !this.state.ShowDiaryData
+                  });
+                }}
+              />
+            </IconButton>
+          </div>
+          <div className="col-xs-2 p-0">More info...</div>
+        </div>
+        <Collapse in={this.state.ShowDiaryData}>
+          <div className="card-header diary-additional-container">
+            <DiaryAdditionalData />
+          </div>
+        </Collapse>
         <div className="pages">
           <div className="row justify-content-between">
             <div className="col mr-auto p-2">
@@ -100,11 +118,14 @@ class DiaryFullView extends Component {
           </div>
           <hr />
           <div className="page shadow p-2 mb-3 bg-white rounded">
-            <DiaryPage PageId={40} DiaryId={40} />
+            {this.ShowSelectedPage()}
           </div>
           <hr />
           <div className="Paginator">
-            <Paginator numOfItems={5} OnSelect={this.ShowSelectedPage} />
+            <Paginator
+              numOfItems={this.state.pages.length}
+              OnSelect={this.ChangeSelectedPage}
+            />
           </div>
         </div>
       </div>

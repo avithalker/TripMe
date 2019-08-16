@@ -5,7 +5,7 @@ export default class Paginator extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currItem: 0
+      currItem: 1
     };
   }
 
@@ -25,43 +25,44 @@ export default class Paginator extends Component {
 
   handleClick = event => {
     event.preventDefault();
+    this.props.OnSelect(event.target.id);
     this.setState({
       currItem: Number(event.target.id)
     });
   };
   handleFirstClick = () => {
+    this.props.OnSelect(0);
     this.setState({ currItem: 0 });
   };
 
   handlePreviousClick = () => {
+    this.props.OnSelect(this.state.currItem - 2);
     this.setState({ currItem: this.state.currItem - 1 });
   };
 
   handleLastClick = () => {
+    this.props.OnSelect(this.state.numOfItems - 1);
     this.setState({ currItem: this.props.numOfItems });
   };
 
   handleNextClick = () => {
+    this.props.OnSelect(this.state.currItem + 1 - 1);
     this.setState({ currItem: this.state.currItem + 1 });
   };
-
-  componentDidMount() {
-    this.props.OnSelect(this.state.currItem - 1);
-  }
 
   render() {
     debugger;
     return (
       <Pagination className="pagination">
         <PaginationItem>
-          {this.state.currItem == 0 ? (
+          {this.state.currItem == 1 ? (
             <PaginationLink first disabled />
           ) : (
             <PaginationLink first onClick={this.handleFirstClick} />
           )}
         </PaginationItem>
         <PaginationItem>
-          {this.state.currItem == 0 ? (
+          {this.state.currItem == 1 ? (
             <PaginationLink previous disabled />
           ) : (
             <PaginationLink previous onClick={this.handlePreviousClick} />

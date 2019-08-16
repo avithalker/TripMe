@@ -13,7 +13,6 @@ class Review extends Component {
   }
 
   componentDidMount() {
-    debugger;
     this.getReviewByTypeId(this.props.review.ReviewType);
   }
 
@@ -21,14 +20,11 @@ class Review extends Component {
     var tripMeHttpClient = new TripMeHttpClient();
     tripMeHttpClient.getReviewQuestionnaireById(reviewId).then(response => {
       this.setState({ Fields: response.Fields, isReviewLoaded: true });
-      debugger;
     });
   };
 
   ReviewFields = fields => {
-    debugger;
     var fields = fields.map((field, index) => {
-      debugger;
       return (
         <div className="col-12">
           <ReviewField
@@ -45,7 +41,6 @@ class Review extends Component {
   };
 
   render() {
-    debugger;
     if (this.state.ReviewLoaded) {
       return <AppLoader />;
     }

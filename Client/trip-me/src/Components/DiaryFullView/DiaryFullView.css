@@ -10,7 +10,7 @@
 }
 
 .page {
-  height: calc(100vh - 310px);
+  height: calc(100vh - 350px);
   overflow-y: scroll;
   overflow-x: hidden;
 }

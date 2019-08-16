@@ -34,7 +34,6 @@ class ReviewField extends Component {
   };
 
   Field = () => {
-    debugger;
     switch (this.props.FieldTypeId) {
       case ReviewFieldType.INPUT_TEXT: {
         if (!this.props.EditMode) {

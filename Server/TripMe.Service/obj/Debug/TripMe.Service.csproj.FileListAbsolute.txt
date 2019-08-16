@@ -57,3 +57,8 @@ C:\TripMe\TripMe\Server\TripMe.Service\bin\Debug\TripMe.SearchEngine.pdb
 C:\TripMe\TripMe\Server\TripMe.Service\bin\Debug\TripMe.SearchEngine.dll.config
 C:\TripMe\TripMe\Server\TripMe.Service\bin\Debug\Newtonsoft.Json.dll
 C:\TripMe\TripMe\Server\TripMe.Service\bin\Debug\Newtonsoft.Json.xml
+C:\ComputerScienceYear4\FinalProj\TripMe\Server\TripMe.Service\bin\Debug\TripMe.SearchEngine.dll
+C:\ComputerScienceYear4\FinalProj\TripMe\Server\TripMe.Service\bin\Debug\Newtonsoft.Json.dll
+C:\ComputerScienceYear4\FinalProj\TripMe\Server\TripMe.Service\bin\Debug\TripMe.SearchEngine.pdb
+C:\ComputerScienceYear4\FinalProj\TripMe\Server\TripMe.Service\bin\Debug\TripMe.SearchEngine.dll.config
+C:\ComputerScienceYear4\FinalProj\TripMe\Server\TripMe.Service\bin\Debug\Newtonsoft.Json.xml
