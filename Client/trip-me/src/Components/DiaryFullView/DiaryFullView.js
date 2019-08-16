@@ -79,7 +79,7 @@ class DiaryFullView extends Component {
     return (
       <div className="diary">
         <div className="row">
-          <h2>Diary Name</h2>
+          <h2>{this.state.diary.Name}</h2>
         </div>
         <div className="row">
           <div className="col-xs-1 p-0">
@@ -100,7 +100,7 @@ class DiaryFullView extends Component {
         </div>
         <Collapse in={this.state.ShowDiaryData}>
           <div className="card-header diary-additional-container">
-            <DiaryAdditionalData />
+            <DiaryAdditionalData diaryData={this.state.diary} />
           </div>
         </Collapse>
         <div className="pages">

@@ -19,7 +19,7 @@ export default class DiaryAdditionalData extends Component {
                   <p className="font-weight-bold">Trip Type:</p>
                 </div>
                 <div className="col-6">
-                  <p>HoneyMoon</p>
+                  <p>{this.props.diaryData.TripType}</p>
                 </div>
               </div>
             </div>
@@ -29,7 +29,7 @@ export default class DiaryAdditionalData extends Component {
                   <p className="font-weight-bold">Start Date:</p>
                 </div>
                 <div className="col-6">
-                  <p>12.08.2019</p>
+                  <p>{this.props.diaryData.StartDate}</p>
                 </div>
               </div>
             </div>
@@ -39,7 +39,7 @@ export default class DiaryAdditionalData extends Component {
                   <p className="font-weight-bold">End Date:</p>
                 </div>
                 <div className="col-6">
-                  <p>13.08.19</p>
+                  <p>{this.props.diaryData.EndDate}</p>
                 </div>
               </div>
             </div>
@@ -49,7 +49,7 @@ export default class DiaryAdditionalData extends Component {
                   <p className="font-weight-bold">Approximate Price:</p>
                 </div>
                 <div className="col-6">
-                  <p>54540</p>
+                  <p>{this.props.diaryData.ApproximatePrice}</p>
                 </div>
               </div>
             </div>
@@ -59,7 +59,7 @@ export default class DiaryAdditionalData extends Component {
                   <p className="font-weight-bold">Travelers Count:</p>
                 </div>
                 <div className="col-6">
-                  <p>5</p>
+                  <p>{this.props.diaryData.TravelersCount}</p>
                 </div>
               </div>
             </div>
@@ -69,7 +69,7 @@ export default class DiaryAdditionalData extends Component {
                   <p className="font-weight-bold">Description:</p>
                 </div>
                 <div className="col-6">
-                  <p>sadasdlsdkslkdslkdlasd</p>
+                  <p>{this.props.diaryData.Description}</p>
                 </div>
               </div>
             </div>
@@ -79,7 +79,7 @@ export default class DiaryAdditionalData extends Component {
                   <p className="font-weight-bold">Countries:</p>
                 </div>
                 <div className="col-6">
-                  <p>Australia, Belgium</p>
+                  <p>{this.props.diaryData.Countries}</p>
                 </div>
               </div>
             </div>
