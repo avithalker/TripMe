@@ -12,6 +12,7 @@ import DiaryAdditionalData from "../DiaryAdditionalData/DiaryAdditionalData";
 import { Card, CardBody } from "reactstrap";
 import "../DiaryFullView/DiaryFullView.css";
 import DiaryPage from "../ShowDiaryPage/DiaryPage";
+import Paginator from "../Shared/Paginator/Paginator";
 
 class DiaryFullView extends Component {
   constructor(props) {
@@ -21,6 +22,7 @@ class DiaryFullView extends Component {
       diary: null,
       isLoading: true,
       ShowDiaryData: false
+      //pages: null
     };
   }
 
@@ -31,11 +33,18 @@ class DiaryFullView extends Component {
     caller.getDiaryById(values.Id).then(response => {
       this.setState({ diary: response, isLoading: false });
     });
+
+    // if(pages == null)
+    // {
+    //   caller.getPages()
+    // }
   }
 
   addPage = () => {
     this.setState({ addPage: true });
   };
+
+  ShowSelectedPage = pageNumber => {};
 
   render() {
     debugger;
@@ -52,16 +61,23 @@ class DiaryFullView extends Component {
             <h2>Diary Name</h2>
           </div>
           <div className="col-12">
-            <button
-              className="btn"
-              onClick={() => {
-                this.setState({
-                  ShowDiaryData: !this.state.ShowDiaryData
-                });
-              }}
-            >
-              {!this.state.ShowDiaryData ? "+ show more" : "- close"}
-            </button>
+            <div className="col-2">
+              <IconButton size="small">
+                <ArrowDownwardIcon
+                  fontSize="inherit"
+                  aria-controls="additional-diary-data"
+                  aria-expanded={this.state.ShowDiaryData}
+                  onClick={() => {
+                    this.setState({
+                      ShowDiaryData: !this.state.ShowDiaryData
+                    });
+                  }}
+                />
+              </IconButton>
+            </div>
+            <div className="col-2">
+              <label>More info...</label>
+            </div>
             <Collapse in={this.state.ShowDiaryData}>
               <div className="card-header diary-additional-container">
                 <DiaryAdditionalData />
@@ -87,7 +103,9 @@ class DiaryFullView extends Component {
             <DiaryPage PageId={40} DiaryId={40} />
           </div>
           <hr />
-          <p>Next Page ></p>
+          <div className="Paginator">
+            <Paginator numOfItems={5} OnSelect={this.ShowSelectedPage} />
+          </div>
         </div>
       </div>
     );

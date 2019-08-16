@@ -14,3 +14,11 @@
   overflow-y: scroll;
   overflow-x: hidden;
 }
+
+.Paginator {
+  align-items: center;
+}
+
+.pagination {
+  justify-content: center;
+}
