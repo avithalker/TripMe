@@ -8,13 +8,13 @@ using TripMe.SearchEngine.SearchObjects;
 
 namespace TripMe.SearchEngine.SearchFilters
 {
-    public abstract class SearchFilter<T>
+    public abstract class SearchFilter<T>: ISearchFilter
     {
         protected virtual T ParseFilterData(object filterData)
         {
-            JObject filterDataAsJobject = filterData as JObject;
+            JToken filterDataAsJToken = filterData as JToken;
             
-            return filterDataAsJobject.ToObject<T>();
+            return filterDataAsJToken.ToObject<T>();
         }
 
         public virtual IQueryable<DiarySearchResult> AddFilterToSearchQuery(object filterData, IQueryable<DiarySearchResult> currentQuery)

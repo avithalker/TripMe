@@ -18,5 +18,9 @@ namespace TripMe.Model.EntitySets
         public short TravelersCount { get; set; }
         public string Description { get; set; }
         public string CoverPhotoUrl { get; set; }
+        public string Continent { get; set; }
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public DateTime CreateDate { get; set; }
     }
 }

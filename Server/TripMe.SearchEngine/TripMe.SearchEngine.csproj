@@ -51,12 +51,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OrderFilter\IOrderFilter.cs" />
+    <Compile Include="OrderFilter\MostRecentFilter.cs" />
+    <Compile Include="OrderFilter\OrderFilterFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SearchFilters\DiarySearcher.cs" />
+    <Compile Include="SearchFilters\CityFilter.cs" />
+    <Compile Include="SearchFilters\ContinentFilter.cs" />
+    <Compile Include="SearchFilters\CountryFilter.cs" />
+    <Compile Include="DiarySearcher.cs" />
     <Compile Include="SearchFilters\DurationDaysFilter.cs" />
+    <Compile Include="SearchFilters\FilterFactory.cs" />
+    <Compile Include="SearchFilters\ISearchFilter.cs" />
     <Compile Include="SearchFilters\MonthFilter.cs" />
     <Compile Include="SearchFilters\PriceFilter.cs" />
     <Compile Include="SearchFilters\SearchFilter.cs" />
+    <Compile Include="SearchFilters\TravelersCountFilter.cs" />
     <Compile Include="SearchFilters\TripTypeFilter.cs" />
     <Compile Include="SearchObjects\DiarySearchResult.cs" />
   </ItemGroup>
@@ -68,6 +77,10 @@
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{20cb7c12-45c6-4341-a985-489594766198}</Project>
       <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TripMe.Contracts\TripMe.Contracts.csproj">
+      <Project>{082686A4-0A45-4A2E-952B-617D81E4BF6C}</Project>
+      <Name>TripMe.Contracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\TripMe.Enums\TripMe.Enums.csproj">
       <Project>{80A35F91-AEC1-42F6-9BCD-DDA20E39D5A8}</Project>

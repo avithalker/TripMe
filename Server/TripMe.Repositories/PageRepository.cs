@@ -27,7 +27,8 @@ namespace TripMe.Repositories
         {
             using (var dbContext = new TripMeContext())
             {
-                return dbContext.DiaryPages.Where(x => x.DiaryId == diaryId).ToList();
+                return dbContext.DiaryPages.Where(x => x.DiaryId == diaryId)
+                    .OrderBy(page=>page.DisplayOrder).ToList();
             }
         }
     }

@@ -73,13 +73,19 @@ namespace TripMeServer.Controllers
             return pageGetter.GetMinimizedDiaryPages(diaryId);
         }
 
-        [HttpGet]
-        [Route("test")]
-        public int test()
+        [HttpPost]
+        [Route("Search")]
+        public IHttpActionResult SearchDiary(SearchDiaryRequest searchDiaryRequest)
         {
-            DiarySearcher a = new DiarySearcher();
-            a.SearchDiaries();
-            return 1;
+            DiaryGetter diaryGetter = new DiaryGetter();
+            List<DiaryDto> matchedDiaries = diaryGetter.SearchDiary(searchDiaryRequest);
+
+            if(matchedDiaries== null || matchedDiaries.Count == 0)
+            {
+                return NotFound();
+            }
+
+            return Ok(matchedDiaries);
         }
 }
 }

@@ -52,3 +52,8 @@ C:\ComputerScienceYear4\FinalProj\TripMe\Server\TripMe.Service\obj\Debug\TripMe.
 C:\ComputerScienceYear4\FinalProj\TripMe\Server\TripMe.Service\obj\Debug\TripMe.Service.csproj.CopyComplete
 C:\ComputerScienceYear4\FinalProj\TripMe\Server\TripMe.Service\obj\Debug\TripMe.Service.dll
 C:\ComputerScienceYear4\FinalProj\TripMe\Server\TripMe.Service\obj\Debug\TripMe.Service.pdb
+C:\TripMe\TripMe\Server\TripMe.Service\bin\Debug\TripMe.SearchEngine.dll
+C:\TripMe\TripMe\Server\TripMe.Service\bin\Debug\TripMe.SearchEngine.pdb
+C:\TripMe\TripMe\Server\TripMe.Service\bin\Debug\TripMe.SearchEngine.dll.config
+C:\TripMe\TripMe\Server\TripMe.Service\bin\Debug\Newtonsoft.Json.dll
+C:\TripMe\TripMe\Server\TripMe.Service\bin\Debug\Newtonsoft.Json.xml
