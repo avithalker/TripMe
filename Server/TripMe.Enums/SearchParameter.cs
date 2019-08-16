@@ -10,6 +10,6 @@ namespace TripMe.Enums
         BY_TRAVELERS_COUNT,
         BY_PRICE,
         BY_MONTH,
-        BY_DURATION_DAYS
+        BY_DURATION_DAYS,
     }
 }

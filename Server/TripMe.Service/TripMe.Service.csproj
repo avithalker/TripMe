@@ -74,6 +74,10 @@
       <Project>{bb5da3fb-36e9-42e0-873b-2b1d49378407}</Project>
       <Name>TripMe.Repositories</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TripMe.SearchEngine\TripMe.SearchEngine.csproj">
+      <Project>{B187FADA-6AB2-44C6-A43C-D3D7A3469B0D}</Project>
+      <Name>TripMe.SearchEngine</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
