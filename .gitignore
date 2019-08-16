@@ -219,3 +219,6 @@ project.lock.json
 #####
 # End of core ignore list, below put you custom 'per project' settings (patterns or path)
 #####
+Server/.vs/TripMe/v15/Server/sqlite3/storage.ide
+Server/.vs/TripMe/v15/Server/sqlite3/storage.ide-shm
+Server/.vs/TripMe/v15/Server/sqlite3/storage.ide-wal
