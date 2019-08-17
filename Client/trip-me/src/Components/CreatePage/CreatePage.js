@@ -33,6 +33,7 @@ class CreatePage extends Component {
               onQuestionnaireAnswersChanged={answers =>
                 this.onQuestionnaireAnswersChanged(pageReview.objectId, answers)
               }
+                onCaptionChanged = {caption => this.onReviewCaptionChanged(pageReview.objectId, caption)}
             />
             <button
               className="btn btn-danger deleteReview"
@@ -78,10 +79,16 @@ class CreatePage extends Component {
     let pageReview = pageReviews.find(
       pageReview => pageReview.objectId === objectId
     );
-    debugger;
     pageReview.Answers = questionnaireAnswers;
     this.setState({ pageReviews: pageReviews });
   };
+
+  onReviewCaptionChanged = (objectId, caption) =>{
+      let pageReviews = JSON.parse(JSON.stringify(this.state.pageReviews));
+      let pageReview = pageReviews.find(pageReview => pageReview.objectId === objectId);
+      pageReview.Caption = caption;
+      this.setState({pageReviews: pageReviews});
+  }
 
   onPageTitleChange = event => {
     this.setState({ pageTitle: event.target.value });
@@ -89,8 +96,8 @@ class CreatePage extends Component {
 
   savePage = event => {
     event.preventDefault();
-    let pageReviews = this.state.pageReviews.map(pageReview => {
-      return { ReviewType: pageReview.ReviewType, Answers: pageReview.Answers };
+    let pageReviews = this.state.pageReviews.map((pageReview, index) => {
+      return { ReviewType: pageReview.ReviewType, Answers: pageReview.Answers, Caption: pageReview.Caption, DisplayOrder: index };
     });
     let createPageRequest = new CreatePageRequest(
       this.props.diaryId,
@@ -98,7 +105,6 @@ class CreatePage extends Component {
       pageReviews
     );
     tripMeHttpClient.addNewPage(createPageRequest).then(response => {
-      debugger;
       this.setState({ pageCreated: true, Pageid: response });
     });
   };
@@ -114,7 +120,6 @@ class CreatePage extends Component {
 
   render() {
     if (this.state.showPageClicked) {
-      debugger;
       return (
         <DiaryPage PageId={this.state.Pageid} DiaryId={this.props.diaryId} />
       );
@@ -180,6 +185,7 @@ function PageReview(reviewTypeId, objectId) {
   this.objectId = objectId;
   this.ReviewType = reviewTypeId;
   this.Answers = {};
+  this.Caption=null; 
 }
 
 function CreatePageRequest(diaryId, title, reviews) {
