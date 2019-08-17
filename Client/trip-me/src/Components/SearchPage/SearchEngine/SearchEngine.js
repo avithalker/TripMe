@@ -10,6 +10,7 @@ import {
 } from "../../../Constants/Constants";
 import MinMaxField from "../SearchFields/MinMaxField/MinMaxFIeld";
 import { Button } from "@material-ui/core";
+import TripMeHttpClient from "../../../Services/TripMeHttpClient";
 
 export default class SearchEngine extends Component {
   constructor(props) {
@@ -32,6 +33,52 @@ export default class SearchEngine extends Component {
   OnChangeInput = event => {
     debugger;
     this.setState({ [event.target.name]: event.target.value });
+  };
+
+  SubmitSearch = () => {
+    var request = this.CreateRequstForSearch();
+    var caller = new TripMeHttpClient();
+
+    caller.getDiariesBySearch(request).then(response => {
+      this.props.UpdateResultsOnScreen(response);
+    });
+  };
+
+  CreateRequstForSearch = () => {
+    var request = { SearchParameters: {}, OrderBy: 1, ResultLimit: 0 };
+
+    if (this.state.Countries != null && this.state.Countries.length > 0) {
+      request.SearchParameters[2] = this.state.Countries;
+    }
+    if (this.state.TripType != null && this.state.TripType != "") {
+      request.SearchParameters[4] = this.state.TripType;
+    }
+    if (this.state.PriceMin != null && this.state.PriceMax != null) {
+      request.SearchParameters[6] = [this.state.PriceMin, this.state.PriceMax];
+    }
+    if (
+      this.state.NumOfTravelersMin != null &&
+      this.state.NumOfTravelersMax != null
+    ) {
+      request.SearchParameters[5] = [
+        this.state.NumOfTravelersMin,
+        this.state.NumOfTravelersMax
+      ];
+    }
+    if (this.state.DurationMin != null && this.state.DurationMax != null) {
+      request.SearchParameters[8] = [
+        this.state.DurationMin,
+        this.state.DurationMax
+      ];
+    }
+    if (this.state.Month != null && this.state.Month != "") {
+      request.SearchParameters[7] = this.state.Month;
+    }
+    if (this.state.Continent != null && this.state.Continent != "") {
+      request.SearchParameters[1] = this.state.Continent;
+    }
+
+    return request;
   };
 
   render() {
@@ -72,14 +119,6 @@ export default class SearchEngine extends Component {
           </div>
           <div className="col-3">
             <MinMaxField
-              FieldTitle="Number Of Travelers:"
-              OnChange={this.OnChangeInput}
-              FieldNameMin="NumOfTravelersMin"
-              FieldNameMax="NumOfTravelersMax"
-            />
-          </div>
-          <div className="col-3">
-            <MinMaxField
               FieldTitle="Duration:"
               OnChange={this.OnChangeInput}
               FieldNameMin="DurationMin"
@@ -105,7 +144,9 @@ export default class SearchEngine extends Component {
         </div>
         <div className="row  align-items-end">
           <div className="col align-self-end">
-            <button className="btn btn-primary">Search!</button>
+            <button className="btn btn-secondary" onClick={this.SubmitSearch}>
+              Search!
+            </button>
           </div>
         </div>
       </div>

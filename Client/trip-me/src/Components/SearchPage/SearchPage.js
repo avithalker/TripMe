@@ -5,7 +5,9 @@ import "./SearchPage.css";
 export default class SearchPage extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      diaries: null
+    };
   }
 
   render() {

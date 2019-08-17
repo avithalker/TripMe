@@ -29,6 +29,23 @@ class TripMeHttpClient {
     return promise;
   };
 
+  getDiariesBySearch = request => {
+    var promise = new Promise((resolve, reject) => {
+      var url = new URL("http://localhost/TripMeWebApi/Diary/Search");
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(request)
+      }).then(response => {
+        debugger;
+        resolve(response.json());
+      });
+    });
+    return promise;
+  };
+
   getPageById = (diaryId, pageId) => {
     debugger;
     var promise = new Promise((resolve, reject) => {
