@@ -54,10 +54,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authentication\HasedPasswordData.cs" />
+    <Compile Include="Authentication\PasswordHashComputer.cs" />
+    <Compile Include="Authentication\UserRegistrator.cs" />
     <Compile Include="DiaryEditor.cs" />
     <Compile Include="Getters\DiaryGetter.cs" />
     <Compile Include="Modifiers\DiaryModifier.cs" />
     <Compile Include="Getters\PageGetter.cs" />
+    <Compile Include="Modifiers\UserModifier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Getters\ReviewGetter.cs" />
   </ItemGroup>
@@ -69,6 +73,10 @@
     <ProjectReference Include="..\TripMe.Contracts\TripMe.Contracts.csproj">
       <Project>{082686A4-0A45-4A2E-952B-617D81E4BF6C}</Project>
       <Name>TripMe.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TripMe.Enums\TripMe.Enums.csproj">
+      <Project>{80A35F91-AEC1-42F6-9BCD-DDA20E39D5A8}</Project>
+      <Name>TripMe.Enums</Name>
     </ProjectReference>
     <ProjectReference Include="..\TripMe.Repositories\TripMe.Repositories.csproj">
       <Project>{bb5da3fb-36e9-42e0-873b-2b1d49378407}</Project>

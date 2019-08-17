@@ -12,6 +12,7 @@ namespace TripMeServer.App_Start.MappingConfig
                 cfg.AddProfile(new DiaryProfile());
                 cfg.AddProfile(new ReviewProfile());
                 cfg.AddProfile(new PageProfile());
+                cfg.AddProfile(new UserProfile());
             });
         }
     }
