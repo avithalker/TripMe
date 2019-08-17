@@ -19,6 +19,7 @@ namespace TripMe.Model.EntitySets
         public string Description { get; set; }
         public string CoverPhotoUrl { get; set; }
         public string Continent { get; set; }
+        public long WriterId { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime CreateDate { get; set; }
