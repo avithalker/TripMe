@@ -11,11 +11,6 @@ export default class NavBar extends Component {
         </a>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
-            <li className="nav-item active">
-              <Link to={"/ShowDiary"} className="nav-link">
-                Show Diary<span className="sr-only">(current)</span>
-              </Link>
-            </li>
             <li className="nav-item">
               <Link to={"/CreateDiary"} className="nav-link">
                 Add New Diary<span className="sr-only">(current)</span>
@@ -24,6 +19,11 @@ export default class NavBar extends Component {
             <li className="nav-item">
               <Link to={"/MyDiaries"} className="nav-link">
                 My Diaries<span className="sr-only">(current)</span>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"/SearchPage"} className="nav-link">
+                Search<span className="sr-only">(current)</span>
               </Link>
             </li>
           </ul>
