@@ -62,3 +62,11 @@ C:\ComputerScienceYear4\FinalProj\TripMe\Server\TripMe.Service\bin\Debug\Newtons
 C:\ComputerScienceYear4\FinalProj\TripMe\Server\TripMe.Service\bin\Debug\TripMe.SearchEngine.pdb
 C:\ComputerScienceYear4\FinalProj\TripMe\Server\TripMe.Service\bin\Debug\TripMe.SearchEngine.dll.config
 C:\ComputerScienceYear4\FinalProj\TripMe\Server\TripMe.Service\bin\Debug\Newtonsoft.Json.xml
+C:\TripMe\TripMe\Server\TripMe.Service\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\TripMe\TripMe\Server\TripMe.Service\bin\Debug\Microsoft.IdentityModel.Logging.dll
+C:\TripMe\TripMe\Server\TripMe.Service\bin\Debug\Microsoft.IdentityModel.Tokens.dll
+C:\TripMe\TripMe\Server\TripMe.Service\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
+C:\TripMe\TripMe\Server\TripMe.Service\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\TripMe\TripMe\Server\TripMe.Service\bin\Debug\Microsoft.IdentityModel.Logging.xml
+C:\TripMe\TripMe\Server\TripMe.Service\bin\Debug\Microsoft.IdentityModel.Tokens.xml
+C:\TripMe\TripMe\Server\TripMe.Service\bin\Debug\System.IdentityModel.Tokens.Jwt.xml

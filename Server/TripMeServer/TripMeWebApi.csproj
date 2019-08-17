@@ -118,8 +118,10 @@
     <Compile Include="App_Start\MappingConfig\Profiles\DiaryProfile.cs" />
     <Compile Include="App_Start\MappingConfig\Profiles\PageProfile.cs" />
     <Compile Include="App_Start\MappingConfig\Profiles\ReviewProfile.cs" />
+    <Compile Include="App_Start\MappingConfig\Profiles\UserProfile.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\DiaryController.cs" />
     <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="Global.asax.cs">
