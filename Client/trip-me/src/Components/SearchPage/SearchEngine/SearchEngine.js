@@ -21,7 +21,6 @@ export default class SearchEngine extends Component {
   }
 
   OnCountriesChange = countries => {
-    debugger;
     var countriesForState = [];
     for (var i = 0; i < countries.length; i++) {
       countriesForState.push(CountriesOptions[countries[i]]);
@@ -32,7 +31,7 @@ export default class SearchEngine extends Component {
 
   OnChangeInput = event => {
     debugger;
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState({ [event.target.name]: parseInt(event.target.value) });
   };
 
   SubmitSearch = () => {
@@ -45,7 +44,7 @@ export default class SearchEngine extends Component {
   };
 
   CreateRequstForSearch = () => {
-    var request = { SearchParameters: {}, OrderBy: 1, ResultLimit: 0 };
+    var request = { SearchParameters: {}, OrderBy: 1, ResultLimit: 5 };
 
     if (this.state.Countries != null && this.state.Countries.length > 0) {
       request.SearchParameters[2] = this.state.Countries;
@@ -82,6 +81,7 @@ export default class SearchEngine extends Component {
   };
 
   render() {
+    debugger;
     return (
       <div className="card-header">
         <h4>Search Your desired journey...</h4>
