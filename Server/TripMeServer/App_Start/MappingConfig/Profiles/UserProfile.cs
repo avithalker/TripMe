@@ -15,6 +15,8 @@ namespace TripMeServer.App_Start.MappingConfig.Profiles
         {
             CreateMap<RegistrationRequest, User>();
             CreateMap<User, UserDto>();
+            CreateMap<User, AuthenticatedUserDto>();
+
         }
     }
 }

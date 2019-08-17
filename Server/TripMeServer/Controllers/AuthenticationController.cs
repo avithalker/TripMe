@@ -31,5 +31,20 @@ namespace TripMeServer.Controllers
 
             return Ok(userDto);
         }
+
+        [HttpPost]
+        [Route("Login")]
+        public IHttpActionResult Login(LoginRequest loginRequest)
+        {
+            UserLoginManager userLoginManager = new UserLoginManager();
+            AuthenticatedUserDto authenticatedUserDto = userLoginManager.TryLogin(loginRequest);
+
+            if(authenticatedUserDto == null)
+            {
+                return Unauthorized();
+            }
+
+            return Ok(authenticatedUserDto);
+        }
     }
 }
