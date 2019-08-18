@@ -461,7 +461,6 @@ class DiaryForm extends Component {
       TripType: this.state.TripType,
       CoverPhotoUrl: coverPhotoUrl
     };
-    debugger;
     tripMeHttpClient.createNewDiary(data).then(response => {
       this.setState({ IsSubmitted: true, Id: response, isLoading: false });
     });

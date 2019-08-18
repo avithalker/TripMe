@@ -29,6 +29,7 @@ class ReviewQuestionnaire extends Component {
                 <textarea
                   className="TextReview w-100 h-100"
                   placeholder="Write your caption here..."
+                  onChange = {this.onCaptionChanged}
                 />
               </div>
             </div>
@@ -73,6 +74,11 @@ class ReviewQuestionnaire extends Component {
       this.props.onQuestionnaireAnswersChanged(this.state.answers);
     });
   };
+
+    onCaptionChanged = event =>{
+        this.props.onCaptionChanged(event.target.value);
+    }
+
 }
 
 export default ReviewQuestionnaire;
