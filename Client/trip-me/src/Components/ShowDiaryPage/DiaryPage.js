@@ -26,7 +26,7 @@ export default class DiaryPage extends Component {
 
   render() {
     return (
-      <div className="diaryPage">
+      <div>
         <div className="position-relative">
           <h4 className="PageTitle">{this.props.Page.Title}</h4>
         </div>

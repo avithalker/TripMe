@@ -84,7 +84,6 @@ class DiaryFullView extends Component {
   };
 
   render() {
-    debugger;
     if (this.state.isLoading) {
       return <AppLoader />;
     }

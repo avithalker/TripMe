@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ReviewField from "../ReviewField/ReviewField";
 import TripMeHttpClient from "../../Services/TripMeHttpClient";
 import AppLoader from "../Shared/AppLoader/AppLoader";
+import "./Review.css";
 
 class Review extends Component {
   constructor(props) {
@@ -53,7 +54,7 @@ class Review extends Component {
                 {this.ReviewFields(this.state.Fields)}
               </div>
               <div className="col-7">
-                <label>{this.props.review.Caption}</label>
+                <span className = "review-caption">{this.props.review.Caption}</span>
               </div>
             </div>
           </div>
