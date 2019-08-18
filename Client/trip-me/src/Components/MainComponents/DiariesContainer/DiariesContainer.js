@@ -17,13 +17,11 @@ export default class DiariesContainer extends Component {
   }
 
   GetDiaries = () => {
-    debugger;
     var caller = new TripMeHttpClient();
     return caller.getDiariesByUser();
   };
 
   componentDidMount() {
-    debugger;
     if (this.state.Diaries.length == 0) {
       this.GetDiaries().then(response => {
         this.setState({ Diaries: response });
@@ -38,6 +36,7 @@ export default class DiariesContainer extends Component {
         Name={diary.Name}
         Destination={diary.Countries}
         Type={getKeyByValue(TripTypeEnum, tripType)}
+        CoverPhoto = {diary.CoverPhotoUrl}
         Id={diary.Id}
       />
     );
