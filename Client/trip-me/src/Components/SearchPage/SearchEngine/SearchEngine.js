@@ -30,7 +30,6 @@ export default class SearchEngine extends Component {
   };
 
   OnChangeInput = event => {
-    debugger;
     this.setState({ [event.target.name]: parseInt(event.target.value) });
   };
 
@@ -39,13 +38,11 @@ export default class SearchEngine extends Component {
     var caller = new TripMeHttpClient();
 
     caller.getDiariesBySearch(request).then(response => {
-      debugger;
       this.props.UpdateResultsOnScreen(response);
     });
   };
 
   CreateRequstForSearch = () => {
-    debugger;
     var request = { SearchParameters: {}, OrderBy: 1, ResultLimit: 5 };
 
     if (this.state.Countries != null && this.state.Countries.length > 0) {
@@ -83,7 +80,6 @@ export default class SearchEngine extends Component {
   };
 
   render() {
-    debugger;
     return (
       <div className="card-header">
         <h4>Search Your desired journey...</h4>

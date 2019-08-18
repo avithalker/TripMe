@@ -24,12 +24,12 @@ export default class SearchPage extends Component {
         Destination={diary.Countries}
         Type={getKeyByValue(TripTypeEnum, diary.TripType)}
         Id={diary.Id}
+        CoverPhoto = {diary.CoverPhotoUrl}
       />
     );
   };
 
   RenderDiaries = () => {
-    debugger;
     if (this.state.diaries == null) return;
     var diaries = (
       <div className="row">
