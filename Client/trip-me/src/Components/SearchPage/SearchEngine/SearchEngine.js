@@ -39,17 +39,19 @@ export default class SearchEngine extends Component {
     var caller = new TripMeHttpClient();
 
     caller.getDiariesBySearch(request).then(response => {
+      debugger;
       this.props.UpdateResultsOnScreen(response);
     });
   };
 
   CreateRequstForSearch = () => {
+    debugger;
     var request = { SearchParameters: {}, OrderBy: 1, ResultLimit: 5 };
 
     if (this.state.Countries != null && this.state.Countries.length > 0) {
       request.SearchParameters[2] = this.state.Countries;
     }
-    if (this.state.TripType != null && this.state.TripType != "") {
+    if (this.state.TripType != null && this.state.TripType !== "") {
       request.SearchParameters[4] = this.state.TripType;
     }
     if (this.state.PriceMin != null && this.state.PriceMax != null) {

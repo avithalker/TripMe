@@ -39,7 +39,6 @@ class TripMeHttpClient {
         },
         body: JSON.stringify(request)
       }).then(response => {
-        debugger;
         resolve(response.json());
       });
     });
@@ -69,7 +68,10 @@ class TripMeHttpClient {
           "Content-Type": "application/json"
         },
         body: JSON.stringify(diary)
-      }).then(response => resolve(response.json()));
+      }).then(response => {
+        debugger;
+        resolve(response.json());
+      });
     });
     return promise;
   };

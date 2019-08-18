@@ -6,6 +6,7 @@ import TripTypeEnum from "../../../Enums/TripTypeEnum.js";
 import AppLoader from "../../Shared/AppLoader/AppLoader";
 import "./DiariesContainer.css";
 import DiaryFullView from "../../DiaryFullView/DiaryFullView";
+import { getKeyByValue } from "../../../Helpers/Helpers";
 
 export default class DiariesContainer extends Component {
   constructor(props) {
@@ -36,7 +37,7 @@ export default class DiariesContainer extends Component {
       <DiaryEntry
         Name={diary.Name}
         Destination={diary.Countries}
-        Type={TripTypeEnum[tripType]}
+        Type={getKeyByValue(TripTypeEnum, tripType)}
         Id={diary.Id}
       />
     );

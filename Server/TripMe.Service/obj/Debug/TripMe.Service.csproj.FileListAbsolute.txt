@@ -70,3 +70,11 @@ C:\TripMe\TripMe\Server\TripMe.Service\bin\Debug\Microsoft.IdentityModel.JsonWeb
 C:\TripMe\TripMe\Server\TripMe.Service\bin\Debug\Microsoft.IdentityModel.Logging.xml
 C:\TripMe\TripMe\Server\TripMe.Service\bin\Debug\Microsoft.IdentityModel.Tokens.xml
 C:\TripMe\TripMe\Server\TripMe.Service\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
+C:\ComputerScienceYear4\FinalProj\TripMe\Server\TripMe.Service\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\ComputerScienceYear4\FinalProj\TripMe\Server\TripMe.Service\bin\Debug\Microsoft.IdentityModel.Logging.dll
+C:\ComputerScienceYear4\FinalProj\TripMe\Server\TripMe.Service\bin\Debug\Microsoft.IdentityModel.Tokens.dll
+C:\ComputerScienceYear4\FinalProj\TripMe\Server\TripMe.Service\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
+C:\ComputerScienceYear4\FinalProj\TripMe\Server\TripMe.Service\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\ComputerScienceYear4\FinalProj\TripMe\Server\TripMe.Service\bin\Debug\Microsoft.IdentityModel.Logging.xml
+C:\ComputerScienceYear4\FinalProj\TripMe\Server\TripMe.Service\bin\Debug\Microsoft.IdentityModel.Tokens.xml
+C:\ComputerScienceYear4\FinalProj\TripMe\Server\TripMe.Service\bin\Debug\System.IdentityModel.Tokens.Jwt.xml

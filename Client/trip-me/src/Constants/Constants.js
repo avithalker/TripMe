@@ -1,14 +1,14 @@
 const TripTypesOptions = {
-  None: 0,
-  Solo: 1,
-  Couples: 2,
-  HoneyMoon: 3,
-  Family: 4,
-  Friends: 5,
-  RoadTrip: 6,
-  Extream: 7,
-  Camping: 8,
-  Photoshooting: 9
+  None: -1,
+  Solo: 0,
+  Couples: 1,
+  HoneyMoon: 2,
+  Family: 3,
+  Friends: 4,
+  RoadTrip: 5,
+  Extream: 6,
+  Camping: 7,
+  Photoshooting: 8
 };
 export { TripTypesOptions };
 
