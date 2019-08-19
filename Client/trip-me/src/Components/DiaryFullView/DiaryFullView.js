@@ -13,6 +13,7 @@ import { Card, CardBody } from "reactstrap";
 import "../DiaryFullView/DiaryFullView.css";
 import DiaryPage from "../ShowDiaryPage/DiaryPage";
 import Paginator from "../Shared/Paginator/Paginator";
+import NoCoverImag from "../../sources/images/No_Cover.jpg";
 
 class DiaryFullView extends Component {
   constructor(props) {
@@ -83,6 +84,13 @@ class DiaryFullView extends Component {
     return <DiaryPage Page={this.state.SelectedPage} />;
   };
 
+    getCoverImage= () => {
+        if(this.state.diary.CoverPhotoUrl === null || this.state.diary.CoverPhotoUrl === ""){
+            return NoCoverImag;
+        }
+        return this.state.diary.CoverPhotoUrl;
+    }
+
   render() {
     if (this.state.isLoading) {
       return <AppLoader />;
@@ -93,9 +101,14 @@ class DiaryFullView extends Component {
     return (
       <div className="diary">
         <div className="row">
-          <h2>{this.state.diary.Name}</h2>
+            <div className = "col-sm-4">
+                <img src = {this.getCoverImage()} alt="" className = "img-thumbnail diary-cover-image"></img>
+            </div>
+            <div className = "col-sm-8">
+                <h2>{this.state.diary.Name}</h2>
+            </div>
         </div>
-        <div className="row">
+        <div className="row more-info-container">
           <div className="col-xs-1 p-0">
             <IconButton size="small">
               <ArrowDownwardIcon
