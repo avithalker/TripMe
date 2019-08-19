@@ -29,7 +29,7 @@ export default class DiaryAdditionalData extends Component {
                   <p className="font-weight-bold">Start Date:</p>
                 </div>
                 <div className="col-6">
-                  <p>{this.props.diaryData.StartDate}</p>
+                  <p>{this.getFormattedDate(this.props.diaryData.StartDate)}</p>
                 </div>
               </div>
             </div>
@@ -39,7 +39,7 @@ export default class DiaryAdditionalData extends Component {
                   <p className="font-weight-bold">End Date:</p>
                 </div>
                 <div className="col-6">
-                  <p>{this.props.diaryData.EndDate}</p>
+                  <p>{this.getFormattedDate(this.props.diaryData.EndDate)}</p>
                 </div>
               </div>
             </div>
@@ -88,4 +88,12 @@ export default class DiaryAdditionalData extends Component {
       </Card>
     );
   }
+    
+    getFormattedDate = fullDateString =>{
+        let dateObj = new Date(fullDateString);
+        let formattedDate = dateObj.getDate() + "/" + (dateObj.getMonth() + 1) + "/" + dateObj.getFullYear();
+        return formattedDate;      
+    }
+    
+
 }
