@@ -4,10 +4,10 @@ import SingleSelectorField from "../SearchFields/SingleSelectorField/SingleSelec
 import MultiSelectorField from "../SearchFields/MultiSelectorField/MultiSelectorField";
 import {
   TripTypesOptions,
-  CountriesOptions,
   MonthOptions,
   ContinentOptions
 } from "../../../Constants/Constants";
+import {CountryCodeDictionary} from "../../../Enums/CountryEnum.js";
 import MinMaxField from "../SearchFields/MinMaxField/MinMaxFIeld";
 import { Button } from "@material-ui/core";
 import TripMeHttpClient from "../../../Services/TripMeHttpClient";
@@ -22,8 +22,10 @@ export default class SearchEngine extends Component {
 
   OnCountriesChange = countries => {
     var countriesForState = [];
+    let countryCodes = Object.keys(CountryCodeDictionary);
     for (var i = 0; i < countries.length; i++) {
-      countriesForState.push(CountriesOptions[countries[i]]);
+        let requiredCountryCode = countryCodes.find(code=> CountryCodeDictionary[code] === countries[i]);
+        countriesForState.push(requiredCountryCode);
     }
 
     this.setState({ Countries: countriesForState });
@@ -86,7 +88,7 @@ export default class SearchEngine extends Component {
         <div className="row">
           <div className="col-3">
             <MultiSelectorField
-              Options={Object.keys(CountriesOptions)}
+              Options={Object.values(CountryCodeDictionary)}
               OnChange={this.OnCountriesChange}
               FieldTitle="Countries"
             />
