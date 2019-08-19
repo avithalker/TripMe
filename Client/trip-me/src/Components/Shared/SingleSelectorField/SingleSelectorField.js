@@ -6,7 +6,6 @@ export default class SingleSelectorField extends Component {
   }
 
   renderOptions = () => {
-    debugger;
     var types = Object.entries(this.props.Options).map(([key, value]) => {
       return <option value={value}>{key.toString()}</option>;
     });

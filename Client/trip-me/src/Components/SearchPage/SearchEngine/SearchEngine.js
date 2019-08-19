@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import "../SearchEngine/SearchEngine.css";
-import SingleSelectorField from "../SearchFields/SingleSelectorField/SingleSelectorField";
-import MultiSelectorField from "../SearchFields/MultiSelectorField/MultiSelectorField";
+import SingleSelectorField from "../../Shared/SingleSelectorField/SingleSelectorField";
+import MultiSelectorField from "../../Shared/MultiSelectorField/MultiSelectorField";
 import {
   TripTypesOptions,
   MonthOptions,
   ContinentOptions
 } from "../../../Constants/Constants";
 import {CountryCodeDictionary} from "../../../Enums/CountryEnum.js";
-import MinMaxField from "../SearchFields/MinMaxField/MinMaxFIeld";
+import MinMaxField from "../../Shared/MinMaxField/MinMaxFIeld";
 import { Button } from "@material-ui/core";
 import TripMeHttpClient from "../../../Services/TripMeHttpClient";
 
