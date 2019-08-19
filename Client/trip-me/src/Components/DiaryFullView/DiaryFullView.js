@@ -99,7 +99,7 @@ class DiaryFullView extends Component {
       return <CreatePage diaryId={this.state.diary.Id} />;
     }
     return (
-      <div className="diary">
+      <div className="diary p-3">
         <div className="row">
             <div className = "col-sm-4">
                 <img src = {this.getCoverImage()} alt="" className = "img-thumbnail diary-cover-image"></img>
