@@ -133,7 +133,7 @@ class DiaryFullView extends Component {
         <div className="pages">
           <div className="row justify-content-between">
             <div className="col mr-auto p-2">
-              <h4>Diary Pages:</h4>
+              
             </div>
             <div className="col-auto">
               <div className="addPageButton">
