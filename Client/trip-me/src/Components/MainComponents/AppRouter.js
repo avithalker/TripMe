@@ -6,6 +6,7 @@ import DiaryFullView from "../DiaryFullView/DiaryFullView";
 import DiaryPage from "../ShowDiaryPage/DiaryPage";
 import SearchPage from "../SearchPage/SearchPage";
 import HomePage from "../HomePage/HomePage";
+import RegistrationPage from "../RegistrationPage/RegistrationPage.js"
 
 export default class AppRouter extends Component {
   render() {
@@ -26,6 +27,7 @@ export default class AppRouter extends Component {
         />
         <Route exact path="/SearchPage" component={SearchPage} />
         <Route exact path="/HomePage" component={HomePage} />
+        <Route exact path="/RegistrationPage" component = {RegistrationPage}/>
       </Switch>
     );
   }

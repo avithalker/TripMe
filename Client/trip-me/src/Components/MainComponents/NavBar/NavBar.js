@@ -31,6 +31,11 @@ export default class NavBar extends Component {
                 Home<span className="sr-only">(current)</span>
               </Link>
             </li>
+            <li className = "nav-item">
+                <Link to = {"/RegistrationPage"} className ="nav-link">
+                Register<span className = "sr-only">(current)</span>
+                </Link>
+            </li>
           </ul>
         </div>
       </nav>
