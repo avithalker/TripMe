@@ -46,7 +46,6 @@ class TripMeHttpClient {
   };
 
   getPageById = (diaryId, pageId) => {
-    debugger;
     var promise = new Promise((resolve, reject) => {
       var url = new URL("http://localhost/TripMeWebApi/Diary/Page");
       var httpQueryParams = { diaryId: diaryId, pageId: pageId };
@@ -69,7 +68,6 @@ class TripMeHttpClient {
         },
         body: JSON.stringify(diary)
       }).then(response => {
-        debugger;
         resolve(response.json());
       });
     });

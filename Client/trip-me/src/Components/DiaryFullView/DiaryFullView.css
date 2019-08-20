@@ -5,6 +5,15 @@
   height: 100%;
 }
 
+.diary-cover-image{
+    width: 100%;
+    max-height: 280px;
+}
+
+.more-info-container{
+    margin-top: 15px;
+}
+
 .diary.pages {
   align-items: center;
 }
