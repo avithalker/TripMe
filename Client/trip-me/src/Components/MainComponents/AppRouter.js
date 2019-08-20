@@ -7,6 +7,7 @@ import DiaryPage from "../ShowDiaryPage/DiaryPage";
 import SearchPage from "../SearchPage/SearchPage";
 import HomePage from "../HomePage/HomePage";
 import RegistrationPage from "../RegistrationPage/RegistrationPage.js"
+import LoginPage from "../LoginPage/LoginPage.js";
 
 export default class AppRouter extends Component {
   render() {
@@ -25,9 +26,10 @@ export default class AppRouter extends Component {
           path="/TestPage"
           render={() => <DiaryPage DiaryId="40" PageId="39" />}
         />
-        <Route exact path="/SearchPage" component={SearchPage} />
-        <Route exact path="/HomePage" component={HomePage} />
-        <Route exact path="/RegistrationPage" component = {RegistrationPage}/>
+        <Route exact path= "/SearchPage" component={SearchPage} />
+        <Route exact path= "/HomePage" component={HomePage} />
+        <Route exact path= "/RegistrationPage" component = {RegistrationPage}/>
+        <Route exact path= "/LoginPage" component = {LoginPage}/> 
       </Switch>
     );
   }

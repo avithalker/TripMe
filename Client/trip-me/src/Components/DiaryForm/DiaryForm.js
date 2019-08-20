@@ -58,7 +58,7 @@ class DiaryForm extends Component {
     return (
       <div className="card diary-root">
         <div className="card-header diary-form">
-          <h1>Create Your Diary...</h1>
+          <h1>Create Your Diary</h1>
           <form onSubmit={this.handleSubmit}>
             <div className="form-group row">
               <div className="col-12">
@@ -168,10 +168,10 @@ class DiaryForm extends Component {
             </div>
             <button
               type="submit"
-              className="btn btn-primary"
+              className="btn btn-primary create-diary-btn"
               onClick={this.handleSubmit}
             >
-              Finish
+              Create
             </button>
           </form>
         </div>

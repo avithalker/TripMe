@@ -31,7 +31,7 @@ class DiaryEntry extends Component {
             </li>
           </p>
           <Button href={this.fullDiaryUrl} className="btn btn-primary">
-            Show Diary
+            Watch Diary
           </Button>
         </div>
       </div>
