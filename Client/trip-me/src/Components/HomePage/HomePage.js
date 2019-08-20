@@ -7,12 +7,14 @@ import AppLoader from "../Shared/AppLoader/AppLoader";
 import DiaryEntry from "../DiaryEntry/DiaryEntry.js";
 import TripTypeEnum from "../../Enums/TripTypeEnum";
 import { getKeyByValue } from "../../Helpers/Helpers";
+import { OrderDiaries } from "../../Enums/OrderDiariesEnum";
 
 export default class HomePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      Diaries: null,
+      DiariesMostRecent: null,
+      DiariesMostViewed: null,
       ShowLoader: true
     };
   }
@@ -30,21 +32,36 @@ export default class HomePage extends Component {
     );
   };
 
-  GetDiaries = () => {
+  GetDiariesByOrder = valueOrder => {
     var caller = new TripMeHttpClient();
-    return caller.getDiariesByUser();
+    var request = {
+      SearchParameters: {},
+      OrderBy: valueOrder,
+      ResultLimit: 3
+    };
+    return caller.getDiariesBySearch(request);
   };
 
   componentDidMount() {
-    this.GetDiaries().then(response => {
-      this.setState({ Diaries: response, ShowLoader: false });
-    });
+    this.GetDiariesByOrder(OrderDiaries.MOST_RECENT).then(
+      MostRecentResponse => {
+        this.GetDiariesByOrder(OrderDiaries.MOST_VIEWED).then(
+          MostViewedResponse => {
+            this.setState({
+              DiariesMostViewed: MostViewedResponse,
+              DiariesMostRecent: MostRecentResponse,
+              ShowLoader: false
+            });
+          }
+        );
+      }
+    );
   }
 
-  renderDiaries = () => {
+  renderDiaries = diaries => {
     return (
       <div className="row">
-        {this.state.Diaries.map(diary => {
+        {diaries.map(diary => {
           return <div className="col-4 p-3">{this.renderDiary(diary)}</div>;
         })}
       </div>
@@ -59,11 +76,20 @@ export default class HomePage extends Component {
       <div>
         <div className="diaries-carousel">
           <h2>Top Rated</h2>
-          <DiaryCarousel diaries={this.state.Diaries} />
+          <DiaryCarousel diaries={this.state.DiariesMostRecent} />
         </div>
+        <hr />
         <div className="home-body">
-          <h2>Most Viewed</h2>
-          {this.renderDiaries()}
+          <div className="most-viewed">
+            <h2>Most Viewed</h2>
+            {this.renderDiaries(this.state.DiariesMostViewed)}
+          </div>
+          <hr />
+          <div className="most-recent">
+            <h2>Most Recent</h2>
+            {this.renderDiaries(this.state.DiariesMostRecent)}
+          </div>
+          <hr />
         </div>
       </div>
     );
