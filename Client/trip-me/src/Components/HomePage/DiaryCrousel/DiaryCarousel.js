@@ -1,54 +1,47 @@
-import { Component } from "react";
-import React from "react";
+import React, { Component } from "react";
 import Carousel from "react-bootstrap/Carousel";
-import NoCoverImag from "../../../sources/images/No_Cover.jpg";
+import NoCoverImag from "../../../sources/images/image-placeholder.png";
+import "./DiaryCarousel.css";
+import { Button } from "react-bootstrap";
 
 export default class DiaryCarousel extends Component {
   constructor(props) {
     super(props);
   }
 
-  render() {
-    return (
-      <Carousel>
+  fullDiaryUrl = "http://localhost:3000/#/ShowDiary?Id=";
+
+  renderDiariesInCarousel = () => {
+    var diaries = this.props.diaries.map(diary => {
+      var diaryUrl = this.fullDiaryUrl + diary.Id;
+      return (
         <Carousel.Item>
           <img
             className="diary-image d-block w-100"
-            src={NoCoverImag}
+            src={this.getCoverImage(diary)}
             alt="First slide"
           />
           <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            <h3>{diary.Name}}</h3>
+            <p>{diary.Description}</p>
+            <Button href={diaryUrl} className="btn btn-primary">
+              Show Diary
+            </Button>
           </Carousel.Caption>
         </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="diary-image d-block w-100"
-            src={NoCoverImag}
-            alt="Third slide"
-          />
+      );
+    });
+    return diaries;
+  };
 
-          <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="diary-image d-block w-100"
-            src={NoCoverImag}
-            alt="Third slide"
-          />
+  getCoverImage = diary => {
+    if (diary.CoverPhotoUrl === null || diary.CoverPhotoUrl === "") {
+      return NoCoverImag;
+    }
+    return diary.CoverPhotoUrl;
+  };
 
-          <Carousel.Caption>
-            <h3>Third slide label</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
-          </Carousel.Caption>
-        </Carousel.Item>
-      </Carousel>
-    );
+  render() {
+    return <Carousel>{this.renderDiariesInCarousel()}</Carousel>;
   }
 }

@@ -14,7 +14,7 @@ class DiaryEntry extends Component {
 
   render() {
     return (
-      <div className="card">
+      <div className="card-header">
         <img src={this.getCoverImage()} alt="" className="card-img-top" />
         <div className="card-body">
           <h5 className="card-title">{this.props.Name}</h5>
