@@ -5,6 +5,7 @@ import DiariesContainer from "./DiariesContainer/DiariesContainer";
 import DiaryFullView from "../DiaryFullView/DiaryFullView";
 import DiaryPage from "../ShowDiaryPage/DiaryPage";
 import SearchPage from "../SearchPage/SearchPage";
+import HomePage from "../HomePage/HomePage";
 
 export default class AppRouter extends Component {
   render() {
@@ -24,6 +25,7 @@ export default class AppRouter extends Component {
           render={() => <DiaryPage DiaryId="40" PageId="39" />}
         />
         <Route exact path="/SearchPage" component={SearchPage} />
+        <Route exact path="/HomePage" component={HomePage} />
       </Switch>
     );
   }

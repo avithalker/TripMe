@@ -3,7 +3,7 @@ import "./DiaryEntry.css";
 import DiaryFullView from "../DiaryFullView/DiaryFullView";
 import Button from "react-bootstrap/Button";
 import NoCoverImag from "../../sources/images/No_Cover.jpg";
-import "./DiaryEntry.css"
+import "./DiaryEntry.css";
 
 class DiaryEntry extends Component {
   constructor(props) {
@@ -14,7 +14,7 @@ class DiaryEntry extends Component {
 
   render() {
     return (
-      <div className="card-header">
+      <div className="card">
         <img src={this.getCoverImage()} alt="" className="card-img-top" />
         <div className="card-body">
           <h5 className="card-title">{this.props.Name}</h5>
@@ -38,12 +38,12 @@ class DiaryEntry extends Component {
     );
   }
 
-    getCoverImage= () => {
-        if(this.props.CoverPhoto === null || this.props.CoverPhoto === ""){
-            return NoCoverImag;
-        }
-        return this.props.CoverPhoto;
+  getCoverImage = () => {
+    if (this.props.CoverPhoto === null || this.props.CoverPhoto === "") {
+      return NoCoverImag;
     }
+    return this.props.CoverPhoto;
+  };
 }
 
 export default DiaryEntry;

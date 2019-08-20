@@ -26,6 +26,11 @@ export default class NavBar extends Component {
                 Search<span className="sr-only">(current)</span>
               </Link>
             </li>
+            <li className="nav-item">
+              <Link to={"/HomePage"} className="nav-link">
+                Home<span className="sr-only">(current)</span>
+              </Link>
+            </li>
           </ul>
         </div>
       </nav>
