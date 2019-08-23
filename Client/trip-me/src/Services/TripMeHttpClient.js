@@ -74,6 +74,27 @@ class TripMeHttpClient {
     return promise;
   };
 
+ register = registrationRequest =>{
+     var promise = new Promise((resolve, reject)=>{
+         var url = new URL("http://localhost/TripMeWebApi/Authentication/Register");
+         fetch(url, {
+             method: "POST",
+             headers:{
+                 "Content-Type": "application/json"
+             },
+             body: JSON.stringify(registrationRequest)
+         }).then(response =>{
+             let responseData = response.json();
+             if(response.ok)
+                resolve(responseData);
+             else{
+                 responseData.then(error => reject(error.Message));
+             }
+         });
+    });
+     return promise;
+ }
+
   addNewPage = addNewPageRequest => {
     var url = new URL("http://localhost/TripMeWebApi/Diary/AddNewPage");
 
