@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import TripMeHttpClient from "../../Services/TripMeHttpClient.js";
 import {RegistrationStatus} from "../../Enums/RegistrationStatusEnum.js";
+import AppLoader from "../Shared/AppLoader/AppLoader";
+import PopUp from "../Shared/Popup";
 import "./RegistrationPage.css";
 
 class RegistrationPage extends Component{
@@ -13,32 +15,43 @@ class RegistrationPage extends Component{
             emailAddress: '',
             userName: '',
             password: '',
-            fieldValidationContext: new FieldValidaitionContext()
+            fieldValidationContext: new FieldValidaitionContext(),
+            isWaitingResponse: false,
+            isRegistrationDone : false
         };
     }
     
     render(){
+        if(this.state.isRegistrationDone){
+            return(
+                <PopUp popupText={'Congratulation! You are part of the TripMe community! Login to your account and enjoy all of our features'} show={true} 
+                    handleClick={this.DirectToLogin} textButton="Login"/>
+            )
+        }
+        if(this.state.isWaitingResponse){
+            return (<AppLoader></AppLoader>)
+        }
         return(
             <div className = "registration-form-container">
                 <h1 className = "display-4">Sign up</h1>
                 <p className = "lead">Sign up for free and enjoy all of TripMe features!</p>
                 <form>
                     <div className= "form-group row mr-0 ml-0">
-                        <input name = "firstName" placeHolder = "First name" type = "text" className = "form-control col-sm-5" onChange = {this.onInputChange}></input>
+                        <input name = "firstName" placeHolder = "First name" type = "text" className = "form-control col-sm-5" onChange = {this.onInputChange} value = {this.state.firstName}></input>
                         <div className = "col-2"></div>
-                        <input name = "lastName" placeHolder = "Last name" type = "text" className = "form-control col-sm-5" onChange = {this.onInputChange}></input>
+                        <input name = "lastName" placeHolder = "Last name" type = "text" className = "form-control col-sm-5" onChange = {this.onInputChange} value = {this.state.lastName}></input>
                     </div>
                     <div className = "form-group">
-                        <input name = "emailAddress" placeHolder = "Email address" type = "email" className = "form-control" onChange = {this.onInputChange}></input>
+                        <input name = "emailAddress" placeHolder = "Email address" type = "email" className = "form-control" onChange = {this.onInputChange} value = {this.state.emailAddress}></input>
                     </div>
                     <div className = "form-group">
-                        <input name = "userName" placeHolder = "User name" type = "text" className = {"form-control" + this.ValidationClass(this.state.fieldValidationContext.UserNameField.isValid)} onChange = {this.onInputChange}></input>
+                        <input name = "userName" placeHolder = "User name" type = "text" className = {"form-control" + this.ValidationClass(this.state.fieldValidationContext.UserNameField.isValid)} onChange = {this.onInputChange} value = {this.state.userName}></input>
                         <div className = "invalid-feedback">
                             {this.state.fieldValidationContext.UserNameField.errorMessage}
                         </div>
                     </div>
                     <div className = "form-group">
-                        <input name = "password" placeHolder = "Password" type = "password" className = {"form-control" + this.ValidationClass(this.state.fieldValidationContext.PasswordField.isValid)} onChange = {this.onInputChange}></input>
+                        <input name = "password" placeHolder = "Password" type = "password" className = {"form-control" + this.ValidationClass(this.state.fieldValidationContext.PasswordField.isValid)} onChange = {this.onInputChange} value = {this.state.password}></input>
                         <div className = "invalid-feedback">
                             {this.state.fieldValidationContext.PasswordField.errorMessage}
                         </div>
@@ -57,13 +70,18 @@ class RegistrationPage extends Component{
     
     TryRegister = event=>{
         event.preventDefault();
+        this.setState({isWaitingResponse: true}, ()=>{
         let registrationRequest = new RegistrationRequest(this.state.firstName, this.state.lastName, this.state.emailAddress, this.state.userName, this.state.password);
         let tripMeHttpClient = new TripMeHttpClient();
         
         tripMeHttpClient.register(registrationRequest).then(response=>{
+            this.setState({isWaitingResponse:false, isRegistrationDone:true})
         }).catch(error=>{
+            this.setState({isWaitingResponse: false}, ()=>{
             this.HandleRegistrationError(error);
+            });
         })
+    })
     }
     
     HandleRegistrationError= error => {
@@ -93,6 +111,11 @@ class RegistrationPage extends Component{
             return ' is-invalid';
         }
         return '';
+    }
+    
+    DirectToLogin = ()=>{
+        let url='/LoginPage';
+        this.props.history.push(url);
     }
 }
 
