@@ -72,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Authentication\HasedPasswordData.cs" />
+    <Compile Include="Authentication\Jwt\JwtExtensions.cs" />
     <Compile Include="Authentication\Jwt\JwtTokenCreator.cs" />
     <Compile Include="Authentication\PasswordHashComputer.cs" />
     <Compile Include="Authentication\Jwt\TokenValidationHandler.cs" />

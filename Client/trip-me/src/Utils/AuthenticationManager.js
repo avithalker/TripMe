@@ -16,7 +16,7 @@ class AuthenticationManager{
         let authenticatedUser = this.getAuthenticatedUser();
         
         if(authenticatedUser && authenticatedUser.Token){
-            return {Authorization: `Bearer ${authenticatedUser.Token}`};
+            return {"Authorization": `Bearer ${authenticatedUser.Token}`};
         } else{
             return {};
         }

@@ -1,3 +1,4 @@
+import AuthenticationManager from "../Utils/AuthenticationManager.js";
 import "whatwg-fetch";
 
 class TripMeHttpClient {
@@ -61,11 +62,10 @@ class TripMeHttpClient {
   createNewDiary = diary => {
     var promise = new Promise((resolve, reject) => {
       var url = new URL("http://localhost/TripMeWebApi/Diary/AddNewDiary");
+      var authenticationManager = new AuthenticationManager();
       fetch(url, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
+        headers: {...{ "Content-Type": "application/json"}, ...authenticationManager.getAuthenticationHeader()},
         body: JSON.stringify(diary)
       }).then(response => {
         resolve(response.json());

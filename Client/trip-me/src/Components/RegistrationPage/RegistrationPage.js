@@ -37,21 +37,21 @@ class RegistrationPage extends Component{
                 <p className = "lead">Sign up for free and enjoy all of TripMe features!</p>
                 <form>
                     <div className= "form-group row mr-0 ml-0">
-                        <input name = "firstName" placeHolder = "First name" type = "text" className = "form-control col-sm-5" onChange = {this.onInputChange} value = {this.state.firstName}></input>
+                        <input name = "firstName" placeholder = "First name" type = "text" className = "form-control col-sm-5" onChange = {this.onInputChange} value = {this.state.firstName}></input>
                         <div className = "col-2"></div>
-                        <input name = "lastName" placeHolder = "Last name" type = "text" className = "form-control col-sm-5" onChange = {this.onInputChange} value = {this.state.lastName}></input>
+                        <input name = "lastName" placeholder = "Last name" type = "text" className = "form-control col-sm-5" onChange = {this.onInputChange} value = {this.state.lastName}></input>
                     </div>
                     <div className = "form-group">
-                        <input name = "emailAddress" placeHolder = "Email address" type = "email" className = "form-control" onChange = {this.onInputChange} value = {this.state.emailAddress}></input>
+                        <input name = "emailAddress" placeholder = "Email address" type = "email" className = "form-control" onChange = {this.onInputChange} value = {this.state.emailAddress}></input>
                     </div>
                     <div className = "form-group">
-                        <input name = "userName" placeHolder = "User name" type = "text" className = {"form-control" + this.ValidationClass(this.state.fieldValidationContext.UserNameField.isValid)} onChange = {this.onInputChange} value = {this.state.userName}></input>
+                        <input name = "userName" placeholder = "User name" type = "text" className = {"form-control" + this.ValidationClass(this.state.fieldValidationContext.UserNameField.isValid)} onChange = {this.onInputChange} value = {this.state.userName}></input>
                         <div className = "invalid-feedback">
                             {this.state.fieldValidationContext.UserNameField.errorMessage}
                         </div>
                     </div>
                     <div className = "form-group">
-                        <input name = "password" placeHolder = "Password" type = "password" className = {"form-control" + this.ValidationClass(this.state.fieldValidationContext.PasswordField.isValid)} onChange = {this.onInputChange} value = {this.state.password}></input>
+                        <input name = "password" placeholder = "Password" type = "password" className = {"form-control" + this.ValidationClass(this.state.fieldValidationContext.PasswordField.isValid)} onChange = {this.onInputChange} value = {this.state.password}></input>
                         <div className = "invalid-feedback">
                             {this.state.fieldValidationContext.PasswordField.errorMessage}
                         </div>

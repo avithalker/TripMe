@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using TripMe.Contracts.Dtos;
@@ -12,6 +13,7 @@ using TripMe.Repositories;
 using TripMe.SearchEngine.SearchFilters;
 using TripMe.Service;
 using TripMe.Service.Getters;
+using TripMe.Service.Authentication.Jwt;
 
 namespace TripMeServer.Controllers
 {
@@ -20,12 +22,13 @@ namespace TripMeServer.Controllers
     public class DiaryController : ApiController
     {
         [HttpPost]
+        [Authorize]
         [Route("AddNewDiary")]
         public long AddNewDiary(AddNewDiaryRequest addNewDiaryRequest)
         {
             DiaryEditor diaryEditor = new DiaryEditor();
 
-            return diaryEditor.CreateNewDiary(addNewDiaryRequest);
+            return diaryEditor.CreateNewDiary(addNewDiaryRequest, HttpContext.Current.GetAuthenticatedUserId());
         }
 
         [HttpGet]

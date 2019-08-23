@@ -7,7 +7,6 @@ export default class MultiSelectorField extends Component {
   }
 
   render() {
-    debugger;
     return (
       <div>
         <label>{this.props.FieldTitle}</label>

@@ -20,10 +20,11 @@ namespace TripMe.Service
             _diaryModifier = new DiaryModifier();
         }
 
-        public long CreateNewDiary(AddNewDiaryRequest newDiaryRequest)
+        public long CreateNewDiary(AddNewDiaryRequest newDiaryRequest, long userId)
         {
             Diary diary= Mapper.Map<AddNewDiaryRequest, Diary>(newDiaryRequest);
 
+            diary.WriterId = userId;
             _diaryModifier.CreateNewDiary(diary);
             if (newDiaryRequest.Countries != null && newDiaryRequest.Countries.Count > 0)
             {

@@ -23,10 +23,10 @@ class LoginPage extends Component{
                 <p className = "lead">Sign in to your TripMe account</p>
                 <form>
                     <div className = "form-group">
-                        <input name = "userName" placeHolder = "User name" type = "text" className = "form-control" onChange ={this.OnInputChanged}></input>
+                        <input name = "userName" placeholder = "User name" type = "text" className = "form-control" onChange ={this.OnInputChanged}></input>
                     </div>
                     <div className = "form-group">
-                        <input name = "password" placeHolder = "Password" type = "password" className = {"form-control" + this.ValidationClass(this.state.isCredentialValid)} onChange ={this.OnInputChanged}></input>
+                        <input name = "password" placeholder = "Password" type = "password" className = {"form-control" + this.ValidationClass(this.state.isCredentialValid)} onChange ={this.OnInputChanged}></input>
                         <div className = "invalid-feedback">
                             Wrong User name/Password
                         </div>
