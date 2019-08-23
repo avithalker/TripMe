@@ -74,27 +74,6 @@ class TripMeHttpClient {
     return promise;
   };
 
- register = registrationRequest =>{
-     var promise = new Promise((resolve, reject)=>{
-         var url = new URL("http://localhost/TripMeWebApi/Authentication/Register");
-         fetch(url, {
-             method: "POST",
-             headers:{
-                 "Content-Type": "application/json"
-             },
-             body: JSON.stringify(registrationRequest)
-         }).then(response =>{
-             let responseData = response.json();
-             if(response.ok)
-                resolve(responseData);
-             else{
-                 responseData.then(error => reject(error.Message));
-             }
-         });
-    });
-     return promise;
- }
-
   addNewPage = addNewPageRequest => {
     var url = new URL("http://localhost/TripMeWebApi/Diary/AddNewPage");
 
@@ -148,6 +127,44 @@ class TripMeHttpClient {
 
     return promise;
   };
+
+ register = registrationRequest =>{
+     var promise = new Promise((resolve, reject)=>{
+         var url = new URL("http://localhost/TripMeWebApi/Authentication/Register");
+         fetch(url, {
+             method: "POST",
+             headers:{
+                 "Content-Type": "application/json"
+             },
+             body: JSON.stringify(registrationRequest)
+         }).then(response =>{
+             let responseData = response.json();
+             if(response.ok)
+                resolve(responseData);
+             else{
+                 responseData.then(error => reject(error.Message));
+             }
+         });
+    });
+     return promise;
+ }
+ login = loginRequest =>{
+     var promise = new Promise((resolve,reject) =>{
+         var url = new URL("http://localhost/TripMeWebApi/Authentication/Login");
+         fetch(url,{
+             method: "POST",
+             headers:{
+                 "Content-Type": "application/json"
+             },
+             body: JSON.stringify(loginRequest)
+         }).then(response =>{
+             if(response.ok)
+                 resolve(response.json());
+             reject(response);
+         })
+     });
+     return promise;
+ }
 }
 
 export default TripMeHttpClient;
