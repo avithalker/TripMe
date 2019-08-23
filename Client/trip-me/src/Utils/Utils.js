@@ -2,7 +2,6 @@ import React,{Component} from 'react';
 
     export function getTripType(num) 
     {
-        debugger;
         switch(num)
         {
             case -1:

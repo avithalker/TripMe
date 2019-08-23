@@ -1,6 +1,9 @@
 import React, {Component} from "react";
 import TripMeHttpClient from "../../Services/TripMeHttpClient.js";
+import AuthenticationManager from "../../Utils/AuthenticationManager.js"
 import "./LoginPage.css";
+
+const authenticationManager = new AuthenticationManager();
 
 class LoginPage extends Component{
     
@@ -42,7 +45,7 @@ class LoginPage extends Component{
         let tripMeClient = new TripMeHttpClient();
         
         tripMeClient.login(loginRequest).then(userData=>{
-            
+            authenticationManager.setAuthenticatedUser(userData);
         }).catch(error =>{
             this.setState({isCredentialValid: false})
         });
