@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import TripMeHttpClient from "../../Services/TripMeHttpClient.js";
-import AuthenticationManager from "../../Utils/AuthenticationManager.js"
+import {AuthenticationManager} from "../../Utils/AuthenticationManager.js"
 import "./LoginPage.css";
 
 const authenticationManager = new AuthenticationManager();

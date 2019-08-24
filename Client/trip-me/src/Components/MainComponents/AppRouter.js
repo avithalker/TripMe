@@ -8,6 +8,7 @@ import SearchPage from "../SearchPage/SearchPage";
 import HomePage from "../HomePage/HomePage";
 import RegistrationPage from "../RegistrationPage/RegistrationPage.js"
 import LoginPage from "../LoginPage/LoginPage.js";
+import LogoutPage from "../LogoutPage/LogoutPage.js";
 
 export default class AppRouter extends Component {
   render() {
@@ -30,6 +31,7 @@ export default class AppRouter extends Component {
         <Route exact path= "/HomePage" component={HomePage} />
         <Route exact path= "/RegistrationPage" component = {RegistrationPage}/>
         <Route exact path= "/LoginPage" component = {LoginPage}/> 
+        <Route exact path= "/LogoutPage" component = {LogoutPage}/> 
       </Switch>
     );
   }

@@ -11,7 +11,7 @@ import { Redirect } from "react-router";
 import DiaryFullView from "../DiaryFullView/DiaryFullView.js";
 import AppLoader from "../Shared/AppLoader/AppLoader";
 import MultiSelectorField from "../Shared/MultiSelectorField/MultiSelectorField";
-import AuthenticationManager from "../../Utils/AuthenticationManager.js"
+import {AuthenticationManager} from "../../Utils/AuthenticationManager.js"
 import {CountryCodeDictionary} from "../../Enums/CountryEnum.js";
 
 

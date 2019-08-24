@@ -1,11 +1,16 @@
+import { BehaviorSubject } from 'rxjs';
+
+const currentAuthenticatedUser = new BehaviorSubject(JSON.parse(localStorage.getItem('AuthenticatedUser')));
 class AuthenticationManager{
     
     setAuthenticatedUser = userData =>{
         localStorage.setItem('AuthenticatedUser',JSON.stringify(userData));
+        currentAuthenticatedUser.next(userData);
     }
     
     resetAuthenticatedUser = ()=>{
         localStorage.removeItem('AuthenticatedUser');
+        currentAuthenticatedUser.next(null);
     }
     
     getAuthenticatedUser = ()=>{
@@ -33,4 +38,5 @@ class AuthenticationManager{
     }
 }
 
-export default AuthenticationManager;
+export {AuthenticationManager};
+export {currentAuthenticatedUser};

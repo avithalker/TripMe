@@ -1,4 +1,4 @@
-import AuthenticationManager from "../Utils/AuthenticationManager.js";
+import {AuthenticationManager} from "../Utils/AuthenticationManager.js";
 import "whatwg-fetch";
 
 class TripMeHttpClient {
