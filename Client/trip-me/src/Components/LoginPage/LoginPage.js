@@ -46,6 +46,7 @@ class LoginPage extends Component{
         
         tripMeClient.login(loginRequest).then(userData=>{
             authenticationManager.setAuthenticatedUser(userData);
+            this.DirectToHomePage();
         }).catch(error =>{
             this.setState({isCredentialValid: false})
         });
@@ -60,6 +61,11 @@ class LoginPage extends Component{
     
     OnInputChanged = event=>{
         this.setState({[event.target.name]: event.target.value});
+    }
+    
+    DirectToHomePage = ()=>{
+        let url='/HomePage';
+        this.props.history.push(url);
     }
 }
 
