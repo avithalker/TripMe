@@ -76,11 +76,11 @@ class TripMeHttpClient {
 
   addNewPage = addNewPageRequest => {
     var url = new URL("http://localhost/TripMeWebApi/Diary/AddNewPage");
-
+    var authenticationManager = new AuthenticationManager();
     var promise = new Promise((resolve, reject) => {
       fetch(url, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {...{"Content-Type": "application/json"}, ...authenticationManager.getAuthenticationHeader() },
         body: JSON.stringify(addNewPageRequest)
       }).then(response => {
         resolve(response.json());

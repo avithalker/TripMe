@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using TripMe.Contracts.Dtos;
 using TripMe.Contracts.Requestes;
 using TripMe.Model.EntitySets;
+using TripMe.Service.Authentication;
 using TripMe.Service.Modifiers;
 
 namespace TripMe.Service
@@ -14,10 +15,12 @@ namespace TripMe.Service
     public class DiaryEditor
     {
         private readonly DiaryModifier _diaryModifier;
+        private readonly UserPermissionManager _userPermissionManager;
 
         public DiaryEditor()
         {
             _diaryModifier = new DiaryModifier();
+            _userPermissionManager = new UserPermissionManager(); 
         }
 
         public long CreateNewDiary(AddNewDiaryRequest newDiaryRequest, long userId)

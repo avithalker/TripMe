@@ -14,6 +14,7 @@ using TripMe.SearchEngine.SearchFilters;
 using TripMe.Service;
 using TripMe.Service.Getters;
 using TripMe.Service.Authentication.Jwt;
+using TripMe.Service.Authentication;
 
 namespace TripMeServer.Controllers
 {
@@ -50,12 +51,20 @@ namespace TripMeServer.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         [Route("AddNewPage")]
-        public long AddNewPage(AddNewPageRequest addNewPageRequest)
+        public IHttpActionResult AddNewPage(AddNewPageRequest addNewPageRequest)
         {
+            UserPermissionManager userPermissionManager = new UserPermissionManager();
+
+            if (!userPermissionManager.IsAllowedToAddPage(addNewPageRequest.DiaryId, HttpContext.Current.GetAuthenticatedUserId()))
+            {
+                return Unauthorized();
+            }
+
             DiaryEditor diaryEditor = new DiaryEditor();
 
-            return diaryEditor.CreateNewDiaryPage(addNewPageRequest);
+            return Ok(diaryEditor.CreateNewDiaryPage(addNewPageRequest));
         }
 
         [HttpGet]

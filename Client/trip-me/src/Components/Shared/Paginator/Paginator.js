@@ -51,7 +51,6 @@ export default class Paginator extends Component {
   };
 
   render() {
-    debugger;
     return (
       <Pagination className="pagination">
         <PaginationItem>

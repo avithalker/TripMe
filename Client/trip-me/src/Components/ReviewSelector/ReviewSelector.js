@@ -21,9 +21,7 @@ class ReviewSelector extends Component {
   }
 
   fetchReviewTypes = () => {
-    debugger;
     tripMeHttpClient.getReviewTypes().then(reviewTypes => {
-      debugger;
       this.setState({
         reviewTypes: reviewTypes
       });
