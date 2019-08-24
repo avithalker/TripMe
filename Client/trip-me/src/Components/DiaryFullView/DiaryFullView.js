@@ -13,6 +13,7 @@ import { Card, CardBody } from "reactstrap";
 import "../DiaryFullView/DiaryFullView.css";
 import DiaryPage from "../ShowDiaryPage/DiaryPage";
 import Paginator from "../Shared/Paginator/Paginator";
+import {AuthenticationManager} from "../../Utils/AuthenticationManager.js"
 import NoCoverImag from "../../sources/images/No_Cover.jpg";
 
 class DiaryFullView extends Component {
@@ -84,6 +85,20 @@ class DiaryFullView extends Component {
     return <DiaryPage Page={this.state.SelectedPage} />;
   };
 
+  RenderAddPageDiv = ()=>{
+      let authenticatedUser = new AuthenticationManager().getAuthenticatedUser();
+      if(this.state.diary && authenticatedUser && 
+         this.state.diary.Writer.Id === authenticatedUser.Id){
+          return (
+             <div className="addPageButton">
+                <Button variant="success" onClick={this.addPage}>
+                  + Add New Page
+                </Button>
+              </div>
+          )
+      }
+  }
+
     getCoverImage= () => {
         if(this.state.diary.CoverPhotoUrl === null || this.state.diary.CoverPhotoUrl === ""){
             return NoCoverImag;
@@ -136,11 +151,7 @@ class DiaryFullView extends Component {
               
             </div>
             <div className="col-auto">
-              <div className="addPageButton">
-                <Button variant="success" onClick={this.addPage}>
-                  + Add New Page
-                </Button>
-              </div>
+                {this.RenderAddPageDiv()}
             </div>
           </div>
           <hr />
