@@ -21,9 +21,9 @@ namespace TripMe.Service.Getters
             _diarySearcher = new DiarySearcher();
         }
 
-        public List<DiaryDto> GetDiariesByUser()
+        public List<DiaryDto> GetDiariesByUser(long userId)
         {
-            List<Diary> diaries = _diaryRepository.GetDiariesByUser();
+            List<Diary> diaries = _diaryRepository.GetDiariesByUser(userId);
             List<DiaryDto> diariesDtos = Mapper.Map<List<DiaryDto>>(diaries);
 
             foreach (DiaryDto diaryDto in diariesDtos)

@@ -42,12 +42,13 @@ namespace TripMeServer.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         [Route("DiariesByUser")]
         public List<DiaryDto> DiariesByUser()
         {
             DiaryGetter diaryGetter = new DiaryGetter();
 
-            return diaryGetter.GetDiariesByUser();
+            return diaryGetter.GetDiariesByUser(HttpContext.Current.GetAuthenticatedUserId());
         }
 
         [HttpPost]

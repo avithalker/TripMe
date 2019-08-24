@@ -18,11 +18,11 @@ namespace TripMe.Repositories
             }
         }
 
-        public List<Diary> GetDiariesByUser()
+        public List<Diary> GetDiariesByUser(long userId)
         {
             using (var dbContext = new TripMeContext())
             {
-                return dbContext.Diaries.AsQueryable().OrderByDescending(x => x.Id).Take(5).ToList();
+                return dbContext.Diaries.AsQueryable().Where(x=>x.WriterId == userId).OrderByDescending(x => x.Id).ToList();
             }
         }
         

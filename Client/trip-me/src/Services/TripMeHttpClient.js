@@ -120,7 +120,11 @@ class TripMeHttpClient {
   getDiariesByUser = () => {
     var promise = new Promise((resolve, reject) => {
       var url = new URL("http://localhost/TripMeWebApi/Diary/DiariesByUser");
-      fetch(url).then(response => {
+      var authenticationManager = new AuthenticationManager();
+      fetch(url,{
+          method: "GET",
+          headers: {...{"Content-Type": "application/json"}, ...authenticationManager.getAuthenticationHeader()}
+      }).then(response => {
         resolve(response.json());
       });
     });
