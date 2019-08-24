@@ -16,6 +16,7 @@ namespace TripMe.Contracts.Dtos
         public string CoverPhotoUrl { get; set; }
         public List<string> Countries { get; set; }
         public List<string> Cities { get; set; }
+        public WriterDto Writer { get; set; }
 
         public DiaryDto()
         {

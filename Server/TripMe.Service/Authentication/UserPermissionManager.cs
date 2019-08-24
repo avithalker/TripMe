@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TripMe.InternalContracts;
 using TripMe.Model.EntitySets;
 using TripMe.Repositories;
 
@@ -19,9 +20,9 @@ namespace TripMe.Service.Authentication
 
         public bool IsAllowedToAddPage(long diaryId, long userId)
         {
-            Diary diary = _diaryRepository.GetDiary(diaryId);
+            DiaryMetaData diary = _diaryRepository.GetDiary(diaryId);
 
-            if(diary == null || diary.WriterId != userId)
+            if(diary == null || diary.Writer.Id != userId)
             {
                 return false;
             }

@@ -66,7 +66,8 @@ namespace TripMe.SearchEngine
             return from diary in dbContext.Diaries
                    join diaryCountry in dbContext.DiaryCountries on diary.Id equals diaryCountry.DiaryId into countries
                    join diaryCity in dbContext.DiaryCities on diary.Id equals diaryCity.DiaryId into cities
-                   select new DiarySearchResult { Diary = diary, Countries = countries, Cities = cities };
+                   join user in dbContext.Users on diary.WriterId equals user.Id into writer
+                   select new DiarySearchResult { Diary = diary, Countries = countries, Cities = cities, Writer = writer.FirstOrDefault() };
         }
 
         private List<DiarySearchResult> ExecuteSearch(IQueryable<DiarySearchResult> searchQuery, int resultLimit)

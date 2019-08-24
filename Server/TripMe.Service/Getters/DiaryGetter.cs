@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TripMe.Contracts.Dtos;
 using TripMe.Contracts.Requestes;
+using TripMe.InternalContracts;
 using TripMe.Model.EntitySets;
 using TripMe.Repositories;
 using TripMe.SearchEngine;
@@ -23,7 +24,7 @@ namespace TripMe.Service.Getters
 
         public List<DiaryDto> GetDiariesByUser(long userId)
         {
-            List<Diary> diaries = _diaryRepository.GetDiariesByUser(userId);
+            List<DiaryMetaData> diaries = _diaryRepository.GetDiariesByUser(userId);
             List<DiaryDto> diariesDtos = Mapper.Map<List<DiaryDto>>(diaries);
 
             foreach (DiaryDto diaryDto in diariesDtos)
@@ -36,9 +37,9 @@ namespace TripMe.Service.Getters
 
         public DiaryDto GetDiaryById(long id)
         {
-            Diary diary = _diaryRepository.GetDiary(id);
+            DiaryMetaData diary = _diaryRepository.GetDiary(id);
 
-            if(diary==null)
+            if (diary == null)
             {
                 return null;
             }
@@ -55,6 +56,7 @@ namespace TripMe.Service.Getters
               {
                   DiaryDto diaryDto = Mapper.Map<DiaryDto>(matchDiary.Diary);
 
+                  diaryDto.Writer = Mapper.Map<WriterDto>(matchDiary.Writer);
                   SetDiaryDtoLocations(diaryDto, matchDiary.Countries.ToList(), matchDiary.Cities.ToList());
                   return diaryDto;
               }).ToList();

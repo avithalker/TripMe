@@ -100,6 +100,10 @@
       <Project>{80A35F91-AEC1-42F6-9BCD-DDA20E39D5A8}</Project>
       <Name>TripMe.Enums</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TripMe.InternalContracts\TripMe.InternalContracts.csproj">
+      <Project>{666502B9-D02F-4642-B9C1-908D79E18CE4}</Project>
+      <Name>TripMe.InternalContracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TripMe.Repositories\TripMe.Repositories.csproj">
       <Project>{bb5da3fb-36e9-42e0-873b-2b1d49378407}</Project>
       <Name>TripMe.Repositories</Name>

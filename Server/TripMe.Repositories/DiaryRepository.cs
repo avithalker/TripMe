@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TripMe.InternalContracts;
 using TripMe.Model;
 using TripMe.Model.EntitySets;
 
@@ -10,19 +11,26 @@ namespace TripMe.Repositories
 {
     public class DiaryRepository
     {
-        public Diary GetDiary(long id)
+        public DiaryMetaData GetDiary(long id)
         {
             using (var dbContext = new TripMeContext())
             {
-                return dbContext.Diaries.FirstOrDefault(x => x.Id == id);
+                return (from diary in dbContext.Diaries
+                        join user in dbContext.Users on diary.WriterId equals user.Id into writer
+                        where diary.Id == id
+                        select new DiaryMetaData { Diary = diary, Writer = writer.FirstOrDefault() }).FirstOrDefault();
             }
         }
 
-        public List<Diary> GetDiariesByUser(long userId)
+        public List<DiaryMetaData> GetDiariesByUser(long userId)
         {
             using (var dbContext = new TripMeContext())
             {
-                return dbContext.Diaries.AsQueryable().Where(x=>x.WriterId == userId).OrderByDescending(x => x.Id).ToList();
+                return (from diary in dbContext.Diaries
+                        join user in dbContext.Users on diary.WriterId equals user.Id into writer
+                        where diary.WriterId == userId
+                        select new DiaryMetaData { Diary = diary, Writer = writer.FirstOrDefault()}).ToList();
+               // return dbContext.Diaries.AsQueryable().Where(x=>x.WriterId == userId).OrderByDescending(x => x.Id).ToList();   
             }
         }
         

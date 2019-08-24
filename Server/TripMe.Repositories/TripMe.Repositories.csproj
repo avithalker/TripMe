@@ -59,6 +59,10 @@
       <Project>{20CB7C12-45C6-4341-A985-489594766198}</Project>
       <Name>Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TripMe.InternalContracts\TripMe.InternalContracts.csproj">
+      <Project>{666502B9-D02F-4642-B9C1-908D79E18CE4}</Project>
+      <Name>TripMe.InternalContracts</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

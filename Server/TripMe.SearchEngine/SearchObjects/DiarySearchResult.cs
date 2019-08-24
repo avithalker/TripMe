@@ -10,5 +10,7 @@ namespace TripMe.SearchEngine.SearchObjects
         public IEnumerable<DiaryCountry> Countries { get; set; }
 
         public IEnumerable<DiaryCity> Cities { get; set; }
+
+        public User Writer { get; set; }
     }
 }
