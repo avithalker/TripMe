@@ -12,6 +12,16 @@ class AuthenticationManager{
         return JSON.parse(localStorage.getItem('AuthenticatedUser'));
     }
     
+    isUserAuthenticated= ()=>{
+        let authenticatedUser = this.getAuthenticatedUser();
+
+        if(authenticatedUser){
+            return true;
+        }
+        
+        return false;
+    }
+    
     getAuthenticationHeader= () =>{
         let authenticatedUser = this.getAuthenticatedUser();
         

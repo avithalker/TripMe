@@ -11,9 +11,11 @@ import { Redirect } from "react-router";
 import DiaryFullView from "../DiaryFullView/DiaryFullView.js";
 import AppLoader from "../Shared/AppLoader/AppLoader";
 import MultiSelectorField from "../Shared/MultiSelectorField/MultiSelectorField";
+import AuthenticationManager from "../../Utils/AuthenticationManager.js"
 import {CountryCodeDictionary} from "../../Enums/CountryEnum.js";
 
 
+const authenticationManager = new AuthenticationManager();
 const tripMeHttpClient = new TripMeHttpClient();
 const cloudinaryHttpClient = new CloudinaryHttpClient();
 
@@ -39,11 +41,21 @@ class DiaryForm extends Component {
   }
 
   render() {
+    if(!authenticationManager.isUserAuthenticated()){
+      return (
+        <PopUp
+          textButton="Login"
+          popupText="You must login to your account in order to create new diary"
+          show={true}
+          handleClick={this.RedirectToLogin}
+        />
+      );
+    }
     if (this.state.isLoading) {
       return <AppLoader />;
     }
     if (this.state.ShowDiary) {
-      this.MoveToDiary();
+      this.RedirectToShowDiary();
     }
     if (this.state.IsSubmitted) {
       return (
@@ -179,10 +191,15 @@ class DiaryForm extends Component {
     );
   }
 
-  MoveToDiary = () => {
+  RedirectToShowDiary = () => {
     var url = "/ShowDiary?Id=" + this.state.Id;
     this.props.history.push(url);
   };
+
+  RedirectToLogin = ()=>{
+      let url = "/LoginPage";
+      this.props.history.push(url);
+  }
 
   async handleSubmit(event) {
     event.preventDefault();
