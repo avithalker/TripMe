@@ -1,4 +1,4 @@
-import {AuthenticationManager} from "../Utils/AuthenticationManager.js";
+import { AuthenticationManager } from "../Utils/AuthenticationManager.js";
 import "whatwg-fetch";
 
 class TripMeHttpClient {
@@ -65,7 +65,10 @@ class TripMeHttpClient {
       var authenticationManager = new AuthenticationManager();
       fetch(url, {
         method: "POST",
-        headers: {...{ "Content-Type": "application/json"}, ...authenticationManager.getAuthenticationHeader()},
+        headers: {
+          ...{ "Content-Type": "application/json" },
+          ...authenticationManager.getAuthenticationHeader()
+        },
         body: JSON.stringify(diary)
       }).then(response => {
         resolve(response.json());
@@ -80,7 +83,10 @@ class TripMeHttpClient {
     var promise = new Promise((resolve, reject) => {
       fetch(url, {
         method: "POST",
-        headers: {...{"Content-Type": "application/json"}, ...authenticationManager.getAuthenticationHeader() },
+        headers: {
+          ...{ "Content-Type": "application/json" },
+          ...authenticationManager.getAuthenticationHeader()
+        },
         body: JSON.stringify(addNewPageRequest)
       }).then(response => {
         resolve(response.json());
@@ -121,9 +127,12 @@ class TripMeHttpClient {
     var promise = new Promise((resolve, reject) => {
       var url = new URL("http://localhost/TripMeWebApi/Diary/DiariesByUser");
       var authenticationManager = new AuthenticationManager();
-      fetch(url,{
-          method: "GET",
-          headers: {...{"Content-Type": "application/json"}, ...authenticationManager.getAuthenticationHeader()}
+      fetch(url, {
+        method: "GET",
+        headers: {
+          ...{ "Content-Type": "application/json" },
+          ...authenticationManager.getAuthenticationHeader()
+        }
       }).then(response => {
         resolve(response.json());
       });
@@ -132,43 +141,43 @@ class TripMeHttpClient {
     return promise;
   };
 
- register = registrationRequest =>{
-     var promise = new Promise((resolve, reject)=>{
-         var url = new URL("http://localhost/TripMeWebApi/Authentication/Register");
-         fetch(url, {
-             method: "POST",
-             headers:{
-                 "Content-Type": "application/json"
-             },
-             body: JSON.stringify(registrationRequest)
-         }).then(response =>{
-             let responseData = response.json();
-             if(response.ok)
-                resolve(responseData);
-             else{
-                 responseData.then(error => reject(error.Message));
-             }
-         });
+  register = registrationRequest => {
+    var promise = new Promise((resolve, reject) => {
+      var url = new URL(
+        "http://localhost/TripMeWebApi/Authentication/Register"
+      );
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(registrationRequest)
+      }).then(response => {
+        let responseData = response.json();
+        if (response.ok) resolve(responseData);
+        else {
+          responseData.then(error => reject(error.Message));
+        }
+      });
     });
-     return promise;
- }
- login = loginRequest =>{
-     var promise = new Promise((resolve,reject) =>{
-         var url = new URL("http://localhost/TripMeWebApi/Authentication/Login");
-         fetch(url,{
-             method: "POST",
-             headers:{
-                 "Content-Type": "application/json"
-             },
-             body: JSON.stringify(loginRequest)
-         }).then(response =>{
-             if(response.ok)
-                 resolve(response.json());
-             reject(response);
-         })
-     });
-     return promise;
- }
+    return promise;
+  };
+  login = loginRequest => {
+    var promise = new Promise((resolve, reject) => {
+      var url = new URL("http://localhost/TripMeWebApi/Authentication/Login");
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(loginRequest)
+      }).then(response => {
+        if (response.ok) resolve(response.json());
+        reject(response);
+      });
+    });
+    return promise;
+  };
 }
 
 export default TripMeHttpClient;

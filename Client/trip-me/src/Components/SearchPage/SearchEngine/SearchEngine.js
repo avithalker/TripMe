@@ -7,7 +7,7 @@ import {
   MonthOptions,
   ContinentOptions
 } from "../../../Constants/Constants";
-import {CountryCodeDictionary} from "../../../Enums/CountryEnum.js";
+import { CountryCodeDictionary } from "../../../Enums/CountryEnum.js";
 import MinMaxField from "../../Shared/MinMaxField/MinMaxFIeld";
 import { Button } from "@material-ui/core";
 import TripMeHttpClient from "../../../Services/TripMeHttpClient";
@@ -24,8 +24,10 @@ export default class SearchEngine extends Component {
     var countriesForState = [];
     let countryCodes = Object.keys(CountryCodeDictionary);
     for (var i = 0; i < countries.length; i++) {
-        let requiredCountryCode = countryCodes.find(code=> CountryCodeDictionary[code] === countries[i]);
-        countriesForState.push(requiredCountryCode);
+      let requiredCountryCode = countryCodes.find(
+        code => CountryCodeDictionary[code] === countries[i]
+      );
+      countriesForState.push(requiredCountryCode);
     }
 
     this.setState({ Countries: countriesForState });
@@ -40,8 +42,12 @@ export default class SearchEngine extends Component {
     var caller = new TripMeHttpClient();
 
     caller.getDiariesBySearch(request).then(response => {
+      if (response.status == 404) {
+        response = [];
+      }
       this.props.UpdateResultsOnScreen(response);
     });
+    this.props.OnFetchDiaries();
   };
 
   CreateRequstForSearch = () => {

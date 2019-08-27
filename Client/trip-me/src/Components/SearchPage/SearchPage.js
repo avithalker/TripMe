@@ -4,17 +4,20 @@ import "./SearchPage.css";
 import DiaryEntry from "../DiaryEntry/DiaryEntry";
 import TripTypeEnum from "../../Enums/TripTypeEnum";
 import { getKeyByValue } from "../../Helpers/Helpers";
+import AppLoader from "../Shared/AppLoader/AppLoader";
 
 export default class SearchPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      diaries: null
+      diaries: null,
+      isLoading: false
     };
   }
 
   SetDiaries = response => {
-    this.setState({ diaries: response });
+    debugger;
+    this.setState({ diaries: response, isLoading: false });
   };
 
   renderDiary = diary => {
@@ -24,12 +27,15 @@ export default class SearchPage extends Component {
         Destination={diary.Countries}
         Type={getKeyByValue(TripTypeEnum, diary.TripType)}
         Id={diary.Id}
-        CoverPhoto = {diary.CoverPhotoUrl}
+        CoverPhoto={diary.CoverPhotoUrl}
       />
     );
   };
 
   RenderDiaries = () => {
+    if (this.state.isLoading) {
+      return <AppLoader></AppLoader>;
+    }
     if (this.state.diaries == null) return;
     var diaries = (
       <div className="row">
@@ -41,10 +47,20 @@ export default class SearchPage extends Component {
     return diaries;
   };
 
+  SetOnFetchDiariesState = () => {
+    this.setState({ isLoading: true });
+  };
+
   render() {
+    if (this.state.diaries == []) {
+      return <h1>No diaries match</h1>;
+    }
     return (
       <div>
-        <SearchEngine UpdateResultsOnScreen={this.SetDiaries} />
+        <SearchEngine
+          UpdateResultsOnScreen={this.SetDiaries}
+          OnFetchDiaries={this.SetOnFetchDiariesState}
+        />
         {this.RenderDiaries()}
       </div>
     );
