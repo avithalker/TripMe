@@ -6,6 +6,7 @@ import TripMeHttpClient from "../../Services/TripMeHttpClient.js";
 import DiaryPage from "../ShowDiaryPage/DiaryPage";
 import PopUp from "../Shared/Popup";
 import "./CreatePage.css";
+import queryString from "query-string";
 
 const tripMeHttpClient = new TripMeHttpClient();
 
@@ -19,8 +20,14 @@ class CreatePage extends Component {
       nextReviewObjectId: 1,
       pageCreated: false,
       showPageClicked: false,
-      Pageid: -1
+      Pageid: -1,
+      diaryId: -1
     };
+  }
+
+  componentDidMount() {
+    var values = queryString.parse(this.props.location.search);
+    this.setState({ diaryId: values.diaryId });
   }
 
   getPageReviews = () => {
@@ -33,7 +40,9 @@ class CreatePage extends Component {
               onQuestionnaireAnswersChanged={answers =>
                 this.onQuestionnaireAnswersChanged(pageReview.objectId, answers)
               }
-                onCaptionChanged = {caption => this.onReviewCaptionChanged(pageReview.objectId, caption)}
+              onCaptionChanged={caption =>
+                this.onReviewCaptionChanged(pageReview.objectId, caption)
+              }
             />
             <button
               className="btn btn-danger deleteReview"
@@ -83,12 +92,14 @@ class CreatePage extends Component {
     this.setState({ pageReviews: pageReviews });
   };
 
-  onReviewCaptionChanged = (objectId, caption) =>{
-      let pageReviews = JSON.parse(JSON.stringify(this.state.pageReviews));
-      let pageReview = pageReviews.find(pageReview => pageReview.objectId === objectId);
-      pageReview.Caption = caption;
-      this.setState({pageReviews: pageReviews});
-  }
+  onReviewCaptionChanged = (objectId, caption) => {
+    let pageReviews = JSON.parse(JSON.stringify(this.state.pageReviews));
+    let pageReview = pageReviews.find(
+      pageReview => pageReview.objectId === objectId
+    );
+    pageReview.Caption = caption;
+    this.setState({ pageReviews: pageReviews });
+  };
 
   onPageTitleChange = event => {
     this.setState({ pageTitle: event.target.value });
@@ -97,10 +108,15 @@ class CreatePage extends Component {
   savePage = event => {
     event.preventDefault();
     let pageReviews = this.state.pageReviews.map((pageReview, index) => {
-      return { ReviewType: pageReview.ReviewType, Answers: pageReview.Answers, Caption: pageReview.Caption, DisplayOrder: index };
+      return {
+        ReviewType: pageReview.ReviewType,
+        Answers: pageReview.Answers,
+        Caption: pageReview.Caption,
+        DisplayOrder: index
+      };
     });
     let createPageRequest = new CreatePageRequest(
-      this.props.diaryId,
+      this.state.diaryId,
       this.state.pageTitle,
       pageReviews
     );
@@ -114,23 +130,19 @@ class CreatePage extends Component {
     return message;
   };
 
-  showPage = () => {
-    this.setState({ showPageClicked: true });
+  goToDiary = () => {
+    var url = "/ShowDiary?Id=" + this.state.diaryId;
+    this.props.history.push(url);
   };
 
   render() {
-    if (this.state.showPageClicked) {
-      return (
-        <DiaryPage PageId={this.state.Pageid} DiaryId={this.props.diaryId} />
-      );
-    }
     if (this.state.pageCreated) {
       return (
         <PopUp
           popupText={this.getPopUpMessage()}
           show={true}
-          handleClick={this.showPage}
-          textButton="Show my page!"
+          handleClick={this.goToDiary}
+          textButton="Return To Diary"
         />
       );
     }
@@ -185,7 +197,7 @@ function PageReview(reviewTypeId, objectId) {
   this.objectId = objectId;
   this.ReviewType = reviewTypeId;
   this.Answers = {};
-  this.Caption=null; 
+  this.Caption = null;
 }
 
 function CreatePageRequest(diaryId, title, reviews) {

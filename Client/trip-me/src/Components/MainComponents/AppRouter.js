@@ -6,9 +6,10 @@ import DiaryFullView from "../DiaryFullView/DiaryFullView";
 import DiaryPage from "../ShowDiaryPage/DiaryPage";
 import SearchPage from "../SearchPage/SearchPage";
 import HomePage from "../HomePage/HomePage";
-import RegistrationPage from "../RegistrationPage/RegistrationPage.js"
+import RegistrationPage from "../RegistrationPage/RegistrationPage.js";
 import LoginPage from "../LoginPage/LoginPage.js";
 import LogoutPage from "../LogoutPage/LogoutPage.js";
+import CreatePage from "../../Components/CreatePage/CreatePage";
 
 export default class AppRouter extends Component {
   render() {
@@ -22,16 +23,12 @@ export default class AppRouter extends Component {
           component={DiariesContainer}
           render={props => <DiariesContainer {...props} />}
         />
-        <Route
-          exact
-          path="/TestPage"
-          render={() => <DiaryPage DiaryId="40" PageId="39" />}
-        />
-        <Route exact path= "/SearchPage" component={SearchPage} />
-        <Route exact path= "/HomePage" component={HomePage} />
-        <Route exact path= "/RegistrationPage" component = {RegistrationPage}/>
-        <Route exact path= "/LoginPage" component = {LoginPage}/> 
-        <Route exact path= "/LogoutPage" component = {LogoutPage}/> 
+        <Route exact path="/CreatePage" component={CreatePage} />
+        <Route exact path="/SearchPage" component={SearchPage} />
+        <Route exact path="/HomePage" component={HomePage} />
+        <Route exact path="/RegistrationPage" component={RegistrationPage} />
+        <Route exact path="/LoginPage" component={LoginPage} />
+        <Route exact path="/LogoutPage" component={LogoutPage} />
       </Switch>
     );
   }

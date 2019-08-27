@@ -13,7 +13,7 @@ import { Card, CardBody } from "reactstrap";
 import "../DiaryFullView/DiaryFullView.css";
 import DiaryPage from "../ShowDiaryPage/DiaryPage";
 import Paginator from "../Shared/Paginator/Paginator";
-import {AuthenticationManager} from "../../Utils/AuthenticationManager.js"
+import { AuthenticationManager } from "../../Utils/AuthenticationManager.js";
 import NoCoverImag from "../../sources/images/No_Cover.jpg";
 
 class DiaryFullView extends Component {
@@ -85,43 +85,58 @@ class DiaryFullView extends Component {
     return <DiaryPage Page={this.state.SelectedPage} />;
   };
 
-  RenderAddPageDiv = ()=>{
-      let authenticatedUser = new AuthenticationManager().getAuthenticatedUser();
-      if(this.state.diary && authenticatedUser && 
-         this.state.diary.Writer.Id === authenticatedUser.Id){
-          return (
-             <div className="addPageButton">
-                <Button variant="success" onClick={this.addPage}>
-                  + Add New Page
-                </Button>
-              </div>
-          )
-      }
-  }
-
-    getCoverImage= () => {
-        if(this.state.diary.CoverPhotoUrl === null || this.state.diary.CoverPhotoUrl === ""){
-            return NoCoverImag;
-        }
-        return this.state.diary.CoverPhotoUrl;
+  RenderAddPageDiv = () => {
+    let authenticatedUser = new AuthenticationManager().getAuthenticatedUser();
+    if (
+      this.state.diary &&
+      authenticatedUser &&
+      this.state.diary.Writer.Id === authenticatedUser.Id
+    ) {
+      return (
+        <div className="addPageButton">
+          <Button variant="success" onClick={this.addPage}>
+            + Add New Page
+          </Button>
+        </div>
+      );
     }
+  };
+
+  RedirectToCreatePage = () => {
+    var url = "/CreatePage?diaryId=" + this.state.diary.Id;
+    this.props.history.push(url);
+  };
+
+  getCoverImage = () => {
+    if (
+      this.state.diary.CoverPhotoUrl === null ||
+      this.state.diary.CoverPhotoUrl === ""
+    ) {
+      return NoCoverImag;
+    }
+    return this.state.diary.CoverPhotoUrl;
+  };
 
   render() {
     if (this.state.isLoading) {
       return <AppLoader />;
     }
     if (this.state.addPage) {
-      return <CreatePage diaryId={this.state.diary.Id} />;
+      this.RedirectToCreatePage();
     }
     return (
       <div className="diary p-3">
         <div className="row">
-            <div className = "col-sm-4">
-                <img src = {this.getCoverImage()} alt="" className = "img-thumbnail diary-cover-image"></img>
-            </div>
-            <div className = "col-sm-8">
-                <h2>{this.state.diary.Name}</h2>
-            </div>
+          <div className="col-sm-4">
+            <img
+              src={this.getCoverImage()}
+              alt=""
+              className="img-thumbnail diary-cover-image"
+            ></img>
+          </div>
+          <div className="col-sm-8">
+            <h2>{this.state.diary.Name}</h2>
+          </div>
         </div>
         <div className="row more-info-container">
           <div className="col-xs-1 p-0">
@@ -147,12 +162,8 @@ class DiaryFullView extends Component {
         </Collapse>
         <div className="pages">
           <div className="row justify-content-between">
-            <div className="col mr-auto p-2">
-              
-            </div>
-            <div className="col-auto">
-                {this.RenderAddPageDiv()}
-            </div>
+            <div className="col mr-auto p-2"></div>
+            <div className="col-auto">{this.RenderAddPageDiv()}</div>
           </div>
           <hr />
           <div className="page shadow p-2 mb-3 bg-white rounded">
