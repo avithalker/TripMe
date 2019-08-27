@@ -7,6 +7,7 @@ import DiaryPage from "../ShowDiaryPage/DiaryPage";
 import PopUp from "../Shared/Popup";
 import "./CreatePage.css";
 import queryString from "query-string";
+import AppLoader from "../Shared/AppLoader/AppLoader";
 
 const tripMeHttpClient = new TripMeHttpClient();
 
@@ -21,7 +22,8 @@ class CreatePage extends Component {
       pageCreated: false,
       showPageClicked: false,
       Pageid: -1,
-      diaryId: -1
+      diaryId: -1,
+      isSaveButtonClicked: false
     };
   }
 
@@ -121,8 +123,13 @@ class CreatePage extends Component {
       pageReviews
     );
     tripMeHttpClient.addNewPage(createPageRequest).then(response => {
-      this.setState({ pageCreated: true, Pageid: response });
+      this.setState({
+        pageCreated: true,
+        Pageid: response,
+        isSaveButtonClicked: false
+      });
     });
+    this.setState({ isSaveButtonClicked: true });
   };
 
   getPopUpMessage = () => {
@@ -136,6 +143,9 @@ class CreatePage extends Component {
   };
 
   render() {
+    if (this.state.isSaveButtonClicked) {
+      return <AppLoader></AppLoader>;
+    }
     if (this.state.pageCreated) {
       return (
         <PopUp
