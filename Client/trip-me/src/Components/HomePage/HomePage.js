@@ -1,6 +1,7 @@
 import { Component } from "react";
 import React from "react";
 import DiaryCarousel from "./DiaryCrousel/DiaryCarousel";
+import CarouselNavigator from "./CarouselNavigator/CarouselNavigator";
 import "../HomePage/HomePage.css";
 import TripMeHttpClient from "../../Services/TripMeHttpClient";
 import AppLoader from "../Shared/AppLoader/AppLoader";
@@ -8,6 +9,8 @@ import DiaryEntry from "../DiaryEntry/DiaryEntry.js";
 import TripTypeEnum from "../../Enums/TripTypeEnum";
 import { getKeyByValue } from "../../Helpers/Helpers";
 import { OrderDiaries } from "../../Enums/OrderDiariesEnum";
+import GlassesBooksImage from "../../../src/sources/images/image-glasses-booksjpg.jpg";
+import PlanImage from "../../../src/sources/images/plan-image.jpg";
 
 export default class HomePage extends Component {
   constructor(props) {
@@ -75,16 +78,47 @@ export default class HomePage extends Component {
     return (
       <div>
         <div className="diaries-carousel">
-          <h2>Top Rated</h2>
-          <DiaryCarousel diaries={this.state.DiariesMostRecent} />
+          <CarouselNavigator />
         </div>
         <hr />
         <div className="home-body">
+          <div className="row featurette dataView">
+            <div className="col md-7">
+              <h2>Build your own trip diary!</h2>
+              <span className="text-muted">
+                {" "}
+                use our templates for reviews or create your own! manage your
+                existing diaries, comment and answer the community!{" "}
+              </span>
+            </div>
+            <div className="col md-5">
+              <img
+                className="info-image img-fluid mx-auto"
+                src={GlassesBooksImage}
+              />
+              <hr></hr>
+            </div>
+          </div>
           <div className="most-viewed">
             <h2>Most Viewed</h2>
             {this.renderDiaries(this.state.DiariesMostViewed)}
           </div>
           <hr />
+          <div className="row featurette dataView">
+            <div className="col md-7">
+              <h2>Plan your own trip!</h2>
+              <span className="text-muted">
+                {" "}
+                hanving trouble with planning a trip? No More !! Now with TripMe
+                you can search your desired trip by Budget, Time, Duration and
+                even By trip type!{" "}
+              </span>
+            </div>
+            <div className="col md-5">
+              <img className="info-image img-fluid mx-auto" src={PlanImage} />
+            </div>
+            <hr></hr>
+          </div>
           <div className="most-recent">
             <h2>Most Recent</h2>
             {this.renderDiaries(this.state.DiariesMostRecent)}

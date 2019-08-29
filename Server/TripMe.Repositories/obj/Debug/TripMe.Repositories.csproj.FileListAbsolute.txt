@@ -30,3 +30,5 @@ C:\ComputerScienceYear4\FinalProj\TripMe\Server\TripMe.Repositories\obj\Debug\Tr
 C:\ComputerScienceYear4\FinalProj\TripMe\Server\TripMe.Repositories\obj\Debug\TripMe.Repositories.pdb
 C:\TripMe\TripMe\Server\TripMe.Repositories\bin\Debug\TripMe.InternalContracts.dll
 C:\TripMe\TripMe\Server\TripMe.Repositories\bin\Debug\TripMe.InternalContracts.pdb
+C:\ComputerScienceYear4\FinalProj\TripMe\Server\TripMe.Repositories\bin\Debug\TripMe.InternalContracts.dll
+C:\ComputerScienceYear4\FinalProj\TripMe\Server\TripMe.Repositories\bin\Debug\TripMe.InternalContracts.pdb
