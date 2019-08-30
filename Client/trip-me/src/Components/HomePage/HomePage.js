@@ -11,6 +11,8 @@ import { getKeyByValue } from "../../Helpers/Helpers";
 import { OrderDiaries } from "../../Enums/OrderDiariesEnum";
 import GlassesBooksImage from "../../../src/sources/images/image-glasses-booksjpg.jpg";
 import PlanImage from "../../../src/sources/images/plan-image.jpg";
+import TravelImg from "../../../src/sources/images/travel-image.jpg";
+import { Button } from "react-bootstrap";
 
 export default class HomePage extends Component {
   constructor(props) {
@@ -21,6 +23,10 @@ export default class HomePage extends Component {
       ShowLoader: true
     };
   }
+
+  SearchLink = "http://localhost:3000/#/SearchPage";
+  AddNewDiaryLink = "http://localhost:3000/#/CreateDiary";
+  LoginLink = "http://localhost:3000/#/LoginPage";
 
   renderDiary = diary => {
     var tripType = diary.TripType + 1;
@@ -90,6 +96,9 @@ export default class HomePage extends Component {
                 use our templates for reviews or create your own! manage your
                 existing diaries, comment and answer the community!{" "}
               </span>
+              <Button className="btn btn-secondary" href={this.AddNewDiaryLink}>
+                Create Your Diary Now!
+              </Button>
             </div>
             <div className="col md-5">
               <img
@@ -106,24 +115,65 @@ export default class HomePage extends Component {
           <hr />
           <div className="row featurette dataView">
             <div className="col md-7">
-              <h2>Plan your own trip!</h2>
-              <span className="text-muted">
-                {" "}
-                hanving trouble with planning a trip? No More !! Now with TripMe
-                you can search your desired trip by Budget, Time, Duration and
-                even By trip type!{" "}
-              </span>
+              <div className="row">
+                <div className="col-12">
+                  <h2>Plan your own trip!</h2>
+                  <span className="text-muted">
+                    {" "}
+                    having trouble with planning a trip? No More !! Now with
+                    TripMe you can search your desired trip by Budget, Time,
+                    Duration and even By trip type!{" "}
+                  </span>
+                </div>
+                <div className="col-12">
+                  <Button
+                    href={this.SearchLink}
+                    type="button"
+                    className="btn btn-secondary"
+                  >
+                    Click here and search your desired trip!
+                  </Button>
+                </div>
+              </div>
             </div>
             <div className="col md-5">
               <img className="info-image img-fluid mx-auto" src={PlanImage} />
             </div>
-            <hr></hr>
           </div>
+          <hr />
           <div className="most-recent">
             <h2>Most Recent</h2>
             {this.renderDiaries(this.state.DiariesMostRecent)}
           </div>
           <hr />
+          <div className="row featurette dataView">
+            <div className="col md-7">
+              <div className="row">
+                <div className="col-12">
+                  <h2>Travel around the world!</h2>
+                  <span className="text-muted">
+                    {" "}
+                    Do whatever you like at your own pace, budget and company
+                    and don't forget to document it! already have an account?
+                    login here!{" "}
+                  </span>
+                </div>
+                <div className="col-12">
+                  <Button
+                    href={this.LoginLink}
+                    type="button"
+                    className="btn btn-secondary"
+                  >
+                    Click here for login!
+                  </Button>
+                </div>
+              </div>
+            </div>
+            <div className="col md-5">
+              <img className="info-image img-fluid mx-auto" src={TravelImg} />
+            </div>
+          </div>
+          <hr></hr>
         </div>
       </div>
     );

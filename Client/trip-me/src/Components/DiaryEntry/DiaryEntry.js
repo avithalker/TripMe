@@ -30,7 +30,7 @@ class DiaryEntry extends Component {
               <h7 className="property">Writer:</h7> {this.props.Writer}{" "}
             </li>
           </p>
-          <Button href={this.fullDiaryUrl} className="btn btn-primary">
+          <Button href={this.fullDiaryUrl} className="btn btn-secondary">
             Watch Diary
           </Button>
         </div>
