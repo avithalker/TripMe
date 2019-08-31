@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <div>
         <NavBar />
-        <main class="container">
+        <main className="container-fluid">
           <AppRouter />
         </main>
       </div>

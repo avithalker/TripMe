@@ -4,6 +4,7 @@ import ExtreamRecommendationImg from "../../../sources/images/extream-recommenda
 import CouplesRecommnedation from "../../../sources/images/recommendation-couples.jpg";
 import FamilyRecommnedation from "../../../sources/images/family-recommendation.jpg";
 import RoadTripRecommnedation from "../../../sources/images/roadtrip-recommendation.jpg";
+import WelcomeCover from "../../../sources/images/welcome-cover.jpg";
 import TripMeLogo from "../../../sources/images/TripMeLogo.PNG";
 import "../CarouselNavigator/CarouselNavigator.css";
 import { Button } from "react-bootstrap";
@@ -13,12 +14,19 @@ export default class CarouselNavigator extends Component {
     super(props);
   }
 
+  SignUpLink = "http://localhost:3000/#/RegistrationPage";
+
   render() {
     return (
       <Carousel className="bg-light">
-        <Carousel.Item>
+        <Carousel.Item className="main-slider">
           <Carousel.Caption>
-            <img className="logo-image" src={TripMeLogo} />
+            <h1>Welcome To TripMe!!</h1>
+            <h4>Commerical Website For Travelers</h4>
+            <h6>Not a Member?! sign up here and start enjoying!</h6>
+            <button className="btn btn-info" href={this.SignUpLink}>
+              SignUp
+            </button>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>

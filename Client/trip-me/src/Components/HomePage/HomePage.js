@@ -96,7 +96,7 @@ export default class HomePage extends Component {
                 use our templates for reviews or create your own! manage your
                 existing diaries, comment and answer the community!{" "}
               </span>
-              <Button className="btn btn-secondary" href={this.AddNewDiaryLink}>
+              <Button className="btn btn-info" href={this.AddNewDiaryLink}>
                 Create Your Diary Now!
               </Button>
             </div>
@@ -105,14 +105,14 @@ export default class HomePage extends Component {
                 className="info-image img-fluid mx-auto"
                 src={GlassesBooksImage}
               />
-              <hr></hr>
             </div>
           </div>
+          <hr></hr>
           <div className="most-viewed">
             <h2>Most Viewed</h2>
             {this.renderDiaries(this.state.DiariesMostViewed)}
+            <hr />
           </div>
-          <hr />
           <div className="row featurette dataView">
             <div className="col md-7">
               <div className="row">
@@ -129,7 +129,7 @@ export default class HomePage extends Component {
                   <Button
                     href={this.SearchLink}
                     type="button"
-                    className="btn btn-secondary"
+                    className="btn btn-info"
                   >
                     Click here and search your desired trip!
                   </Button>
@@ -162,7 +162,7 @@ export default class HomePage extends Component {
                   <Button
                     href={this.LoginLink}
                     type="button"
-                    className="btn btn-secondary"
+                    className="btn btn-info"
                   >
                     Click here for login!
                   </Button>
