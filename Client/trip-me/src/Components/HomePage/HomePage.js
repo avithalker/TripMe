@@ -87,7 +87,7 @@ export default class HomePage extends Component {
           <CarouselNavigator />
         </div>
         <hr />
-        <div className="home-body">
+        <div className="home-body container">
           <div className="row featurette dataView">
             <div className="col md-7">
               <h2>Build your own trip diary!</h2>

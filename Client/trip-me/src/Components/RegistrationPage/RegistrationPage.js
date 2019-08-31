@@ -37,8 +37,8 @@ class RegistrationPage extends Component {
       return <AppLoader></AppLoader>;
     }
     return (
-      <div className="registration-main">
-        <div className="registration-form">
+      <div className="row registration-main">
+        <div className="col registration-form">
           <h1 className="display-4">Sign up</h1>
           <p className="lead">
             Sign up for free and enjoy all of TripMe features!
