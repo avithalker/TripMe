@@ -5,7 +5,6 @@ import CouplesRecommnedation from "../../../sources/images/recommendation-couple
 import FamilyRecommnedation from "../../../sources/images/family-recommendation.jpg";
 import RoadTripRecommnedation from "../../../sources/images/roadtrip-recommendation.jpg";
 import WelcomeCover from "../../../sources/images/welcome-cover.jpg";
-import TripMeLogo from "../../../sources/images/TripMeLogo.PNG";
 import "../CarouselNavigator/CarouselNavigator.css";
 import { Button } from "react-bootstrap";
 
