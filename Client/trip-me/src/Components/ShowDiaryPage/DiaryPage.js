@@ -12,18 +12,6 @@ export default class DiaryPage extends Component {
     super(props);
   }
 
-  renderReviews = () => {
-    return Object.values(this.props.Page.Reviews).map(review => {
-      return (
-        <div className="row reviewContainer">
-          <div className="col-12">
-            <Review review={review} />
-          </div>
-        </div>
-      );
-    });
-  };
-
   render() {
     return (
       <div>
@@ -33,5 +21,22 @@ export default class DiaryPage extends Component {
         <div className="reviews position-relative">{this.renderReviews()}</div>
       </div>
     );
+  }
+    
+  renderReviews = () => {
+    return Object.values(this.props.Page.Reviews).map(review => {
+      return (
+        <div className="row reviewContainer">
+          <div className="col-12">
+            <Review review={review} structureTypeId = {this.getReviewStructureByType(review.ReviewType)} />
+          </div>
+        </div>
+      );
+    });
+  };
+
+  getReviewStructureByType = reviewTypeId =>{
+      let reviewType = this.props.ReviewTypes.find(x=> x.TypeId === reviewTypeId);
+      return reviewType.StructureTypeId;
   }
 }
