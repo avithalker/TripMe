@@ -5,7 +5,9 @@
 }
 
 .registration-main {
-  background: url(../../sources/images/signup-cover.jpeg) no-repeat center fixed;
+  background: url(../../sources/images/signup-cover.jpeg) no-repeat center
+    center fixed;
+  background-size: cover;
   height: 660px;
 }
 
