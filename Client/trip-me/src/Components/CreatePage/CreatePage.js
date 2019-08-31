@@ -38,7 +38,7 @@ class CreatePage extends Component {
         <div key={index} className="row">
           <div className="col-12 position-relative">
             <ReviewQuestionnaire
-              ReviewTypeId={pageReview.ReviewType}
+              ReviewType={pageReview.ReviewType}
               onQuestionnaireAnswersChanged={answers =>
                 this.onQuestionnaireAnswersChanged(pageReview.objectId, answers)
               }
@@ -64,9 +64,9 @@ class CreatePage extends Component {
     this.setState({ isReviewSelectorOpen: !this.state.isReviewSelectorOpen });
   };
 
-  onReviewSelected = reviewTypeId => {
+  onReviewSelected = reviewType => {
     this.setState((state, props) => {
-      let pageReview = new PageReview(reviewTypeId, state.nextReviewObjectId);
+      let pageReview = new PageReview(reviewType, state.nextReviewObjectId);
       let pageReviews = [...state.pageReviews];
       pageReviews.push(pageReview);
       return {
@@ -203,9 +203,9 @@ class CreatePage extends Component {
   }
 }
 
-function PageReview(reviewTypeId, objectId) {
+function PageReview(reviewType, objectId) {
   this.objectId = objectId;
-  this.ReviewType = reviewTypeId;
+  this.ReviewType = reviewType;
   this.Answers = {};
   this.Caption = null;
 }

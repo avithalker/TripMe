@@ -3,6 +3,11 @@
   border: none;
 }
 
-.TextReview {
+.Caption {
   border: none;
+}
+
+.TextReview{
+    border: none;
+    height: 150px;
 }
