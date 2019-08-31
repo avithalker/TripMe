@@ -35,7 +35,7 @@ class ReviewSelector extends Component {
           <button
             type="button"
             className="btn btn-primary reviewItemBtn"
-            onClick={() => this.props.onReviewSelected(reviewType.TypeId)}
+            onClick={() => this.props.onReviewSelected(reviewType)}
           >
             {reviewType.Description}
           </button>
