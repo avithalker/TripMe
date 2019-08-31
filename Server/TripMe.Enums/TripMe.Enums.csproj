@@ -44,6 +44,7 @@
     <Compile Include="GeoData.cs" />
     <Compile Include="OrderParameter.cs" />
     <Compile Include="RegistrationStatus.cs" />
+    <Compile Include="ReviewStructureType.cs" />
     <Compile Include="SearchParameter.cs" />
     <Compile Include="TripType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

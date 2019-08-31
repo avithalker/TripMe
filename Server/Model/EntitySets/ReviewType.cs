@@ -11,5 +11,7 @@ namespace TripMe.Model.EntitySets
 
         [Column(TypeName = "VARCHAR")]
         public string Description { get; set; }
+
+        public short StructureTypeId { get; set; }
     }
 }
