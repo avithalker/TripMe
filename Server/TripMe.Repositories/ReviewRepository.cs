@@ -37,16 +37,31 @@ namespace TripMe.Repositories
             using (var dbContext = new TripMeContext())
             {
                 var result = (from review in dbContext.Reviews
-                          join questionAnswer in dbContext.ReviewAnswers on review.Id equals questionAnswer.ReviewId
-                          where review.PageId == pageId
-                          select new
-                          {
-                              review,
-                              questionAnswer
-                          }).ToList();
+                              join questionAnswer in dbContext.ReviewAnswers on review.Id equals questionAnswer.ReviewId into answers
+                              from questionAnswer in answers.DefaultIfEmpty()
+                              where review.PageId == pageId
+                              select new { review, questionAnswer }).ToList();
 
-                return result.GroupBy(resultRow => resultRow.review.Id)
-                    .ToDictionary(groupedAnswers => groupedAnswers.First().review, groupedAnswers => groupedAnswers.Select(x => x.questionAnswer).ToList());
+
+                Dictionary<Review, List<ReviewAnswer>> groupResult = result.GroupBy(resultRow => resultRow.review.Id)
+                    .ToDictionary(groupedAnswers => groupedAnswers.First().review,
+                    groupedAnswers => groupedAnswers.Select(x => x.questionAnswer).ToList());
+
+                Dictionary<Review, List<ReviewAnswer>> reviewsResult = new Dictionary<Review, List<ReviewAnswer>>();
+
+                foreach (var fullReview in groupResult) // remove null values because of the left join
+                {
+                    if(fullReview.Value.All(answer=> answer == null))
+                    {
+                        reviewsResult.Add(fullReview.Key, new List<ReviewAnswer>());
+                    }
+                    else
+                    {
+                        reviewsResult.Add(fullReview.Key, fullReview.Value);
+                    }
+                }
+
+                return reviewsResult;
             }
         }
     }

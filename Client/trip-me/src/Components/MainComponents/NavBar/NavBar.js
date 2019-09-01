@@ -5,7 +5,7 @@ import {
   currentAuthenticatedUser
 } from "../../../Utils/AuthenticationManager.js";
 import "./Navbar.css";
-import TripMeLogo from "../../../sources/images/TripMeLogo.png";
+import TripMeLogo from "../../../sources/images/TripMeLogo.PNG";
 
 const authenticationManager = new AuthenticationManager();
 
