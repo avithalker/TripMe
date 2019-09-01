@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./DiaryEntry.css";
-import DiaryFullView from "../DiaryFullView/DiaryFullView";
 import Button from "react-bootstrap/Button";
 import NoCoverImag from "../../sources/images/No_Cover.jpg";
 import { Card } from "@material-ui/core";
@@ -20,13 +19,10 @@ import CoupleImage from "../../sources/images/travel-image.jpg";
 import RemoveRedEyeIcon from "@material-ui/icons/RemoveRedEye";
 import LikeIcon from "@material-ui/icons/ThumbUp";
 
-class DiaryEntry extends Component {
+export default class DiaryEntry2 extends Component {
   constructor(props) {
     super(props);
   }
-
-  fullDiaryUrl = "http://localhost:3000/#/ShowDiary?Id=" + this.props.Id;
-
   render() {
     return (
       <Card className="card-diary">
@@ -35,12 +31,12 @@ class DiaryEntry extends Component {
             component="img"
             alt="Contemplative Reptile"
             height="140"
-            image={this.getCoverImage()}
+            image={CoupleImage}
             title="Contemplative Reptile"
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
-              {this.props.Name}
+              Sahar Diary
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
               <List>
@@ -48,21 +44,19 @@ class DiaryEntry extends Component {
                   <ListItemIcon>
                     <FlightLandIcon />
                   </ListItemIcon>
-                  <ListItemText
-                    primary={"Destination:" + this.props.Destination}
-                  />
+                  <ListItemText primary={"Destination:   Atlanta"} />
                 </ListItem>
                 <ListItem>
                   <ListItemIcon>
                     <PersonIcon />
                   </ListItemIcon>
-                  <ListItemText primary={"Writer:" + this.props.Writer} />
+                  <ListItemText primary={"Writer:   Sahar Metzger"} />
                 </ListItem>
                 <ListItem>
                   <ListItemIcon>
                     <CardTravelIcon />
                   </ListItemIcon>
-                  <ListItemText primary={"Type:" + this.props.Type} />
+                  <ListItemText primary={"Type:   HoneyMoon"} />
                 </ListItem>
               </List>
             </Typography>
@@ -80,23 +74,11 @@ class DiaryEntry extends Component {
           <hr></hr>
         </CardActionArea>
         <CardActions>
-          <Button
-            href={this.fullDiaryUrl}
-            className="btn btn-info col align-self-end"
-          >
+          <Button className="btn btn-info col align-self-end">
             Watch Diary
           </Button>
         </CardActions>
       </Card>
     );
   }
-
-  getCoverImage = () => {
-    if (this.props.CoverPhoto === null || this.props.CoverPhoto === "") {
-      return NoCoverImag;
-    }
-    return this.props.CoverPhoto;
-  };
 }
-
-export default DiaryEntry;
