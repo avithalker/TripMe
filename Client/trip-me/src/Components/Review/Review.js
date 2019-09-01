@@ -14,34 +14,10 @@ class Review extends Component {
   }
 
   componentDidMount() {
-    this.getReviewByTypeId(this.props.review.ReviewType);
+    this.getReviewQuestionnaireByTypeId(this.props.review.ReviewType);
   }
-
-  getReviewByTypeId = reviewId => {
-    var tripMeHttpClient = new TripMeHttpClient();
-    tripMeHttpClient.getReviewQuestionnaireById(reviewId).then(response => {
-      this.setState({ Fields: response.Fields, isReviewLoaded: true });
-    });
-  };
-
-  ReviewFields = fields => {
-    var fields = fields.map((field, index) => {
-      return (
-        <div className="col-12">
-          <ReviewField
-            key={index}
-            FieldTypeId={field.FieldTypeId}
-            DisplayText={field.DisplayText}
-            Answer={this.props.review.Answers[field.QuestionId]}
-            EditMode={false}
-          />
-        </div>
-      );
-    });
-    return fields;
-  };
-
-  render() {
+    
+    render() {
     if (this.state.ReviewLoaded) {
       return <AppLoader />;
     }
@@ -62,5 +38,29 @@ class Review extends Component {
       </div>
     );
   }
+
+  getReviewQuestionnaireByTypeId = reviewTypeId => {
+    var tripMeHttpClient = new TripMeHttpClient();
+    tripMeHttpClient.getReviewQuestionnaireById(reviewTypeId).then(response => {
+      this.setState({ Fields: response.Fields, isReviewLoaded: true });
+    });
+  };
+
+  ReviewFields = fields => {
+    var fields = fields.map((field, index) => {
+      return (
+        <div className="col-12">
+          <ReviewField
+            key={index}
+            FieldTypeId={field.FieldTypeId}
+            DisplayText={field.DisplayText}
+            Answer={this.props.review.Answers[field.QuestionId]}
+            EditMode={false}
+          />
+        </div>
+      );
+    });
+    return fields;
+  };
 }
 export default Review;

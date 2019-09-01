@@ -25,13 +25,18 @@ class DiaryFullView extends Component {
       isLoading: true,
       ShowDiaryData: false,
       pages: null,
-      SelectedPage: null
+      SelectedPage: null,
+      ReviewTypes: []
     };
   }
 
   componentDidMount() {
     var values = queryString.parse(this.props.location.search);
     var caller = new TripMeHttpClient();
+      
+      caller.getReviewTypes().then(reviewTypes=> {
+          this.setState({ReviewTypes: reviewTypes});
+      });
 
     caller.getDiaryById(values.Id).then(diaryResponse => {
       caller.getPageList(values.Id).then(PageResponse => {
@@ -82,7 +87,7 @@ class DiaryFullView extends Component {
         </div>
       );
     }
-    return <DiaryPage Page={this.state.SelectedPage} />;
+    return <DiaryPage Page={this.state.SelectedPage} ReviewTypes = {this.state.ReviewTypes}/>;
   };
 
   RenderAddPageDiv = () => {

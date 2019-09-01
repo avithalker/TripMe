@@ -111,7 +111,7 @@ class CreatePage extends Component {
     event.preventDefault();
     let pageReviews = this.state.pageReviews.map((pageReview, index) => {
       return {
-        ReviewType: pageReview.ReviewType,
+        ReviewType: pageReview.ReviewType.TypeId,
         Answers: pageReview.Answers,
         Caption: pageReview.Caption,
         DisplayOrder: index
