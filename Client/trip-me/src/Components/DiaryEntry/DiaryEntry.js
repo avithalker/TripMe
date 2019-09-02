@@ -19,6 +19,8 @@ import CardTravelIcon from "@material-ui/icons/CardTravel";
 import CoupleImage from "../../sources/images/travel-image.jpg";
 import RemoveRedEyeIcon from "@material-ui/icons/RemoveRedEye";
 import LikeIcon from "@material-ui/icons/ThumbUp";
+import MoneyIcon from "@material-ui/icons/AttachMoney";
+import { CountryCodeDictionary } from "../../Enums/CountryEnum.js";
 
 class DiaryEntry extends Component {
   constructor(props) {
@@ -42,6 +44,9 @@ class DiaryEntry extends Component {
             <Typography gutterBottom variant="h5" component="h2">
               {this.props.Name}
             </Typography>
+            <Typography color="textSecondary">
+              {"By " + this.props.Writer}
+            </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
               <List>
                 <ListItem>
@@ -49,14 +54,19 @@ class DiaryEntry extends Component {
                     <FlightLandIcon />
                   </ListItemIcon>
                   <ListItemText
-                    primary={"Destination:" + this.props.Destination}
+                    primary={
+                      "Destination:" +
+                      this.getFormattedCountries(this.props.Destination)
+                    }
                   />
                 </ListItem>
                 <ListItem>
                   <ListItemIcon>
-                    <PersonIcon />
+                    <MoneyIcon />
                   </ListItemIcon>
-                  <ListItemText primary={"Writer:" + this.props.Writer} />
+                  <ListItemText
+                    primary={"Approximate Price:" + this.props.ApproximatePrice}
+                  />
                 </ListItem>
                 <ListItem>
                   <ListItemIcon>
@@ -90,6 +100,15 @@ class DiaryEntry extends Component {
       </Card>
     );
   }
+
+  getFormattedCountries = countriesCodes => {
+    let countriesFullName = [];
+    countriesCodes.forEach(code => {
+      countriesFullName.push(CountryCodeDictionary[code]);
+    });
+
+    return countriesFullName.join();
+  };
 
   getCoverImage = () => {
     if (this.props.CoverPhoto === null || this.props.CoverPhoto === "") {

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./DiaryEntry.css";
 import Button from "react-bootstrap/Button";
-import NoCoverImag from "../../sources/images/No_Cover.jpg";
 import { Card } from "@material-ui/core";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
