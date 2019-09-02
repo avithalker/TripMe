@@ -56,7 +56,7 @@ export default class SearchPage extends Component {
       return <h1>No diaries match</h1>;
     }
     return (
-      <div>
+      <div className="container">
         <SearchEngine
           UpdateResultsOnScreen={this.SetDiaries}
           OnFetchDiaries={this.SetOnFetchDiariesState}
