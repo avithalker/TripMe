@@ -33,10 +33,10 @@ class DiaryFullView extends Component {
   componentDidMount() {
     var values = queryString.parse(this.props.location.search);
     var caller = new TripMeHttpClient();
-      
-      caller.getReviewTypes().then(reviewTypes=> {
-          this.setState({ReviewTypes: reviewTypes});
-      });
+
+    caller.getReviewTypes().then(reviewTypes => {
+      this.setState({ ReviewTypes: reviewTypes });
+    });
 
     caller.getDiaryById(values.Id).then(diaryResponse => {
       caller.getPageList(values.Id).then(PageResponse => {
@@ -87,7 +87,12 @@ class DiaryFullView extends Component {
         </div>
       );
     }
-    return <DiaryPage Page={this.state.SelectedPage} ReviewTypes = {this.state.ReviewTypes}/>;
+    return (
+      <DiaryPage
+        Page={this.state.SelectedPage}
+        ReviewTypes={this.state.ReviewTypes}
+      />
+    );
   };
 
   RenderAddPageDiv = () => {
@@ -161,7 +166,7 @@ class DiaryFullView extends Component {
           <div className="col-xs-2 p-0">More info...</div>
         </div>
         <Collapse in={this.state.ShowDiaryData}>
-          <div className="card-header diary-additional-container">
+          <div className="diary-additional-container">
             <DiaryAdditionalData diaryData={this.state.diary} />
           </div>
         </Collapse>
