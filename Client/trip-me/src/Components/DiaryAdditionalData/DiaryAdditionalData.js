@@ -17,7 +17,8 @@ import EndDateIcon from "@material-ui/icons/Update";
 import MoneyIcon from "@material-ui/icons/AttachMoney";
 import PeopleIcon from "@material-ui/icons/People";
 import FlightLandIcon from "@material-ui/icons/FlightLand";
-
+import { getKeyByValue } from "../../Helpers/Helpers";
+import TripTypeEnum from "../../Enums/TripTypeEnum";
 import "../DiaryAdditionalData/DiaryAdditionalData.css";
 
 export default class DiaryAdditionalData extends Component {
@@ -35,46 +36,61 @@ export default class DiaryAdditionalData extends Component {
               <div className="row">
                 <div className="col">
                   <div className="row">
-                    <div className="col-8">
-                      <div className="row">
-                        <div className="col-3">
+                    <div className="col-5">
+                      <div className="row p-0">
+                        <div className="col-2">
                           <CardTravelIcon></CardTravelIcon>
                         </div>
-                        <div className="col-6">TripType:</div>
+                        <div className="col-6">
+                          <p className="field-text">TripType:</p>
+                        </div>
                       </div>
                     </div>
-                    <div className="col-4 p-0">
-                      {this.props.diaryData.TripType}
+                    <div className="col-3 p-0">
+                      <p className="field-text">
+                        {getKeyByValue(
+                          TripTypeEnum,
+                          this.props.diaryData.TripType
+                        )}
+                      </p>
                     </div>
                   </div>
                 </div>
                 <div className="col">
                   <div className="row">
-                    <div className="col-8">
+                    <div className="col-6">
                       <div className="row">
-                        <div className="col-3">
+                        <div className="col-2">
                           <CalenderIcon></CalenderIcon>
                         </div>
-                        <div className="col-6">Start Date:</div>
+                        <div className="col-8">
+                          <p className="field-text">Start Date:</p>
+                        </div>
                       </div>
                     </div>
                     <div className="col-4 p-0">
-                      {this.getFormattedDate(this.props.diaryData.StartDate)}
+                      <p className="field-text">
+                        {this.getFormattedDate(this.props.diaryData.StartDate)}
+                      </p>
                     </div>
                   </div>
                 </div>
                 <div className="col">
                   <div className="row">
-                    <div className="col-7">
+                    <div className="col-6">
                       <div className="row">
-                        <div className="col-3">
+                        <div className="col-2">
                           <EndDateIcon></EndDateIcon>
                         </div>
-                        <div className="col-8">End Date:</div>
+                        <div className="col-8">
+                          <p className="field-text">End Date:</p>
+                        </div>
                       </div>
                     </div>
                     <div className="col-4 p-0">
-                      {this.getFormattedDate(this.props.diaryData.EndDate)}
+                      <p className="field-text">
+                        {this.getFormattedDate(this.props.diaryData.EndDate)}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -83,89 +99,60 @@ export default class DiaryAdditionalData extends Component {
                 <div className="col">
                   <div className="row">
                     <div className="col-8">
-                      <div className="row">
-                        <div className="col-3">
+                      <div className="row p-0">
+                        <div className="col-2">
                           <MoneyIcon></MoneyIcon>
                         </div>
-                        <div className="col-6">Approximate Price:</div>
-                      </div>
-                    </div>
-                    <div className="col-4 p-0">
-                      {this.props.diaryData.ApproximatePrice}
-                    </div>
-                  </div>
-                </div>{" "}
-                <div className="col">
-                  <div className="row">
-                    <div className="col-8">
-                      <div className="row">
-                        <div className="col-3">
-                          <PeopleIcon></PeopleIcon>
+                        <div className="col-9">
+                          <p className="field-text">Approximate Price:</p>
                         </div>
-                        <div className="col-6">Number Of Travelers:</div>
                       </div>
                     </div>
                     <div className="col-4 p-0">
-                      {this.props.diaryData.TravelersCount}
-                    </div>
-                  </div>
-                </div>{" "}
-                <div className="col">
-                  <div className="row">
-                    <div className="col-8">
-                      <div className="row">
-                        <div className="col-3">
-                          <FlightLandIcon></FlightLandIcon>
-                        </div>
-                        <div className="col-6">Countries:</div>
-                      </div>
-                    </div>
-                    <div className="col-4 p-0">
-                      {this.getFormattedCountries(
-                        this.props.diaryData.Countries
-                      )}
+                      <p className="field-text">
+                        {this.props.diaryData.ApproximatePrice}
+                      </p>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="row top-buffer">
                 <div className="col">
                   <div className="row">
                     <div className="col-8">
                       <div className="row">
-                        <div className="col-3">
-                          <CardTravelIcon></CardTravelIcon>
+                        <div className="col-2">
+                          <PeopleIcon></PeopleIcon>
                         </div>
-                        <div className="col-6">Name:</div>
+                        <div className="col-10">
+                          <p className="field-text">Number Of Travelers:</p>
+                        </div>
                       </div>
                     </div>
-                    <div className="col-4 p-0">Sahar</div>
+                    <div className="col-2 p-0">
+                      <p className="field-text">
+                        {this.props.diaryData.TravelersCount}
+                      </p>
+                    </div>
                   </div>
                 </div>{" "}
                 <div className="col">
                   <div className="row">
-                    <div className="col-8">
+                    <div className="col-6">
                       <div className="row">
-                        <div className="col-3">
-                          <CardTravelIcon></CardTravelIcon>
+                        <div className="col-2">
+                          <FlightLandIcon></FlightLandIcon>
                         </div>
-                        <div className="col-6">Name:</div>
+                        <div className="col-8">
+                          <p className="field-text">Countries:</p>
+                        </div>
                       </div>
                     </div>
-                    <div className="col-4 p-0">Sahar</div>
-                  </div>
-                </div>{" "}
-                <div className="col">
-                  <div className="row">
-                    <div className="col-8">
-                      <div className="row">
-                        <div className="col-3">
-                          <CardTravelIcon></CardTravelIcon>
-                        </div>
-                        <div className="col-6">Name:</div>
-                      </div>
+                    <div className="col-4 p-0">
+                      <p className="field-text">
+                        {this.getFormattedCountries(
+                          this.props.diaryData.Countries
+                        )}
+                      </p>
                     </div>
-                    <div className="col-4 p-0">Sahar</div>
                   </div>
                 </div>
               </div>

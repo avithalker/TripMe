@@ -9,12 +9,14 @@ import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 import Collapse from "react-bootstrap/Collapse";
 import IconButton from "@material-ui/core/IconButton";
 import DiaryAdditionalData from "../DiaryAdditionalData/DiaryAdditionalData";
-import { Card, CardBody } from "reactstrap";
 import "../DiaryFullView/DiaryFullView.css";
 import DiaryPage from "../ShowDiaryPage/DiaryPage";
 import Paginator from "../Shared/Paginator/Paginator";
 import { AuthenticationManager } from "../../Utils/AuthenticationManager.js";
 import NoCoverImag from "../../sources/images/No_Cover.jpg";
+import CardMedia from "@material-ui/core/CardMedia";
+import { Card } from "@material-ui/core";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 class DiaryFullView extends Component {
   constructor(props) {
@@ -26,7 +28,8 @@ class DiaryFullView extends Component {
       ShowDiaryData: false,
       pages: null,
       SelectedPage: null,
-      ReviewTypes: []
+      ReviewTypes: [],
+      ArrowClassButton: "up-arrow"
     };
   }
 
@@ -112,6 +115,14 @@ class DiaryFullView extends Component {
     }
   };
 
+  GetClassAdditionalInfo = () => {
+    if (this.state.ShowDiaryData) {
+      return "down-arrow";
+    }
+
+    return "up-arrow";
+  };
+
   RedirectToCreatePage = () => {
     var url = "/CreatePage?diaryId=" + this.state.diary.Id;
     this.props.history.push(url);
@@ -138,32 +149,36 @@ class DiaryFullView extends Component {
       <div className="diary p-3">
         <div className="row">
           <div className="col-sm-4">
-            <img
-              src={this.getCoverImage()}
-              alt=""
-              className="img-thumbnail diary-cover-image"
-            ></img>
+            <Card>
+              <CardMedia
+                component="img"
+                alt="Contemplative Reptile"
+                height="140"
+                image={this.getCoverImage()}
+                title="Contemplative Reptile"
+                className="img-thumbnail diary-cover-image"
+              />
+            </Card>
           </div>
           <div className="col-sm-8">
             <h2>{this.state.diary.Name}</h2>
+            <p className="text-secondary">By Sahar Haltzi</p>
           </div>
         </div>
         <div className="row more-info-container">
           <div className="col-xs-1 p-0">
-            <IconButton size="small">
-              <ArrowDownwardIcon
-                fontSize="inherit"
-                aria-controls="additional-diary-data"
-                aria-expanded={this.state.ShowDiaryData}
-                onClick={() => {
-                  this.setState({
-                    ShowDiaryData: !this.state.ShowDiaryData
-                  });
-                }}
-              />
+            <IconButton
+              className={this.GetClassAdditionalInfo()}
+              aria-expanded={this.state.ShowDiaryData}
+              onClick={() => {
+                this.setState({
+                  ShowDiaryData: !this.state.ShowDiaryData
+                });
+              }}
+            >
+              <ExpandMoreIcon />
             </IconButton>
           </div>
-          <div className="col-xs-2 p-0">More info...</div>
         </div>
         <Collapse in={this.state.ShowDiaryData}>
           <div className="diary-additional-container">

@@ -39,3 +39,10 @@
   padding-top: 20%;
   height: 100%;
 }
+
+.down-arrow {
+  transform: rotate(180deg);
+}
+
+.up-arrow {
+}
