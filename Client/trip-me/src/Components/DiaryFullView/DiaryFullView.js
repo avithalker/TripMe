@@ -15,8 +15,14 @@ import Paginator from "../Shared/Paginator/Paginator";
 import { AuthenticationManager } from "../../Utils/AuthenticationManager.js";
 import NoCoverImag from "../../sources/images/No_Cover.jpg";
 import CardMedia from "@material-ui/core/CardMedia";
-import { Card } from "@material-ui/core";
+import { Card, CardContent } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import LikeIcon from "@material-ui/icons/ThumbUp";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import RemoveRedEyeIcon from "@material-ui/icons/RemoveRedEye";
+import ListItemText from "@material-ui/core/ListItemText";
 
 class DiaryFullView extends Component {
   constructor(props) {
@@ -29,7 +35,8 @@ class DiaryFullView extends Component {
       pages: null,
       SelectedPage: null,
       ReviewTypes: [],
-      ArrowClassButton: "up-arrow"
+      ArrowClassButton: "up-arrow",
+      LikeClicked: false
     };
   }
 
@@ -115,6 +122,18 @@ class DiaryFullView extends Component {
     }
   };
 
+  OnLikeClicked = () => {
+    this.setState({ LikeClicked: !this.state.LikeClicked });
+  };
+
+  GetLikeColor = () => {
+    debugger;
+    if (this.state.LikeClicked) {
+      return "primary";
+    }
+    return "";
+  };
+
   GetClassAdditionalInfo = () => {
     if (this.state.ShowDiaryData) {
       return "down-arrow";
@@ -160,9 +179,37 @@ class DiaryFullView extends Component {
               />
             </Card>
           </div>
-          <div className="col-sm-8">
+          <div className="col-sm-5">
             <h2>{this.state.diary.Name}</h2>
             <p className="text-secondary">By Sahar Haltzi</p>
+            <div className="description-diary">
+              <CardContent className="diary-content">
+                bld bla bla this is a description of the diary bla bla bla bla
+              </CardContent>
+            </div>
+            <List>
+              <ListItem>
+                <ListItemIcon>
+                  <IconButton
+                    color={this.GetLikeColor()}
+                    className="like-button"
+                    aria-label="like"
+                    onClick={this.OnLikeClicked}
+                  >
+                    <LikeIcon className="no-focus" />
+                  </IconButton>
+                </ListItemIcon>
+                <ListItemText className="text-secondary">
+                  234 likes
+                </ListItemText>
+              </ListItem>
+              <ListItem>
+                <ListItemIcon className="p-2">
+                  <RemoveRedEyeIcon className="no-focus"></RemoveRedEyeIcon>
+                </ListItemIcon>
+                <ListItemText className="text-secondary">45 views</ListItemText>
+              </ListItem>
+            </List>
           </div>
         </div>
         <div className="row more-info-container">
@@ -178,6 +225,7 @@ class DiaryFullView extends Component {
             >
               <ExpandMoreIcon />
             </IconButton>
+            <h7 className="text-secondary">More Info...</h7>
           </div>
         </div>
         <Collapse in={this.state.ShowDiaryData}>

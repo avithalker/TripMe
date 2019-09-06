@@ -46,3 +46,15 @@
 
 .up-arrow {
 }
+.diary-content {
+  flex: 1 0 auto;
+}
+
+.description-diary {
+  display: flex;
+  flex-direction: column;
+}
+
+.MuiIconButton-colorPrimary:focus {
+  outline: 0;
+}
