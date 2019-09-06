@@ -38,6 +38,7 @@ export default class HomePage extends Component {
         Type={getKeyByValue(TripTypeEnum, tripType)}
         CoverPhoto={diary.CoverPhotoUrl}
         Id={diary.Id}
+        Writer={diary.Writer.UserName}
       />
     );
   };

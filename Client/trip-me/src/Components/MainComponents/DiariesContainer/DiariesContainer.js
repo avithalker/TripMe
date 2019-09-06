@@ -36,8 +36,9 @@ export default class DiariesContainer extends Component {
         Name={diary.Name}
         Destination={diary.Countries}
         Type={getKeyByValue(TripTypeEnum, tripType)}
-        CoverPhoto = {diary.CoverPhotoUrl}
+        CoverPhoto={diary.CoverPhotoUrl}
         Id={diary.Id}
+        Writer={diary.Writer.UserName}
       />
     );
   };

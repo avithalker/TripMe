@@ -26,6 +26,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import { faThumbsUp as LikeColored } from "@fortawesome/free-solid-svg-icons";
+import { faFile } from "@fortawesome/free-regular-svg-icons";
 
 class DiaryFullView extends Component {
   constructor(props) {
@@ -117,9 +118,11 @@ class DiaryFullView extends Component {
     ) {
       return (
         <div className="addPageButton">
-          <Button variant="success" onClick={this.addPage}>
-            + Add New Page
-          </Button>
+          <Card>
+            <Button variant="info" onClick={this.addPage}>
+              <FontAwesomeIcon icon={faFile}></FontAwesomeIcon>+ Add New Page
+            </Button>
+          </Card>
         </div>
       );
     }
@@ -192,7 +195,9 @@ class DiaryFullView extends Component {
           </div>
           <div className="col-sm-5">
             <h2>{this.state.diary.Name}</h2>
-            <p className="text-secondary">By Sahar Haltzi</p>
+            <p className="text-secondary">
+              By {this.state.diary.Writer.UserName}
+            </p>
             <div className="description-diary">
               <CardContent className="diary-content">
                 bld bla bla this is a description of the diary bla bla bla bla
