@@ -63,11 +63,8 @@ namespace TripMe.Service.Getters
 
             foreach (var review in pageReviews)
             {
-                ReviewQuestionnaireAnswerDto questionAnswersDto = new ReviewQuestionnaireAnswerDto();
+                ReviewQuestionnaireAnswerDto questionAnswersDto = Mapper.Map<ReviewQuestionnaireAnswerDto>(review.Key);
 
-                questionAnswersDto.ReviewType = review.Key.ReviewTypeId;
-                questionAnswersDto.DisplayOrder = review.Key.DisplayOrder;
-                questionAnswersDto.Caption = review.Key.Caption;
                 foreach (var questionAnswer in review.Value)
                 {
                     questionAnswersDto.Answers.Add(questionAnswer.QuestionId, questionAnswer.Answer);
