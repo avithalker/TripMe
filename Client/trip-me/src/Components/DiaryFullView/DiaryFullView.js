@@ -23,6 +23,9 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import RemoveRedEyeIcon from "@material-ui/icons/RemoveRedEye";
 import ListItemText from "@material-ui/core/ListItemText";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
+import { faThumbsUp as LikeColored } from "@fortawesome/free-solid-svg-icons";
 
 class DiaryFullView extends Component {
   constructor(props) {
@@ -147,6 +150,14 @@ class DiaryFullView extends Component {
     this.props.history.push(url);
   };
 
+  GetLikeIcon = () => {
+    if (this.state.LikeClicked) {
+      return LikeColored;
+    }
+
+    return faThumbsUp;
+  };
+
   getCoverImage = () => {
     if (
       this.state.diary.CoverPhotoUrl === null ||
@@ -190,26 +201,38 @@ class DiaryFullView extends Component {
             <List>
               <ListItem>
                 <ListItemIcon>
-                  <IconButton
-                    color={this.GetLikeColor()}
-                    className="like-button"
-                    aria-label="like"
-                    onClick={this.OnLikeClicked}
-                  >
-                    <LikeIcon className="no-focus" />
-                  </IconButton>
+                  <LikeIcon className="no-focus" />
                 </ListItemIcon>
                 <ListItemText className="text-secondary">
                   234 likes
                 </ListItemText>
               </ListItem>
               <ListItem>
-                <ListItemIcon className="p-2">
+                <ListItemIcon>
                   <RemoveRedEyeIcon className="no-focus"></RemoveRedEyeIcon>
                 </ListItemIcon>
                 <ListItemText className="text-secondary">45 views</ListItemText>
               </ListItem>
             </List>
+          </div>
+          <div className="col-3">
+            <span class="like-button">
+              <Card>
+                <IconButton
+                  color={this.GetLikeColor()}
+                  className="like-button"
+                  aria-label="like"
+                  onClick={this.OnLikeClicked}
+                >
+                  <FontAwesomeIcon
+                    className="like-icon"
+                    icon={this.GetLikeIcon()}
+                    size="2x"
+                    color="Dodgerblue"
+                  ></FontAwesomeIcon>
+                </IconButton>
+              </Card>
+            </span>
           </div>
         </div>
         <div className="row more-info-container">

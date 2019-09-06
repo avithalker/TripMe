@@ -58,3 +58,7 @@
 .MuiIconButton-colorPrimary:focus {
   outline: 0;
 }
+
+.like-button {
+  float: right;
+}
