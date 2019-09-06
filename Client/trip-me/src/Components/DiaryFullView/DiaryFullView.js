@@ -77,6 +77,7 @@ class DiaryFullView extends Component {
   }
 
   fetchPageByIndex = index => {
+    console.log(this.state);
     var caller = new TripMeHttpClient();
     caller
       .getPageById(this.state.diary.Id, this.state.pages[index].PageId)
@@ -86,6 +87,7 @@ class DiaryFullView extends Component {
   };
 
   ChangeSelectedPage = index => {
+    debugger;
     this.fetchPageByIndex(index);
   };
 
@@ -222,7 +224,6 @@ class DiaryFullView extends Component {
           </div>
           <div className="col-3">
             <span class="like-button">
-              <Card>
                 <IconButton
                   color={this.GetLikeColor()}
                   className="like-button"
@@ -236,7 +237,6 @@ class DiaryFullView extends Component {
                     color="Dodgerblue"
                   ></FontAwesomeIcon>
                 </IconButton>
-              </Card>
             </span>
           </div>
         </div>

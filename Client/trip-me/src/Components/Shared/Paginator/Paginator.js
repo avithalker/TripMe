@@ -5,7 +5,7 @@ export default class Paginator extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currItem: 1
+      currItem: 0
     };
   }
 
@@ -25,9 +25,9 @@ export default class Paginator extends Component {
 
   handleClick = event => {
     event.preventDefault();
-    this.props.OnSelect(event.target.id);
+    this.props.OnSelect(event.target.id - 1);
     this.setState({
-      currItem: Number(event.target.id)
+      currItem: Number(event.target.id -1)
     });
   };
   handleFirstClick = () => {
@@ -36,17 +36,17 @@ export default class Paginator extends Component {
   };
 
   handlePreviousClick = () => {
-    this.props.OnSelect(this.state.currItem - 2);
+    this.props.OnSelect(this.props.currItem - 1);
     this.setState({ currItem: this.state.currItem - 1 });
   };
 
   handleLastClick = () => {
     this.props.OnSelect(this.state.numOfItems - 1);
-    this.setState({ currItem: this.props.numOfItems });
+    this.setState({ currItem: this.props.numOfItems - 1 });
   };
 
   handleNextClick = () => {
-    this.props.OnSelect(this.state.currItem + 1 - 1);
+    this.props.OnSelect(this.state.currItem + 1);
     this.setState({ currItem: this.state.currItem + 1 });
   };
 
@@ -54,14 +54,14 @@ export default class Paginator extends Component {
     return (
       <Pagination className="pagination">
         <PaginationItem>
-          {this.state.currItem == 1 ? (
+          {this.state.currItem == 0 ? (
             <PaginationLink first disabled />
           ) : (
             <PaginationLink first onClick={this.handleFirstClick} />
           )}
         </PaginationItem>
         <PaginationItem>
-          {this.state.currItem == 1 ? (
+          {this.state.currItem == 0 ? (
             <PaginationLink previous disabled />
           ) : (
             <PaginationLink previous onClick={this.handlePreviousClick} />
@@ -69,14 +69,14 @@ export default class Paginator extends Component {
         </PaginationItem>
         {this.renderPaginationItems()}
         <PaginationItem>
-          {this.state.currItem == this.props.numOfItems ? (
+          {this.state.currItem == (this.props.numOfItems - 1) ? (
             <PaginationLink next disabled />
           ) : (
             <PaginationLink next onClick={this.handleNextClick} />
           )}
         </PaginationItem>
         <PaginationItem>
-          {this.state.currItem == this.props.numOfItems ? (
+          {this.state.currItem == (this.props.numOfItems -1) ? (
             <PaginationLink last disabled />
           ) : (
             <PaginationLink last onClick={this.handleLastClick} />
