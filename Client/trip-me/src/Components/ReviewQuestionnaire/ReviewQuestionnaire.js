@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import TripMeHttpClient from "../../Services/TripMeHttpClient.js";
 import ReviewField from "../ReviewField/ReviewField.js";
-import "./ReviewQuestionnaire.css";
+import ImageUploader from "react-images-upload";
 import {ReviewStructureType} from "../../Enums/ReviewStructureTypeEnum.js";
+import CloudinaryHttpClient from "../../Services/CloudinaryHttpClient.js";
+import "./ReviewQuestionnaire.css";
 
 const tripMeHttpClient = new TripMeHttpClient();
 
@@ -50,9 +52,40 @@ class ReviewQuestionnaire extends Component {
               return this.buildFreeTextReview();
           }
           case  ReviewStructureType.IMAGE:{
-              break;
+              return this.buildImageReview();
           }
       }
+  }
+  
+  buildImageReview(){
+      return(
+          <div>
+              <div className = "row">
+                  <div className = "col-sm-1"></div>
+                  <div className = "col-sm-10">
+                    <ImageUploader
+                      withIcon={true}
+                      buttonText="Upload your photo"
+                      onChange={this.onPhotoSelected}
+                      imgExtension={[".jpg", ".gif", ".png", ".gif"]}
+                      maxFileSize={5242880}
+                      withPreview={true}
+                      singleImage={true}
+                    />
+                 </div>
+                  <div className = "col-sm-1"></div>
+              </div>
+              <div className = "row">
+                  <div className = "col-sm-1"></div>
+                  <div className = "col-sm-10">
+                      <textarea className = "w-100" placeholder = "Write your caption here..."
+                        onChange = {this.onCaptionChanged}>
+                      </textarea>
+                  </div>
+                  <div className = "col-sm-1"></div>
+              </div>
+          </div>
+      )
   }
   
   buildFreeTextReview = ()=>{
@@ -113,6 +146,24 @@ class ReviewQuestionnaire extends Component {
     onCaptionChanged = event =>{
         this.props.onCaptionChanged(event.target.value);
     }
+    
+  onPhotoSelected = photoArray => {
+      if(photoArray.length === 0){
+          return;
+      }
+      this.uploadDiaryCoverPhoto(photoArray[0]).then(photoUrl=>{
+          this.props.onPhotoSelected(photoUrl);
+      });
+    
+      this.setState({
+      CoverPhoto: photoArray.length === 0 ? null : photoArray[0]
+    });
+  };
+
+  uploadDiaryCoverPhoto = (photo) => {
+    let cloudinaryHttpClient= new CloudinaryHttpClient();
+    return cloudinaryHttpClient.uploadPhoto(photo);
+  };
 
 }
 
