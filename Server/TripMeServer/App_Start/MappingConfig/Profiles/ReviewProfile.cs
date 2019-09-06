@@ -12,6 +12,8 @@ namespace TripMeServer.App_Start.MappingConfig.Profiles
             CreateMap<ReviewType, ReviewTypeDto>().ForMember(dest => dest.StructureTypeId, opt => opt.MapFrom(src => (ReviewStructureType)src.StructureTypeId));
             CreateMap<ReviewQuestion, ReviewFieldDto>().ForMember(dest => dest.QuestionId, opt => opt.MapFrom(src => src.Id));
             CreateMap<Review, ReviewQuestionnaireAnswerDto>().ForMember(dest => dest.ReviewType, opt => opt.MapFrom(src => src.ReviewTypeId));
+            CreateMap<ReviewQuestionnaireAnswerDto, Review>().ForMember(dest => dest.ReviewTypeId, opt => opt.MapFrom(src => src.ReviewType));
+
         }
     }
 }

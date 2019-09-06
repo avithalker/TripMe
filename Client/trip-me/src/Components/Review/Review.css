@@ -1,3 +1,7 @@
 .review-caption{
     white-space: pre-wrap;
 }
+
+.review-image{
+    max-height: 400px;
+}
