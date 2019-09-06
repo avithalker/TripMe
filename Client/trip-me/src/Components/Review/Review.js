@@ -33,7 +33,7 @@ class Review extends Component {
      switch(this.props.structureTypeId){
          case ReviewStructureType.QUESTIONNAIRE:{return this.buildQuestionnaireReivew();}
          case ReviewStructureType.FREE_TEXT:{return this.buildFreeTextReview()}
-         case ReviewStructureType.IMAGE:{return}
+         case ReviewStructureType.IMAGE:{return this.buildImageReview()}
      }
  }
  
@@ -63,6 +63,17 @@ class Review extends Component {
             <span className = "review-caption">{this.props.review.Caption}</span>
         </div>
      )
+ }
+ 
+ buildImageReview = ()=>{
+     return(
+         <div className ="row p-4">
+             <figure class="figure">
+              <img src={this.props.review.PhotoUrl} class="figure-img img-fluid rounded review-image" alt=""></img>
+              <figcaption class="figure-caption">{this.props.review.Caption}</figcaption>
+            </figure>
+        </div>
+     );
  }
 
   getReviewQuestionnaireByTypeId = reviewTypeId => {

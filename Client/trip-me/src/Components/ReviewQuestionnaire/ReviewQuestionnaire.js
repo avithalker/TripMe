@@ -152,12 +152,8 @@ class ReviewQuestionnaire extends Component {
           return;
       }
       this.uploadDiaryCoverPhoto(photoArray[0]).then(photoUrl=>{
-          this.props.onPhotoSelected(photoUrl);
+          this.props.onPhotoChanged(photoUrl);
       });
-    
-      this.setState({
-      CoverPhoto: photoArray.length === 0 ? null : photoArray[0]
-    });
   };
 
   uploadDiaryCoverPhoto = (photo) => {

@@ -24,7 +24,6 @@ export default class DiaryPage extends Component {
   }
     
   renderReviews = () => {
-    console.log(this.props.Page.Reviews);
     return Object.values(this.props.Page.Reviews).map(review => {
       return (
         <div className="row reviewContainer">

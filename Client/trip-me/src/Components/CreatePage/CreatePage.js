@@ -45,6 +45,8 @@ class CreatePage extends Component {
               onCaptionChanged={caption =>
                 this.onReviewCaptionChanged(pageReview.objectId, caption)
               }
+              onPhotoChanged = {photoUrl => 
+                this.onReviewPhotoChanged(pageReview.objectId, photoUrl)}
             />
             <button
               className="btn btn-danger deleteReview"
@@ -103,6 +105,15 @@ class CreatePage extends Component {
     this.setState({ pageReviews: pageReviews });
   };
 
+  onReviewPhotoChanged = (objectId, photoUrl)=>{
+    let pageReviews = JSON.parse(JSON.stringify(this.state.pageReviews));
+    let pageReview = pageReviews.find(
+      pageReview => pageReview.objectId === objectId
+    );
+    pageReview.PhotoUrl = photoUrl;
+    this.setState({pageReviews: pageReviews});
+  }
+
   onPageTitleChange = event => {
     this.setState({ pageTitle: event.target.value });
   };
@@ -114,6 +125,7 @@ class CreatePage extends Component {
         ReviewType: pageReview.ReviewType.TypeId,
         Answers: pageReview.Answers,
         Caption: pageReview.Caption,
+        PhotoUrl: pageReview.PhotoUrl,
         DisplayOrder: index
       };
     });
@@ -204,10 +216,12 @@ class CreatePage extends Component {
 }
 
 function PageReview(reviewType, objectId) {
-  this.objectId = objectId;
-  this.ReviewType = reviewType;
-  this.Answers = {};
-  this.Caption = null;
+    
+    this.objectId = objectId;
+    this.ReviewType = reviewType;
+    this.Answers = {};
+    this.Caption = null;
+    this.PhotoUrl = null;
 }
 
 function CreatePageRequest(diaryId, title, reviews) {

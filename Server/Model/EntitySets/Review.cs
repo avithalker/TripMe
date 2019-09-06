@@ -14,5 +14,6 @@ namespace TripMe.Model.EntitySets
         public bool IsActive { get; set; }
         public short DisplayOrder { get; set; }
         public string Caption { get; set; }
+        public string PhotoUrl { get; set; }
     }
 }
