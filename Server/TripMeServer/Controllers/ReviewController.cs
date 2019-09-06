@@ -2,6 +2,7 @@
 using System.Web.Http;
 using System.Web.Http.Cors;
 using TripMe.Contracts.Dtos;
+using TripMe.Model;
 using TripMe.Service.Getters;
 
 namespace TripMeServer.Controllers

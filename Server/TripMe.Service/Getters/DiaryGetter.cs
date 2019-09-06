@@ -14,12 +14,14 @@ namespace TripMe.Service.Getters
     public class DiaryGetter
     {
         private readonly DiaryRepository _diaryRepository;
+        private readonly DiaryStatisticRepository _diaryStatisticRepository;
         private readonly DiarySearcher _diarySearcher;
 
         public DiaryGetter()
         {
             _diaryRepository = new DiaryRepository();
             _diarySearcher = new DiarySearcher();
+            _diaryStatisticRepository = new DiaryStatisticRepository();
         }
 
         public List<DiaryDto> GetDiariesByUser(long userId)
@@ -30,6 +32,7 @@ namespace TripMe.Service.Getters
             foreach (DiaryDto diaryDto in diariesDtos)
             {
                 SetDiaryDtoLocations(diaryDto.Id, diaryDto);
+                SetDiaryStatistics(diaryDto);
             }
 
             return diariesDtos;
@@ -46,6 +49,7 @@ namespace TripMe.Service.Getters
 
             DiaryDto diaryDto = Mapper.Map<DiaryDto>(diary);
             SetDiaryDtoLocations(id, diaryDto);
+            SetDiaryStatistics(diaryDto);
             return diaryDto;
         }
 
@@ -58,6 +62,7 @@ namespace TripMe.Service.Getters
 
                   diaryDto.Writer = Mapper.Map<WriterDto>(matchDiary.Writer);
                   SetDiaryDtoLocations(diaryDto, matchDiary.Countries.ToList(), matchDiary.Cities.ToList());
+                  SetDiaryStatistics(diaryDto);
                   return diaryDto;
               }).ToList();
 
@@ -76,6 +81,11 @@ namespace TripMe.Service.Getters
         {
             diaryDto.Countries = diaryCountries.Select(diaryCountry => diaryCountry.Country).ToList();
             diaryDto.Cities = diaryCities.Select(diaryCity => diaryCity.City).ToList();
+        }
+
+        private void SetDiaryStatistics(DiaryDto diaryDto)
+        {
+            diaryDto.ViewCount = _diaryStatisticRepository.GetDiaryViewsCount(diaryDto.Id);
         }
     }
 }

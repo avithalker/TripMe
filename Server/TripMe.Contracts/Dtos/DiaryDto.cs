@@ -17,6 +17,7 @@ namespace TripMe.Contracts.Dtos
         public List<string> Countries { get; set; }
         public List<string> Cities { get; set; }
         public WriterDto Writer { get; set; }
+        public long ViewCount { get; set; }
 
         public DiaryDto()
         {
