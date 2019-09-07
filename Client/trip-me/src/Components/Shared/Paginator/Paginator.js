@@ -36,7 +36,8 @@ export default class Paginator extends Component {
   };
 
   handlePreviousClick = () => {
-    this.props.OnSelect(this.props.currItem - 1);
+    debugger;
+    this.props.OnSelect(this.state.currItem - 1);
     this.setState({ currItem: this.state.currItem - 1 });
   };
 
@@ -53,35 +54,43 @@ export default class Paginator extends Component {
   render() {
     return (
       <Pagination className="pagination">
-        <PaginationItem>
           {this.state.currItem == 0 ? (
-            <PaginationLink first disabled />
+          <PaginationItem disabled>
+            <PaginationLink  first/>
+          </PaginationItem>
           ) : (
-            <PaginationLink first onClick={this.handleFirstClick} />
+            <PaginationItem>
+             <PaginationLink first onClick={this.handleFirstClick} />
+            </PaginationItem>
           )}
-        </PaginationItem>
-        <PaginationItem>
           {this.state.currItem == 0 ? (
-            <PaginationLink previous disabled />
+            <PaginationItem disabled>
+              <PaginationLink previous disabled />
+            </PaginationItem>
           ) : (
+            <PaginationItem>
             <PaginationLink previous onClick={this.handlePreviousClick} />
+            </PaginationItem>
           )}
-        </PaginationItem>
         {this.renderPaginationItems()}
-        <PaginationItem>
           {this.state.currItem == (this.props.numOfItems - 1) ? (
-            <PaginationLink next disabled />
+            <PaginationItem disabled>
+            <PaginationLink next />
+            </PaginationItem>
           ) : (
+            <PaginationItem>
             <PaginationLink next onClick={this.handleNextClick} />
+            </PaginationItem>
           )}
-        </PaginationItem>
-        <PaginationItem>
           {this.state.currItem == (this.props.numOfItems -1) ? (
-            <PaginationLink last disabled />
+            <PaginationItem disabled>
+              <PaginationLink last />
+            </PaginationItem>
           ) : (
-            <PaginationLink last onClick={this.handleLastClick} />
+            <PaginationItem>
+              <PaginationLink last onClick={this.handleLastClick} />
+            </PaginationItem>
           )}
-        </PaginationItem>
       </Pagination>
     );
   }

@@ -77,6 +77,7 @@ class DiaryFullView extends Component {
   }
 
   fetchPageByIndex = index => {
+    debugger;
     var caller = new TripMeHttpClient();
     caller
       .getPageById(this.state.diary.Id, this.state.pages[index].PageId)
