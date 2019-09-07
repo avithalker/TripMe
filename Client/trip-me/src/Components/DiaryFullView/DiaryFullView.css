@@ -54,6 +54,9 @@
   flex: 1 0 auto;
 }
 
+.MuiSvgIcon-root{
+  font-size: 1.2rem !important;
+}
 .description-diary {
   display: flex;
   flex-direction: column;
@@ -65,4 +68,8 @@
 
 .like-button {
   float: right;
+}
+.icon-text{
+  font-size: 0.8rem;
+  padding-left: -1rem;
 }

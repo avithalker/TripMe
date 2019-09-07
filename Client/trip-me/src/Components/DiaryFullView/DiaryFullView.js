@@ -204,20 +204,20 @@ class DiaryFullView extends Component {
               <div className="col-sm-1 diary-title-info">
               <div className="row text-secondary">
                 <div className="col-1 p-0">
-              <LikeIcon className="no-focus" />
+              <LikeIcon/>
                 </div>
-                <div className="col-2 ml-2">
-                  234
+                <div className="col-sm-1 ml-2">
+                  <text className="icon-text">234</text>
                 </div>
               </div>
               </div>
               <div className="col-sm-1 diary-title-info">
               <div className="row text-secondary">
-                <div className="col-1">
+                <div className="col-sm-1 pl-2">
               <RemoveRedEyeIcon className="no-focus" />
                 </div>
-                <div className="col-2">
-                  234
+                <div className="col-1">
+                  <text className="icon-text">234</text>
                 </div>
               </div>
               </div>
