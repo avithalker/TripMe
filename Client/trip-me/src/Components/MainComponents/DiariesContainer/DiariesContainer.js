@@ -39,6 +39,7 @@ export default class DiariesContainer extends Component {
         CoverPhoto={diary.CoverPhotoUrl}
         Id={diary.Id}
         Writer={diary.Writer.UserName}
+        Views={diary.ViewCount}
       />
     );
   };

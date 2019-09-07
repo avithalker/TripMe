@@ -44,6 +44,7 @@ class DiaryForm extends Component {
     if(!authenticationManager.isUserAuthenticated()){
       return (
         <PopUp
+          popupTitle="Hey, you forgot something..."
           textButton="Login"
           popupText="You must login to your account in order to create new diary"
           show={true}
@@ -60,8 +61,9 @@ class DiaryForm extends Component {
     if (this.state.IsSubmitted) {
       return (
         <PopUp
+          popupTitle="The diary has been created successfully!!"
           textButton="Show Diary"
-          popupText="The diary has been created successfully!!"
+          popupText="press the button below and see your new diary!"
           show={true}
           handleClick={this.GoToDiary}
         />

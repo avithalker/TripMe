@@ -24,8 +24,9 @@ class RegistrationPage extends Component {
     if (this.state.isRegistrationDone) {
       return (
         <PopUp
+          popupTitle="Congratulation!!"
           popupText={
-            "Congratulation! You are part of the TripMe community! Login to your account and enjoy all of our features"
+            "You are part of the TripMe community! Login to your account and enjoy all of our features"
           }
           show={true}
           handleClick={this.DirectToLogin}
