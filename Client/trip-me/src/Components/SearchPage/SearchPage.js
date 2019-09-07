@@ -28,6 +28,7 @@ export default class SearchPage extends Component {
         Type={getKeyByValue(TripTypeEnum, diary.TripType)}
         Id={diary.Id}
         CoverPhoto={diary.CoverPhotoUrl}
+        Views={diary.ViewCount}
       />
     );
   };

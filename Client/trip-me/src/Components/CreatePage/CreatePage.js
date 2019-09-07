@@ -161,7 +161,8 @@ class CreatePage extends Component {
     if (this.state.pageCreated) {
       return (
         <PopUp
-          popupText={this.getPopUpMessage()}
+          popupTitle = {this.getPopUpMessage()}
+          popupText={"Now you can go to your diary and see the new page!"}
           show={true}
           handleClick={this.goToDiary}
           textButton="Return To Diary"

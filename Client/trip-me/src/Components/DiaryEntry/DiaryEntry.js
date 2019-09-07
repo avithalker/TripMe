@@ -84,7 +84,7 @@ class DiaryEntry extends Component {
             </div>
             <div className="col-sm-2 p-0">
               <RemoveRedEyeIcon></RemoveRedEyeIcon>
-              <h7 className="views-value">432</h7>
+              <h7 className="views-value">{this.props.Views}</h7>
             </div>
           </div>
           <hr></hr>
