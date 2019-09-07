@@ -42,7 +42,7 @@ export default class Paginator extends Component {
   };
 
   handleLastClick = () => {
-    this.props.OnSelect(this.state.numOfItems - 1);
+    this.props.OnSelect(this.props.numOfItems - 1);
     this.setState({ currItem: this.props.numOfItems - 1 });
   };
 
