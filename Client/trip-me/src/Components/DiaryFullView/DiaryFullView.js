@@ -217,7 +217,7 @@ class DiaryFullView extends Component {
               <RemoveRedEyeIcon className="no-focus" />
                 </div>
                 <div className="col-1">
-                  <text className="icon-text">234</text>
+                  <text className="icon-text">{this.state.diary.ViewCount}</text>
                 </div>
               </div>
               </div>

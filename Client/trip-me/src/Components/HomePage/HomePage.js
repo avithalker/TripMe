@@ -12,7 +12,6 @@ import { OrderDiaries } from "../../Enums/OrderDiariesEnum";
 import GlassesBooksImage from "../../../src/sources/images/image-glasses-booksjpg.jpg";
 import PlanImage from "../../../src/sources/images/plan-image.jpg";
 import TravelImg from "../../../src/sources/images/travel-image.jpg";
-import DiaryEntry2 from "../DiaryEntry/DiaryEntry2";
 import { Button } from "react-bootstrap";
 
 export default class HomePage extends Component {
