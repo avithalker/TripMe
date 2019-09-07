@@ -77,6 +77,7 @@ class DiaryFullView extends Component {
   }
 
   fetchPageByIndex = index => {
+    debugger;
     var caller = new TripMeHttpClient();
     caller
       .getPageById(this.state.diary.Id, this.state.pages[index].PageId)
@@ -180,7 +181,7 @@ class DiaryFullView extends Component {
     return (
       <div className="diary p-3">
         <div className="row">
-          <div className="col-sm-4">
+          <div className="col-3">
             <Card>
               <CardMedia
                 component="img"
@@ -192,32 +193,40 @@ class DiaryFullView extends Component {
               />
             </Card>
           </div>
-          <div className="col-sm-5">
+          <div className="col-6">
             <h2>{this.state.diary.Name}</h2>
-            <p className="text-secondary">
+            <div className="row">
+              <div className="col-md-2 diary-title-info">
+              <text className="text-secondary">
               By {this.state.diary.Writer.UserName}
-            </p>
+            </text>
+              </div>
+              <div className="col-sm-1 diary-title-info">
+              <div className="row text-secondary">
+                <div className="col-1 p-0">
+              <LikeIcon className="no-focus" />
+                </div>
+                <div className="col-2 ml-2">
+                  234
+                </div>
+              </div>
+              </div>
+              <div className="col-sm-1 diary-title-info">
+              <div className="row text-secondary">
+                <div className="col-1">
+              <RemoveRedEyeIcon className="no-focus" />
+                </div>
+                <div className="col-2">
+                  234
+                </div>
+              </div>
+              </div>
+            </div>
             <div className="description-diary">
-              <CardContent className="diary-content">
+              <CardContent className="diary-content pl-0">
                 {this.state.diary.Description}
               </CardContent>
             </div>
-            <List>
-              <ListItem>
-                <ListItemIcon>
-                  <LikeIcon className="no-focus" />
-                </ListItemIcon>
-                <ListItemText className="text-secondary">
-                  234 likes
-                </ListItemText>
-              </ListItem>
-              <ListItem>
-                <ListItemIcon>
-                  <RemoveRedEyeIcon className="no-focus"></RemoveRedEyeIcon>
-                </ListItemIcon>
-                <ListItemText className="text-secondary">{this.state.diary.ViewCount} views</ListItemText>
-              </ListItem>
-            </List>
           </div>
           <div className="col-3">
             <span class="like-button">
