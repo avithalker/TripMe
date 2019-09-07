@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TripMe.Contracts.Requestes;
 using TripMe.Enums;
 using TripMe.Model;
@@ -23,23 +21,35 @@ namespace TripMe.SearchEngine
             {
                 IQueryable<DiarySearchResult> searchQuery = BuildSearchQuery(dbContext, searchDiaryRequest.SearchParameters);
 
-                searchQuery = AddResultOrdering(searchQuery, searchDiaryRequest);
+                searchQuery = AddQueryOrdering(searchQuery, searchDiaryRequest);
                 matchedDiaries = ExecuteSearch(searchQuery, searchDiaryRequest.ResultLimit);
+                matchedDiaries = AddResultOrdering(matchedDiaries, searchDiaryRequest);
             }
 
             return matchedDiaries;
         }
 
-        private IQueryable<DiarySearchResult> AddResultOrdering(IQueryable<DiarySearchResult> searchQuery, SearchDiaryRequest searchDiaryRequest)
+        private List<DiarySearchResult> AddResultOrdering(List<DiarySearchResult> matchedDiaries, SearchDiaryRequest searchDiaryRequest)
         {
-            IOrderFilter orderFilter = OrderFilterFactory.GetFilter(searchDiaryRequest.OrderBy);
+            IPostOrderFilter orderFilter = OrderFilterFactory.GetPostOrderFilter(searchDiaryRequest.OrderBy, searchDiaryRequest);
+            if (orderFilter == null)
+            {
+                return matchedDiaries;
+            }
+
+            return orderFilter.AddOrder(matchedDiaries).ToList();
+        }
+
+        private IQueryable<DiarySearchResult> AddQueryOrdering(IQueryable<DiarySearchResult> searchQuery, SearchDiaryRequest searchDiaryRequest)
+        {
+            IPreOrderFilter orderFilter = OrderFilterFactory.GetPreOrderFilter(searchDiaryRequest.OrderBy, searchDiaryRequest);
 
             if(orderFilter == null)
             {
                 return searchQuery;
             }
 
-            return orderFilter.AddOrder(searchQuery);
+            return orderFilter.AddOrder(searchQuery, searchDiaryRequest);
         }
 
         private IQueryable<DiarySearchResult> BuildSearchQuery(TripMeContext dbContext,Dictionary<SearchParameter,object> searchParameters)

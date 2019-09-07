@@ -2,9 +2,17 @@
 {
     public static class CacheContextKeyBuilder
     {
-        public static string BuildDiaryViewKey(long diaryId)
+        public const string DiariesViewCountSortedSetKey = "DiariesViewCount";
+
+        public static DiaryViewKey BuildDiaryViewKey(long diaryId)
         {
-            return $"Diary_{diaryId}_Views";
+            return new DiaryViewKey { sortedSetKey = DiariesViewCountSortedSetKey, memberKey = diaryId.ToString() };
         }
     }
+
+    public struct DiaryViewKey
+    {
+        public string sortedSetKey;
+        public string memberKey;
+    } 
 }

@@ -51,9 +51,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OrderFilter\IOrderFilter.cs" />
+    <Compile Include="OrderFilter\IPreOrderFilter.cs" />
+    <Compile Include="OrderFilter\IPostOrderFilter.cs" />
+    <Compile Include="OrderFilter\PreMostViewedOrderFilter.cs" />
     <Compile Include="OrderFilter\MostRecentFilter.cs" />
     <Compile Include="OrderFilter\OrderFilterFactory.cs" />
+    <Compile Include="OrderFilter\PostMostViewedOrderFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchFilters\CityFilter.cs" />
     <Compile Include="SearchFilters\ContinentFilter.cs" />
@@ -85,6 +88,10 @@
     <ProjectReference Include="..\TripMe.Enums\TripMe.Enums.csproj">
       <Project>{80A35F91-AEC1-42F6-9BCD-DDA20E39D5A8}</Project>
       <Name>TripMe.Enums</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TripMe.Repositories\TripMe.Repositories.csproj">
+      <Project>{BB5DA3FB-36E9-42E0-873B-2B1D49378407}</Project>
+      <Name>TripMe.Repositories</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -7,8 +7,8 @@ namespace TripMe.Service.Modifiers
     {
         public void IncrementDiaryViews(long diaryId)
         {
-            string key = CacheContextKeyBuilder.BuildDiaryViewKey(diaryId);
-            TripMeCacheContext.Context().StringIncrement(key);
+            DiaryViewKey key = CacheContextKeyBuilder.BuildDiaryViewKey(diaryId);
+            TripMeCacheContext.Context().SortedSetIncrement(key.sortedSetKey, key.memberKey, 1);
         }
     }
 }
