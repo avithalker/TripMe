@@ -32,6 +32,14 @@ namespace TripMe.Repositories
             }
         }
 
+        public List<Review> GetReviewById(List<Guid> ids)
+        {
+            using(var dbContext = new TripMeContext())
+            {
+                return dbContext.Reviews.Where(x => ids.Contains(x.Id)).ToList();
+            }
+        }
+
         public Dictionary<Review,List<ReviewAnswer>> GetPageCompleteReviews(long pageId)
         {
             using (var dbContext = new TripMeContext())

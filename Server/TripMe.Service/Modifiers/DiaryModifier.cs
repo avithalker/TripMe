@@ -52,11 +52,29 @@ namespace TripMe.Service.Modifiers
             }
         }
 
+        public void UpdatePage(DiaryPage page)
+        {
+            using (var dbContext = new TripMeContext())
+            {
+                dbContext.DiaryPages.AddOrUpdate(page);
+                dbContext.SaveChanges();
+            }
+        }
+
         public void CreateNewReviews(List<Review> reviews)
         {
             using (var dbContext = new TripMeContext())
             {
                 dbContext.Reviews.AddRange(reviews);
+                dbContext.SaveChanges();
+            }
+        }
+
+        public void UpdateReviews(List<Review> reviews)
+        {
+            using (var dbContext = new TripMeContext())
+            {
+                dbContext.Reviews.AddOrUpdate(reviews.ToArray());
                 dbContext.SaveChanges();
             }
         }
