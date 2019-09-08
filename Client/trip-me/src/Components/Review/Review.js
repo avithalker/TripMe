@@ -12,8 +12,6 @@ class Review extends Component {
       Fields: [],
       ReviewLoaded: false
     };
-      
-      console.log('hello');
   }
 
   componentDidMount() {
@@ -46,7 +44,7 @@ class Review extends Component {
                 <div className="card-header">
                     <div className="row">
                         <div className="col-5">
-                            {this.ReviewFields(this.state.Fields)}
+                            {this.ReviewFields(this.props.Fields)}
                         </div>
                         <div className="col-7">
                             <span className = "review-caption">{this.props.review.Caption}</span>
