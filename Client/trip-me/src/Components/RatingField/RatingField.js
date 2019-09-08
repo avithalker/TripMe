@@ -7,7 +7,7 @@ class RatingField extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      rating: 0,
+      rating: this.props.Answer !=null? parseInt(this.props.Answer): 0,
       onRatingValueChanged: props.onRatingValueChanged
     };
     this.changeRating = this.changeRating.bind(this);

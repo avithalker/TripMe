@@ -3,16 +3,11 @@ import ReviewSelector from "../ReviewSelector/ReviewSelector.js";
 import { Collapse } from "react-collapse";
 import ReviewQuestionnaire from "../ReviewQuestionnaire/ReviewQuestionnaire.js";
 import TripMeHttpClient from "../../Services/TripMeHttpClient.js";
-import DiaryPage from "../ShowDiaryPage/DiaryPage";
-import PopUp from "../Shared/Popup";
-import "./CreatePage.css";
-import PageForm from "../PageForm/PageForm.js";
-import queryString from "query-string";
-import AppLoader from "../Shared/AppLoader/AppLoader";
+import "./PageForm.css";
 
 const tripMeHttpClient = new TripMeHttpClient();
 
-class CreatePage extends Component {
+class PageForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,17 +15,30 @@ class CreatePage extends Component {
       pageTitle: "",
       pageReviews: [],
       nextReviewObjectId: 1,
-      pageCreated: false,
-      showPageClicked: false,
-      Pageid: -1,
-      diaryId: -1,
-      isSaveButtonClicked: false
+      pageCreated: false
     };
+      
   }
 
-  componentDidMount() {
-    var values = queryString.parse(this.props.location.search);
-    this.setState({ diaryId: values.diaryId });
+  async componentDidMount() {
+   await this.initializePageReviews(this.props.reviews);
+    //var values = queryString.parse(this.props.location.search);
+    //this.setState({ diaryId: this.props.diaryId });  
+  }
+    
+  initializePageReviews = async (reviews)=> {
+      if(reviews == null)
+          return;
+      let objectId = this.state.nextReviewObjectId;
+      let reviewTypes = await this.fetchReviewTypes();
+      let pageReviews = reviews.map(review=>{
+          let reviewType = reviewTypes.find(x=>x.TypeId === review.ReviewType);
+          let pageReview = new PageReview(reviewType, objectId, review.ReviewId, review.Answers, review.Caption, review.PhotoUrl);
+          objectId++;
+          return pageReview;
+      });
+      
+      this.setState({pageReviews:pageReviews, nextReviewObjectId:objectId});
   }
 
   getPageReviews = () => {
@@ -39,7 +47,7 @@ class CreatePage extends Component {
         <div key={index} className="row">
           <div className="col-12 position-relative">
             <ReviewQuestionnaire
-              ReviewType={pageReview.ReviewType}
+              ReviewType={pageReview.ReviewType} reviewAnswers = {pageReview.Answers} caption = {pageReview.Caption}
               onQuestionnaireAnswersChanged={answers =>
                 this.onQuestionnaireAnswersChanged(pageReview.objectId, answers)
               }
@@ -69,7 +77,7 @@ class CreatePage extends Component {
 
   onReviewSelected = reviewType => {
     this.setState((state, props) => {
-      let pageReview = new PageReview(reviewType, state.nextReviewObjectId);
+      let pageReview = new PageReview(reviewType, state.nextReviewObjectId, null, {}, null, null);
       let pageReviews = [...state.pageReviews];
       pageReviews.push(pageReview);
       return {
@@ -121,6 +129,7 @@ class CreatePage extends Component {
 
   savePage = event => {
     event.preventDefault();
+      /*
     let pageReviews = this.state.pageReviews.map((pageReview, index) => {
       return {
         ReviewType: pageReview.ReviewType.TypeId,
@@ -143,52 +152,69 @@ class CreatePage extends Component {
       });
     });
     this.setState({ isSaveButtonClicked: true });
-  };
-
-  getPopUpMessage = () => {
-    var message = this.state.pageTitle + " Created Successfully!!";
-    return message;
-  };
-
-  goToDiary = () => {
-    var url = "/ShowDiary?Id=" + this.state.diaryId;
-    this.props.history.push(url);
+    */
   };
 
   render() {
-    if (this.state.isSaveButtonClicked) {
-      return <AppLoader></AppLoader>;
-    }
-    if (this.state.pageCreated) {
-      return (
-        <PopUp
-          popupTitle = {this.getPopUpMessage()}
-          popupText={"Now you can go to your diary and see the new page!"}
-          handleClick={this.goToDiary}
-          textButton="Return To Diary"
-          enableCloseIcon = {false}
-        />
-      );
-    }
     return (
-        <PageForm reviews = {[]}></PageForm>
+      <div className="container">
+        <div>
+          <form>
+            <div className="form-group row">
+              <div className="col-12">
+                <input
+                  type="text"
+                  className="form-control pageTitle"
+                  placeholder="Page title"
+                  onChange={this.onPageTitleChange}
+                />
+              </div>
+            </div>
+            {this.getPageReviews()}
+            <div className="row">
+              <button
+                className="btn btn-primary"
+                type="submit"
+                onClick={this.savePage}
+              >
+                Save
+              </button>
+            </div>
+          </form>
+        </div>
+        <div className="div-review-expender">
+          <div className="row">
+            <Collapse isOpened={this.state.isReviewSelectorOpen}>
+              <ReviewSelector onReviewSelected={this.onReviewSelected} />
+            </Collapse>
+          </div>
+          <div className="row div-review-expender">
+            <button
+              type="button"
+              className="btn btn-success btn-reviews-expender"
+              onClick={this.changeReviewSelectorState}
+            >
+              +
+            </button>
+          </div>
+        </div>
+      </div>
     );
   }
+
+  fetchReviewTypes = () => {
+    return tripMeHttpClient.getReviewTypes()
+    };
 }
 
-function PageReview(reviewType, objectId) {
+function PageReview(reviewType, objectId, reviewId, answers, caption, photoUrl) {
     
     this.objectId = objectId;
+    this.ReviewId = reviewId;
     this.ReviewType = reviewType;
-    this.Answers = {};
-    this.Caption = null;
-    this.PhotoUrl = null;
+    this.Answers = answers;
+    this.Caption = caption;
+    this.PhotoUrl = photoUrl;
 }
 
-function CreatePageRequest(diaryId, title, reviews) {
-  this.DiaryId = diaryId;
-  this.Title = title;
-  this.Reviews = reviews;
-}
-
-export default CreatePage;
+export default PageForm;

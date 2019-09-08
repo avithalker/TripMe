@@ -13,7 +13,7 @@ class ReviewQuestionnaire extends Component {
     super(props);
     this.state = {
       questionnaire: [],
-      answers: {}
+      answers: this.props.reviewAnswers
     };
   }
 
@@ -94,6 +94,7 @@ class ReviewQuestionnaire extends Component {
             <textarea
               className="TextReview w-100"
               placeholder="Write your text here..."
+              value = {this.props.caption}
               onChange = {this.onCaptionChanged}
             />
         </div>
@@ -108,6 +109,7 @@ class ReviewQuestionnaire extends Component {
             <textarea
               className="Caption w-100 h-100"
               placeholder="Write your caption here..."
+              value = {this.props.caption}
               onChange = {this.onCaptionChanged}
             />
           </div>
@@ -117,11 +119,12 @@ class ReviewQuestionnaire extends Component {
 
   QuestionnaireFields = () => {
     var fields = this.state.questionnaire.map((field, index) => {
-      return (
+        return (
         <div className="col-12">
           <ReviewField
             key={index}
             FieldTypeId={field.FieldTypeId}
+            Answer = {this.props.reviewAnswers.hasOwnProperty(field.QuestionId) === true?this.props.reviewAnswers[field.QuestionId]: null }
             DisplayText={field.DisplayText}
             onFieldValueChanged={answer =>
               this.onAnswerChanged(field.QuestionId, answer)
