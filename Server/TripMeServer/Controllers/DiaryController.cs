@@ -1,24 +1,18 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using TripMe.Contracts.Dtos;
 using TripMe.Contracts.Requestes;
-using TripMe.Enums;
-using TripMe.Model;
-using TripMe.Repositories;
-using TripMe.SearchEngine.SearchFilters;
-using TripMe.Service;
 using TripMe.Service.Getters;
 using TripMe.Service.Authentication.Jwt;
 using TripMe.Service.Authentication;
+using TripMe.Service.Editors;
+using System.Net.Http;
 
 namespace TripMeServer.Controllers
 {
-    [EnableCors(origins: "http://localhost:3000", headers:"*",methods:"*")]
+    [EnableCors(origins: "http://localhost:3000", headers: "*", methods: "*")]
     [RoutePrefix("Diary")]
     public class DiaryController : ApiController
     {
@@ -63,9 +57,27 @@ namespace TripMeServer.Controllers
                 return Unauthorized();
             }
 
-            DiaryEditor diaryEditor = new DiaryEditor();
+            PageEditor pageEditor = new PageEditor();
 
-            return Ok(diaryEditor.CreateNewDiaryPage(addNewPageRequest));
+            return Ok(pageEditor.CreateNewDiaryPage(addNewPageRequest));
+        }
+
+        [HttpPut]
+        [Authorize]
+        [Route("EditPage")]
+        public IHttpActionResult EditPage(EditPageRequest editPageRequest)
+        {
+            UserPermissionManager userPermissionManager = new UserPermissionManager();
+
+            if (!userPermissionManager.IsAllowedToEditPage(editPageRequest.DiaryId, HttpContext.Current.GetAuthenticatedUserId()))
+            {
+                return Unauthorized();
+            }
+
+            PageEditor pageEditor = new PageEditor();
+
+            pageEditor.EditDiaryPage(editPageRequest);
+            return Ok();
         }
 
         [HttpGet]
@@ -93,12 +105,12 @@ namespace TripMeServer.Controllers
             DiaryGetter diaryGetter = new DiaryGetter();
             List<DiaryDto> matchedDiaries = diaryGetter.SearchDiary(searchDiaryRequest);
 
-            if(matchedDiaries== null || matchedDiaries.Count == 0)
+            if (matchedDiaries == null)
             {
-                return NotFound();
+                matchedDiaries = new List<DiaryDto>();
             }
 
             return Ok(matchedDiaries);
         }
-}
+    }
 }

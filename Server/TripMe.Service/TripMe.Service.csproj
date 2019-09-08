@@ -110,7 +110,8 @@
     <Compile Include="Authentication\UserLoginManager.cs" />
     <Compile Include="Authentication\UserPermissionManager.cs" />
     <Compile Include="Authentication\UserRegistrator.cs" />
-    <Compile Include="DiaryEditor.cs" />
+    <Compile Include="Editors\DiaryEditor.cs" />
+    <Compile Include="Editors\PageEditor.cs" />
     <Compile Include="Getters\DiaryGetter.cs" />
     <Compile Include="Modifiers\DiaryModifier.cs" />
     <Compile Include="Getters\PageGetter.cs" />

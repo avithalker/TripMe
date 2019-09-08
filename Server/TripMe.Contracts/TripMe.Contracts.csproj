@@ -54,6 +54,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Requestes\AddNewDiaryRequest.cs" />
     <Compile Include="Requestes\AddNewPageRequest.cs" />
+    <Compile Include="Requestes\EditPageRequest.cs" />
     <Compile Include="Requestes\LoginRequest.cs" />
     <Compile Include="Requestes\RegistrationRequest.cs" />
     <Compile Include="Requestes\SearchDiaryRequest.cs" />
