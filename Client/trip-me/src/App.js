@@ -12,7 +12,7 @@ class App extends Component {
       <div>
         <NavBar />
         <main className="container-fluid main">
-            <PageForm reviews = {reviews}></PageForm>
+            <AppRouter></AppRouter>
         </main>
       </div>
     );

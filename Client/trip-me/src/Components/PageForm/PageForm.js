@@ -22,8 +22,6 @@ class PageForm extends Component {
 
   async componentDidMount() {
    await this.initializePageReviews(this.props.reviews);
-    //var values = queryString.parse(this.props.location.search);
-    //this.setState({ diaryId: this.props.diaryId });  
   }
     
   initializePageReviews = async (reviews)=> {
@@ -129,30 +127,12 @@ class PageForm extends Component {
 
   savePage = event => {
     event.preventDefault();
-      /*
-    let pageReviews = this.state.pageReviews.map((pageReview, index) => {
-      return {
-        ReviewType: pageReview.ReviewType.TypeId,
-        Answers: pageReview.Answers,
-        Caption: pageReview.Caption,
-        PhotoUrl: pageReview.PhotoUrl,
-        DisplayOrder: index
-      };
-    });
-    let createPageRequest = new CreatePageRequest(
-      this.state.diaryId,
-      this.state.pageTitle,
-      pageReviews
-    );
-    tripMeHttpClient.addNewPage(createPageRequest).then(response => {
-      this.setState({
-        pageCreated: true,
-        Pageid: response,
-        isSaveButtonClicked: false
-      });
-    });
-    this.setState({ isSaveButtonClicked: true });
-    */
+      
+      let pageFormData = {
+          pageTitle: this.state.pageTitle,
+          pageReviews: this.state.pageReviews
+      }
+      this.props.onSavePageClicked(pageFormData);
   };
 
   render() {

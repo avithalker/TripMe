@@ -13,7 +13,7 @@ export default class Paginator extends Component {
     var paginationItems = [];
     for (var i = 1; i <= this.props.numOfItems; i++) {
       paginationItems.push(
-        <PaginationItem>
+        <PaginationItem key= {i}>
           <PaginationLink onClick={this.handleClick} id={i}>
             {i}
           </PaginationLink>
@@ -36,7 +36,6 @@ export default class Paginator extends Component {
   };
 
   handlePreviousClick = () => {
-    debugger;
     this.props.OnSelect(this.state.currItem - 1);
     this.setState({ currItem: this.state.currItem - 1 });
   };

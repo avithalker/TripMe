@@ -25,9 +25,10 @@ class RatingField extends Component {
       return (
         <div className="rating-stars">
           <StarRatingComponent
+            name = "starField"
             editing={false}
             startCount={5}
-            value={this.props.Answer}
+            value={parseInt(this.props.Answer)}
           />
         </div>
       );
