@@ -163,9 +163,9 @@ class CreatePage extends Component {
         <PopUp
           popupTitle = {this.getPopUpMessage()}
           popupText={"Now you can go to your diary and see the new page!"}
-          show={true}
           handleClick={this.goToDiary}
           textButton="Return To Diary"
+          enableCloseIcon = {false}
         />
       );
     }

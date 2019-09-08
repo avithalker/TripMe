@@ -40,7 +40,14 @@ class TripMeHttpClient {
         },
         body: JSON.stringify(request)
       }).then(response => {
-        resolve(response.json());
+        if(!response.ok)
+        {
+          reject(response);
+        }
+        else
+        {
+          resolve(response.json());
+        }
       });
     });
     return promise;

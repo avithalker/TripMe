@@ -49,6 +49,7 @@ class DiaryForm extends Component {
           popupText="You must login to your account in order to create new diary"
           show={true}
           handleClick={this.RedirectToLogin}
+          enableCloseIcon = {false}
         />
       );
     }
@@ -64,8 +65,8 @@ class DiaryForm extends Component {
           popupTitle="The diary has been created successfully!!"
           textButton="Show Diary"
           popupText="press the button below and see your new diary!"
-          show={true}
           handleClick={this.GoToDiary}
+          enableCloseIcon = {false}
         />
       );
     }

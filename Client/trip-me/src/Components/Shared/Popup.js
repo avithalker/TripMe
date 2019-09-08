@@ -8,20 +8,45 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
 import TripMeLogo from "../../sources/images/TripMeLogo.png";
+import CloseIcon from '@material-ui/icons/Close';
+import IconButton from '@material-ui/core/IconButton';
+import "../Shared/PopUp.css";
 
 class PopUp extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      open: true
+    }
+  }
+
+  handleClose = () => {
+    this.props.onClose();
+    this.setState({open: false});
+  };
+
+  SetCloseIcon = () => {
+    debugger;
+    if(this.props.enableCloseIcon)
+    {
+      return(      
+      <IconButton className="close-button pl-10" aria-label="close" onClick={this.handleClose}>
+      <CloseIcon />
+    </IconButton>);
+    }
+
+    return;
   }
 
   render() {
     return (
-      <Dialog open={this.props.show}>
+      <Dialog open={this.state.open}>
         <DialogTitle id="alert-dialog-title">
-          <img className="brand-img pr-4" src={TripMeLogo}></img>
+          <img  className="brand-img"src={TripMeLogo}></img>
           {this.props.popupTitle}
+          {this.SetCloseIcon()}
         </DialogTitle>
-        <DialogContent>
+        <DialogContent dividers>
           <DialogContentText id="alert-dialog-description">
           {this.props.popupText}
           </DialogContentText>

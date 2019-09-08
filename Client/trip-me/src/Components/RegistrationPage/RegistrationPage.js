@@ -31,6 +31,7 @@ class RegistrationPage extends Component {
           show={true}
           handleClick={this.DirectToLogin}
           textButton="Login"
+          enableCloseIcon = {false}
         />
       );
     }

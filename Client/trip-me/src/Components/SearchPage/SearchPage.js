@@ -5,6 +5,7 @@ import DiaryEntry from "../DiaryEntry/DiaryEntry";
 import TripTypeEnum from "../../Enums/TripTypeEnum";
 import { getKeyByValue } from "../../Helpers/Helpers";
 import AppLoader from "../Shared/AppLoader/AppLoader";
+import PopUp from "../Shared/Popup";
 
 export default class SearchPage extends Component {
   constructor(props) {
@@ -17,7 +18,14 @@ export default class SearchPage extends Component {
 
   SetDiaries = response => {
     debugger;
-    this.setState({ diaries: response, isLoading: false });
+    if(response == null)
+    {
+      this.setState({diaries: []});
+    }
+    else
+    {
+      this.setState({ diaries: response, isLoading: false });
+    }
   };
 
   renderDiary = diary => {
@@ -52,12 +60,22 @@ export default class SearchPage extends Component {
     this.setState({ isLoading: true });
   };
 
-  render() {
-    if (this.state.diaries == []) {
-      return <h1>No diaries match</h1>;
+  ClosePopUp = () => {
+    this.setState({diaries: null, isLoading: false});
+  }
+
+  ShowPopUpByState = () => {
+    if(this.state.diaries != null && this.state.diaries.length==0)
+    {
+      return <PopUp popupTitle="Sorry..." popupText="We cannot find diaries that match to your search :/ "  enableCloseIcon={true} onClose={this.ClosePopUp}></PopUp>
     }
+    return null;
+  }
+  render() {
+    debugger;
     return (
       <div className="container">
+        {this.ShowPopUpByState()}
         <SearchEngine
           UpdateResultsOnScreen={this.SetDiaries}
           OnFetchDiaries={this.SetOnFetchDiariesState}

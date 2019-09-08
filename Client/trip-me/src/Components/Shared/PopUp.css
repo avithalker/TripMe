@@ -1,0 +1,10 @@
+.close-button{
+    top:0;
+    right: 0;
+    position: absolute !important;
+}
+
+.brand-img {
+    height: 34px;
+    padding-right: 5px;
+}

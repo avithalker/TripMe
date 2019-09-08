@@ -10,6 +10,7 @@ import RegistrationPage from "../RegistrationPage/RegistrationPage.js";
 import LoginPage from "../LoginPage/LoginPage.js";
 import LogoutPage from "../LogoutPage/LogoutPage.js";
 import CreatePage from "../../Components/CreatePage/CreatePage";
+import ErrorBoundry from "../../Components/Shared/ErrorBoundry/ErrorBoundry";
 
 export default class AppRouter extends Component {
   render() {
@@ -24,7 +25,7 @@ export default class AppRouter extends Component {
           render={props => <DiariesContainer {...props} />}
         />
         <Route exact path="/CreatePage" component={CreatePage} />
-        <Route exact path="/SearchPage" component={SearchPage} />
+        <Route exact path="/SearchPage" render={() => (<ErrorBoundry><SearchPage></SearchPage></ErrorBoundry>)} />
         <Route exact path="/HomePage" component={HomePage} />
         <Route exact path="/RegistrationPage" component={RegistrationPage} />
         <Route exact path="/LoginPage" component={LoginPage} />

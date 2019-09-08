@@ -42,11 +42,12 @@ export default class SearchEngine extends Component {
     var caller = new TripMeHttpClient();
 
     caller.getDiariesBySearch(request).then(response => {
-      if (response.status == 404) {
-        response = [];
-      }
       this.props.UpdateResultsOnScreen(response);
-    });
+    }).catch((err)=> {
+      debugger;
+      this.props.UpdateResultsOnScreen(null);
+    }
+    );
     this.props.OnFetchDiaries();
   };
 
