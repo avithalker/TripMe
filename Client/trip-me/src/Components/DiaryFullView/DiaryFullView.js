@@ -99,9 +99,15 @@ class DiaryFullView extends Component {
       <DiaryPage
         Page={this.state.SelectedPage}
         ReviewTypes={this.state.ReviewTypes}
+        GoToEditPage={this.GoToEditPage}
       />
     );
   };
+
+  GoToEditPage = (PageId) => {
+    var url = "/EditPage?PageId="+ PageId +"&DiaryId="+ this.state.diary.Id;
+    this.props.history.push(url);
+  }
 
   RenderAddPageDiv = () => {
     let authenticatedUser = new AuthenticationManager().getAuthenticatedUser();

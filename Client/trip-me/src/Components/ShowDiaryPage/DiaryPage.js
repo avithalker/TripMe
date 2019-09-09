@@ -5,6 +5,9 @@ import Review from "../Review/Review";
 import AppLoader from "../Shared/AppLoader/AppLoader";
 import {ReviewStructureType} from "../../Enums/ReviewStructureTypeEnum.js";
 import "../ShowDiaryPage/DiaryPage.css";
+import EditIcon from '@material-ui/icons/Edit';
+import Button from '@material-ui/core/Button';
+import Fab from '@material-ui/core/Fab';
 
 const tripMeHttpClient = new TripMeHttpClient();
 
@@ -21,6 +24,10 @@ export default class DiaryPage extends Component {
         this.getReviewQuestionnaires();
     }
 
+    goToEditPage = ()=> {
+      this.props.GoToEditPage(this.props.Page.PageId);
+    }
+
   render() {
     if(!this.state.isReviewQuestionnaireLoaded){
         return(<AppLoader></AppLoader>)
@@ -31,6 +38,11 @@ export default class DiaryPage extends Component {
           <h4 className="PageTitle">{this.props.Page.Title}</h4>
         </div>
         <div className="reviews position-relative">{this.renderReviews()}</div>
+        <div className="edit-button">
+          <Fab color="secondary" onClick={this.goToEditPage}>
+            <EditIcon></EditIcon>
+          </Fab>
+        </div>
       </div>
     );
   }

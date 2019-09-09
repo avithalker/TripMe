@@ -1,3 +1,10 @@
 /* .PageTitle {
   justify-content: center;
 } */
+
+
+.edit-button{
+  right:0px;
+  bottom: 0px;
+  text-align: end
+}
