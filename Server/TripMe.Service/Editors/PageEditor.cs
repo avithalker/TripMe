@@ -55,6 +55,9 @@ namespace TripMe.Service.Editors
             List<Review> reviews;
             List<ReviewAnswer> reviewAnswers;
 
+            if (completedReviews == null || completedReviews.Count == 0)
+                return;
+
             BuildPageReviews(pageId, completedReviews, out reviews, out reviewAnswers);
             _diaryModifier.CreateNewReviews(reviews);
             _diaryModifier.UpdateReviewAnswers(reviewAnswers);
@@ -64,6 +67,9 @@ namespace TripMe.Service.Editors
         {
             List<Review> reviews;
             List<ReviewAnswer> reviewAnswers;
+
+            if (updatedReviews == null || updatedReviews.Count == 0)
+                return;
 
             BuildPageReviews(pageId, updatedReviews, out reviews, out reviewAnswers);
             _diaryModifier.UpdateReviews(reviews);
@@ -96,6 +102,9 @@ namespace TripMe.Service.Editors
 
         private void DeactivatePageReviews(long pageId, List<Guid> deletedReviews)
         {
+            if (deletedReviews == null || deletedReviews.Count == 0)
+                return;
+
             List<Review> reviews = _reviewRepository.GetReviewById(deletedReviews);
 
             foreach (var review in reviews)

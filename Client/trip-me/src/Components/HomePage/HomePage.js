@@ -59,6 +59,7 @@ export default class HomePage extends Component {
       MostRecentResponse => {
         this.GetDiariesByOrder(OrderDiaries.MOST_VIEWED).then(
           MostViewedResponse => {
+              MostViewedResponse.sort((diary1,diary2)=> diary1.ViewCount < diary2.ViewCount? 1:-1);
             this.setState({
               DiariesMostViewed: MostViewedResponse,
               DiariesMostRecent: MostRecentResponse,

@@ -47,7 +47,7 @@ namespace TripMe.Repositories
                 var result = (from review in dbContext.Reviews
                               join questionAnswer in dbContext.ReviewAnswers on review.Id equals questionAnswer.ReviewId into answers
                               from questionAnswer in answers.DefaultIfEmpty()
-                              where review.PageId == pageId
+                              where review.PageId == pageId && review.IsActive
                               select new { review, questionAnswer }).ToList();
 
 
