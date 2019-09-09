@@ -130,6 +130,19 @@ class TripMeHttpClient {
     return promise;
   };
 
+  getReviewsQuestionnaire = () => {
+    var promise = new Promise((resolve, reject) => {
+      var url = new URL(
+        "http://localhost/TripMeWebApi/Review/ReviewQuestionnaire"
+      );
+      fetch(url).then(response => {
+        resolve(response.json());
+      });
+    });
+
+    return promise;
+  };
+
   getDiariesByUser = () => {
     var promise = new Promise((resolve, reject) => {
       var url = new URL("http://localhost/TripMeWebApi/Diary/DiariesByUser");

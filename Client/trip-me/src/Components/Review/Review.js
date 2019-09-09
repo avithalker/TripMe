@@ -38,14 +38,13 @@ class Review extends Component {
  }
  
  buildQuestionnaireReivew = ()=>{
-     return(
-         
+     return(        
         <div className="shadow p-2 mb-3 bg-white rounded">
             <div className="card position-relative">
                 <div className="card-header">
                     <div className="row">
                         <div className="col-5">
-                            {this.ReviewFields(this.state.Fields)}
+                            {this.ReviewFields(this.props.Fields)}
                         </div>
                         <div className="col-7">
                             <span className = "review-caption">{this.props.review.Caption}</span>
@@ -84,11 +83,10 @@ class Review extends Component {
   };
 
   ReviewFields = fields => {
-    var fields = fields.map((field, index) => {
+    let reviewFields = fields.map((field, index) => {
       return (
-        <div className="col-12">
+        <div className="col-12" key={index}>
           <ReviewField
-            key={index}
             FieldTypeId={field.FieldTypeId}
             DisplayText={field.DisplayText}
             Answer={this.props.review.Answers[field.QuestionId]}
@@ -97,7 +95,7 @@ class Review extends Component {
         </div>
       );
     });
-    return fields;
+    return reviewFields;
   };
 }
 export default Review;

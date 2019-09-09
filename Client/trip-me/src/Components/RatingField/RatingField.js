@@ -7,7 +7,7 @@ class RatingField extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      rating: 0,
+      rating: this.props.Answer !=null? parseInt(this.props.Answer): 0,
       onRatingValueChanged: props.onRatingValueChanged
     };
     this.changeRating = this.changeRating.bind(this);
@@ -25,9 +25,10 @@ class RatingField extends Component {
       return (
         <div className="rating-stars">
           <StarRatingComponent
+            name = "starField"
             editing={false}
             startCount={5}
-            value={this.props.Answer}
+            value={parseInt(this.props.Answer)}
           />
         </div>
       );

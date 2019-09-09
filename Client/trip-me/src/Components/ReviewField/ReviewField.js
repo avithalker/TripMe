@@ -43,6 +43,7 @@ class ReviewField extends Component {
           <input
             type="text"
             className="form-control"
+            value = {this.props.Answer}
             onChange={this.onInputFieldChanged}
           />
         );
@@ -55,6 +56,7 @@ class ReviewField extends Component {
           <RatingField
             EditMode={true}
             onRatingValueChanged={this.onRatingValueChanged}
+            Answer={this.props.Answer}
           />
         );
       }
@@ -75,6 +77,7 @@ class ReviewField extends Component {
           <input
             type="number"
             className="form-control"
+            value = {this.props.Answer}
             onChange={this.onInputFieldChanged}
           />
         );
