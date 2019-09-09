@@ -12,7 +12,8 @@ export default class EditPage extends Component {
         super(props);
         this.state = {
             reviews: null,
-            PageEdited: false
+            PageEdited: false,
+            isLoading: false
         }
     }
 
@@ -38,12 +39,30 @@ export default class EditPage extends Component {
     }
 
     ExistsInReviewsResponse = (review, PageReviews) =>{
+        debugger;
         var reviewPageIds = []
         PageReviews.map((pageReview) => {
             reviewPageIds.push(pageReview.ReviewId);
         });
 
-        return reviewPageIds.include(review.ReviewId);
+        return reviewPageIds.includes(review.ReviewId);
+    }
+
+    GetMatchPageReviewById = (PageReviews, Id) => {
+        debugger;
+        var match;
+        PageReviews.map((pageReview, i)=> {
+            if(pageReview.ReviewId == Id)
+            {
+                match = pageReview;
+            }
+        });
+        return  this.CreateReviewForRequest(match);
+    }
+
+    CreateReviewForRequest = (pageReview) => {
+        return {ReviewId: pageReview.ReviewId, ReviewType: pageReview.ReviewType.TypeId, Answers: pageReview.Answers, 
+            Caption: pageReview.Caption, PhotoUrl: pageReview.PhotoUrl, DisplayOrder:0}
     }
 
     onEditPageClicked = (response) => {
@@ -51,29 +70,32 @@ export default class EditPage extends Component {
         response.pageReviews.map((review,i)=>{
             if(review.ReviewId === null)
             {
-                this.newReviews.push(review);
+                this.newReviews.push(this.CreateReviewForRequest(review));
             }
             else
             {
                 var matchReview = this.state.reviews[review.ReviewId];
-                if(this.IsEqual(matchReview.Answers,review.Answers))
+                if(!this.IsEqual(matchReview.Answers,review.Answers))
                 {
-                    this.updatedReviews.push(review)
+                    this.updatedReviews.push
+                    (this.GetMatchPageReviewById(response.pageReviews, review.ReviewId));
                 }
             }
         });
 
         Object.values(this.state.reviews).map((review,i) => {
-            if(this.ExistsInReviewsResponse(review))
+            if(!this.ExistsInReviewsResponse(review,response.pageReviews))
             {
-                this.deletedReviews.push(review);
+                this.deletedReviews.push(this.GetMatchPageReviewById(response.pageReviews,review.ReviewId));
             }
         });
 
         var request = this.CreateRequestForEditPage();
-        this.caller.EditPage(request).then((response) =>{
-            this.setState({PageEdited: true});
+        this.caller.editPage(request).then((response) =>{
+            debugger;
+            this.setState({PageEdited: true, isLoading: false});
         });
+        this.setState({isLoading: true});
     }
 
     IsEqual = (a,b) => {
@@ -87,12 +109,12 @@ export default class EditPage extends Component {
     };
 
     goToDiary = () => {
-        var url = "/ShowDiary?Id=" + this.state.diaryId;
+        var url = "/ShowDiary?Id=" + this.diaryId;
         this.props.history.push(url);
     };
 
     render(){
-        if(this.state.reviews === null)
+        if(this.state.reviews === null || this.state.isLoading)
         {
             return (<AppLoader></AppLoader>);
         }
