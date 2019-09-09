@@ -21,10 +21,13 @@ class PageForm extends Component {
   }
 
   async componentDidMount() {
+    debugger;
    await this.initializePageReviews(this.props.reviews);
+   console.log(this.props);
   }
     
   initializePageReviews = async (reviews)=> {
+      debugger;
       if(reviews == null)
           return;
       let objectId = this.state.nextReviewObjectId;
@@ -35,7 +38,6 @@ class PageForm extends Component {
           objectId++;
           return pageReview;
       });
-      
       this.setState({pageReviews:pageReviews, nextReviewObjectId:objectId});
   }
 
@@ -136,6 +138,8 @@ class PageForm extends Component {
   };
 
   render() {
+    debugger;
+    console.log(this.props.reviews);
     return (
       <div className="container">
         <div>

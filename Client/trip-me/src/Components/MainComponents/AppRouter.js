@@ -11,6 +11,7 @@ import LoginPage from "../LoginPage/LoginPage.js";
 import LogoutPage from "../LogoutPage/LogoutPage.js";
 import CreatePage from "../../Components/CreatePage/CreatePage";
 import ErrorBoundry from "../../Components/Shared/ErrorBoundry/ErrorBoundry";
+import EditPage from "../../Components/EditPage/EditPage";
 
 export default class AppRouter extends Component {
   render() {
@@ -18,6 +19,7 @@ export default class AppRouter extends Component {
       <Switch>
         <Route exact path="/CreateDiary" component={DiaryForm} />
         <Route exact path="/ShowDiary" component={DiaryFullView} />
+        <Route exact path="/EditPage" component={EditPage} />
         <Route
           exact
           path="/MyDiaries"

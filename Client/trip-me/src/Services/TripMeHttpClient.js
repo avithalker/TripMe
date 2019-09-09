@@ -66,6 +66,24 @@ class TripMeHttpClient {
     return promise;
   };
 
+  editPage = (request) => {
+    var promise = new Promise((resolve, reject) => {
+      var url = new URL("http://localhost/TripMeWebApi/Diary/EditPage");
+      var authenticationManager = new AuthenticationManager();
+      fetch(url, {
+        method: "PUT",
+        headers: {
+          ...{ "Content-Type": "application/json" },
+          ...authenticationManager.getAuthenticationHeader()
+        },
+        body: JSON.stringify(request)
+      }).then((response) => {
+        resolve(response.json());
+      })
+    })
+    return promise;
+  }
+
   createNewDiary = diary => {
     var promise = new Promise((resolve, reject) => {
       var url = new URL("http://localhost/TripMeWebApi/Diary/AddNewDiary");
