@@ -31,7 +31,7 @@ namespace TripMe.Repositories
 
         public List<long> GetMostViewedDiariesId(long limitCount)
         {
-            return TripMeCacheContext.Context().SortedSetRangeByRank(CacheContextKeyBuilder.DiariesViewCountSortedSetKey, limitCount * -1,-1,StackExchange.Redis.Order.Descending)
+            return TripMeCacheContext.Context().SortedSetRangeByScore(CacheContextKeyBuilder.DiariesViewCountSortedSetKey, order: Order.Descending, take: limitCount)
                 .Select(x =>
             {
                 string value = x.ToString();
