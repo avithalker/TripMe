@@ -79,9 +79,9 @@ export default class EditPage extends Component {
             else
             {
                 var matchReview = this.state.reviews[review.ReviewId];
-                if(!this.IsEqual(matchReview.Answers,review.Answers) || !this.IsEqual(matchReview.Caption, review.Caption))
+                if(!this.IsEqual(matchReview.Answers,review.Answers) || !this.IsEqual(matchReview.Caption, review.Caption) || !this.IsEqual(matchReview.PhotoUrl, review.PhotoUrl))
                 {
-                    this.updatedReviews.push(this.GetMatchPageReviewById(response.pageReviews, review));
+                    this.updatedReviews.push(this.GetMatchPageReviewById(response.pageReviews, matchReview));
                 }
             }
         });

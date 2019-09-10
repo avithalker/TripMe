@@ -78,7 +78,9 @@ class ReviewQuestionnaire extends Component {
               <div className = "row">
                   <div className = "col-sm-1"></div>
                   <div className = "col-sm-10">
-                      <textarea className = "w-100" placeholder = "Write your caption here..."
+                      <textarea className = "w-100"
+                        value = {this.props.caption}
+                        placeholder = "Write your caption here..."
                         onChange = {this.onCaptionChanged}>
                       </textarea>
                   </div>
