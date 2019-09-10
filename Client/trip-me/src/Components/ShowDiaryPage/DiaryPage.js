@@ -49,7 +49,7 @@ export default class DiaryPage extends Component {
     
   renderReviews = () => {
     let reviews = Object.values(this.props.Page.Reviews);
-    reviews.sort((review1,review2) => review1.DisplayOrder - review2.DisplayOrder);
+    reviews.sort((review1,review2) => review1.DisplayOrder > review2.DisplayOrder? 1: -1);
     return reviews.map((review,index) => {
         let structureTypeId = this.getReviewStructureByType(review.ReviewType);
         let reviewQuestions = null;

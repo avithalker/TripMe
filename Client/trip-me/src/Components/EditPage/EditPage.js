@@ -45,35 +45,43 @@ export default class EditPage extends Component {
         return reviewPageIds.includes(review.ReviewId);
     }
 
-    GetMatchPageReviewById = (PageReviews, Id) => {
+    GetMatchPageReviewById = (PageReviews, originalReview) => {
         var match;
         PageReviews.map((pageReview, i)=> {
-            if(pageReview.ReviewId == Id)
+            if(pageReview.ReviewId == originalReview.ReviewId)
             {
                 match = pageReview;
             }
         });
-        return  this.CreateReviewForRequest(match);
+        return this.CreateReviewForRequest(match, originalReview.DisplayOrder);
     }
 
-    CreateReviewForRequest = (pageReview) => {
+    CreateReviewForRequest = (pageReview, displayOrder) => {
         return {ReviewId: pageReview.ReviewId, ReviewType: pageReview.ReviewType.TypeId, Answers: pageReview.Answers, 
-            Caption: pageReview.Caption, PhotoUrl: pageReview.PhotoUrl, DisplayOrder:0}
+            Caption: pageReview.Caption, PhotoUrl: pageReview.PhotoUrl, DisplayOrder:displayOrder}
     }
 
     completeEditPage = (response) => {
         this.title = response.pageTitle
+        let currentMaxDisplayOrder = 0
+        let originalReviews = Object.values(this.state.reviews);
+        if(originalReviews.length != 0 )
+        {
+            currentMaxDisplayOrder = (originalReviews.reduce((review1,review2) => 
+                                                     review1.DisplayOrder> review2.DisplayOrder? review1: review2)).DisplayOrder;
+        }
         response.pageReviews.map((review,i)=>{
             if(review.ReviewId === null)
             {
-                this.newReviews.push(this.CreateReviewForRequest(review));
+                currentMaxDisplayOrder++;
+                this.newReviews.push(this.CreateReviewForRequest(review, currentMaxDisplayOrder));
             }
             else
             {
                 var matchReview = this.state.reviews[review.ReviewId];
                 if(!this.IsEqual(matchReview.Answers,review.Answers) || !this.IsEqual(matchReview.Caption, review.Caption))
                 {
-                    this.updatedReviews.push(this.GetMatchPageReviewById(response.pageReviews, review.ReviewId));
+                    this.updatedReviews.push(this.GetMatchPageReviewById(response.pageReviews, review));
                 }
             }
         });
