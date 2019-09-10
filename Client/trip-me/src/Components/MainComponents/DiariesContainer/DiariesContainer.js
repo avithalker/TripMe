@@ -12,7 +12,8 @@ export default class DiariesContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      Diaries: []
+      Diaries: [],
+      isDiaryLoaded: false
     };
   }
 
@@ -24,7 +25,7 @@ export default class DiariesContainer extends Component {
   componentDidMount() {
     if (this.state.Diaries.length == 0) {
       this.GetDiaries().then(response => {
-        this.setState({ Diaries: response });
+        this.setState({ Diaries: response, isDiaryLoaded: true });
       });
     }
   }
@@ -54,8 +55,15 @@ export default class DiariesContainer extends Component {
   };
 
   render() {
+    if(!this.state.isDiaryLoaded){
+        return <AppLoader />;
+    }
     if (this.state.Diaries.length == 0) {
-      return <AppLoader />;
+        return(
+            <div className="emptyPage text-center text-secondary">
+              <h2>There are no diaries... </h2>
+            </div>
+            );
     }
 
     return (
