@@ -78,11 +78,9 @@ class TripMeHttpClient {
         },
         body: JSON.stringify(request)
       }).then((response) => {
-        debugger;
         resolve(response.status);
       })
     })
-    debugger;
     return promise;
   }
 

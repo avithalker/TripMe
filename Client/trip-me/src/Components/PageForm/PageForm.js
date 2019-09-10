@@ -12,7 +12,7 @@ class PageForm extends Component {
     super(props);
     this.state = {
       isReviewSelectorOpen: false,
-      pageTitle: "",
+      pageTitle: this.props.pageTitle != null? this.props.pageTitle: "",
       pageReviews: [],
       nextReviewObjectId: 1,
       pageCreated: false
@@ -21,13 +21,10 @@ class PageForm extends Component {
   }
 
   async componentDidMount() {
-    debugger;
    await this.initializePageReviews(this.props.reviews);
-   console.log(this.props);
   }
     
   initializePageReviews = async (reviews)=> {
-      debugger;
       if(reviews == null)
           return;
       let objectId = this.state.nextReviewObjectId;
@@ -147,6 +144,7 @@ class PageForm extends Component {
                 <input
                   type="text"
                   className="form-control pageTitle"
+                  value = {this.state.pageTitle}
                   placeholder="Page title"
                   onChange={this.onPageTitleChange}
                 />

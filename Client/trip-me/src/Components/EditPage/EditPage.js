@@ -61,8 +61,8 @@ export default class EditPage extends Component {
             Caption: pageReview.Caption, PhotoUrl: pageReview.PhotoUrl, DisplayOrder:0}
     }
 
-    onEditPageClicked = (response) => {
-        this.title = response.title
+    completeEditPage = (response) => {
+        this.title = response.pageTitle
         response.pageReviews.map((review,i)=>{
             if(review.ReviewId === null)
             {
@@ -73,9 +73,7 @@ export default class EditPage extends Component {
                 var matchReview = this.state.reviews[review.ReviewId];
                 if(!this.IsEqual(matchReview.Answers,review.Answers) || !this.IsEqual(matchReview.Caption, review.Caption))
                 {
-                    console.log('i am here');
-                    this.updatedReviews.push
-                    (this.GetMatchPageReviewById(response.pageReviews, review.ReviewId));
+                    this.updatedReviews.push(this.GetMatchPageReviewById(response.pageReviews, review.ReviewId));
                 }
             }
         });
@@ -124,8 +122,10 @@ export default class EditPage extends Component {
             ></PopUp>);
         }
         return(
-        <div><PageForm reviews = {Object.values(this.state.reviews)}
-             onSavePageClicked = {this.onEditPageClicked}></PageForm></div>
+        <div>
+                <PageForm reviews = {Object.values(this.state.reviews)} pageTitle= {this.state.pageTitle}
+             onSavePageClicked = {this.completeEditPage}></PageForm>
+        </div>
              );
     }
 } 
