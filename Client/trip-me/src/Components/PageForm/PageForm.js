@@ -43,7 +43,7 @@ class PageForm extends Component {
   getPageReviews = () => {
     const pageReviews = this.state.pageReviews.map((pageReview, index) => {
       return (
-        <div key={index} className="row">
+        <div key={pageReview.objectId} className="row">
           <div className="col-12 position-relative">
             <ReviewQuestionnaire
               ReviewType={pageReview.ReviewType} reviewAnswers = {pageReview.Answers} caption = {pageReview.Caption}
