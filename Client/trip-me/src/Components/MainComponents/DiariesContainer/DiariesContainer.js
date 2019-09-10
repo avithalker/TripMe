@@ -30,12 +30,11 @@ export default class DiariesContainer extends Component {
   }
 
   renderDiary = diary => {
-    var tripType = diary.TripType + 1;
     return (
       <DiaryEntry
         Name={diary.Name}
         Destination={diary.Countries}
-        Type={getKeyByValue(TripTypeEnum, tripType)}
+        Type={getKeyByValue(TripTypeEnum, diary.TripType)}
         CoverPhoto={diary.CoverPhotoUrl}
         Id={diary.Id}
         Writer={diary.Writer.UserName}

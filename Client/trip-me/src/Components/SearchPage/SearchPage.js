@@ -17,7 +17,6 @@ export default class SearchPage extends Component {
   }
 
   SetDiaries = response => {
-    debugger;
     if(response == null)
     {
       this.setState({diaries: []});
@@ -72,7 +71,6 @@ export default class SearchPage extends Component {
     return null;
   }
   render() {
-    debugger;
     return (
       <div className="container">
         {this.ShowPopUpByState()}
