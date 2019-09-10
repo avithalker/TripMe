@@ -37,7 +37,9 @@ export default class SearchEngine extends Component {
   };
 
   OnChangeInput = event => {
-    this.setState({ [event.target.name]: parseInt(event.target.value) });
+      let value = parseInt(event.target.value);
+      value = isNaN(value)? null: value
+    this.setState({[event.target.name]: value});
   };
 
   SubmitSearch = () => {
@@ -63,6 +65,7 @@ export default class SearchEngine extends Component {
       request.SearchParameters[4] = this.state.TripType;
     }
     if (this.state.PriceMin != null && this.state.PriceMax != null) {
+        console.log(this.state.PriceMin + " " + this.state.PriceMax)
       request.SearchParameters[6] = [this.state.PriceMin, this.state.PriceMax];
     }
     if (

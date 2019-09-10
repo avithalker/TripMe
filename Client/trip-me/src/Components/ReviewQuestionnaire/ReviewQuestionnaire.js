@@ -58,6 +58,28 @@ class ReviewQuestionnaire extends Component {
   }
   
   buildImageReview(){
+      if(this.props.photoUrl !== null){
+          return(
+            <div>
+              <div className = "row">
+                  <div className = "col-sm-12">
+                    <figure class="figure">
+                      <img src={this.props.photoUrl} class="figure-img img-fluid rounded review-image" alt=""></img>
+                    </figure>
+                 </div>
+              </div>
+            <div className = "row">
+              <div className = "col-sm-12">
+                  <textarea className = "w-100"
+                    value = {this.props.caption}
+                    placeholder = "Write your caption here..."
+                    onChange = {this.onCaptionChanged}>
+                  </textarea>
+              </div>
+          </div>
+          </div>
+          )
+      }
       return(
           <div>
               <div className = "row">
@@ -75,20 +97,27 @@ class ReviewQuestionnaire extends Component {
                  </div>
                   <div className = "col-sm-1"></div>
               </div>
-              <div className = "row">
-                  <div className = "col-sm-1"></div>
-                  <div className = "col-sm-10">
-                      <textarea className = "w-100"
-                        value = {this.props.caption}
-                        placeholder = "Write your caption here..."
-                        onChange = {this.onCaptionChanged}>
-                      </textarea>
-                  </div>
-                  <div className = "col-sm-1"></div>
-              </div>
+              {this.imageCaption()}
           </div>
       )
   }
+
+
+ imageCaption = ()=>{
+     return(
+      <div className = "row">
+          <div className = "col-sm-1"></div>
+          <div className = "col-sm-10">
+              <textarea className = "w-100"
+                value = {this.props.caption}
+                placeholder = "Write your caption here..."
+                onChange = {this.onCaptionChanged}>
+              </textarea>
+          </div>
+          <div className = "col-sm-1"></div>
+      </div>
+     )
+ }
   
   buildFreeTextReview = ()=>{
     return(

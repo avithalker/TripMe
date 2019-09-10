@@ -47,6 +47,7 @@ class PageForm extends Component {
           <div className="col-12 position-relative">
             <ReviewQuestionnaire
               ReviewType={pageReview.ReviewType} reviewAnswers = {pageReview.Answers} caption = {pageReview.Caption}
+              photoUrl = {pageReview.PhotoUrl}
               onQuestionnaireAnswersChanged={answers =>
                 this.onQuestionnaireAnswersChanged(pageReview.objectId, answers)
               }

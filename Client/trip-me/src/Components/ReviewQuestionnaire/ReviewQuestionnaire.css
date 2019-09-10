@@ -11,3 +11,7 @@
     border: none;
     height: 150px;
 }
+
+.review-image{
+    max-height: 400px;
+}

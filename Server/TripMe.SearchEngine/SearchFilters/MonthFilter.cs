@@ -16,8 +16,8 @@ namespace TripMe.SearchEngine.SearchFilters
 
         public override IQueryable<DiarySearchResult> AddFilterToSearchQuery(int filterData, IQueryable<DiarySearchResult> currentQuery)
         {
-            return currentQuery.Where(diary => diary.Diary.StartDate.Month >= filterData && 
-            diary.Diary.EndDate.Month <= filterData);
+            return currentQuery.Where(diary => diary.Diary.StartDate.Month <= filterData && 
+            diary.Diary.EndDate.Month >= filterData);
         }
     }
 }
