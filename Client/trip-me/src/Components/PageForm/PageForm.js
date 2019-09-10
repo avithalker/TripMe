@@ -138,8 +138,6 @@ class PageForm extends Component {
   };
 
   render() {
-    debugger;
-    console.log(this.props.reviews);
     return (
       <div className="container">
         <div>

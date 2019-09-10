@@ -26,9 +26,7 @@ export default class EditPage extends Component {
     deletedReviews = []
     title = ""
     componentDidMount(){
-        debugger;
         this.caller.getPageById(this.diaryId,this.pageId).then((response) => {
-            debugger;
             this.setState({reviews: response.Reviews, pageTitle: response.Title});
         });
     }
@@ -39,7 +37,6 @@ export default class EditPage extends Component {
     }
 
     ExistsInReviewsResponse = (review, PageReviews) =>{
-        debugger;
         var reviewPageIds = []
         PageReviews.map((pageReview) => {
             reviewPageIds.push(pageReview.ReviewId);
@@ -49,7 +46,6 @@ export default class EditPage extends Component {
     }
 
     GetMatchPageReviewById = (PageReviews, Id) => {
-        debugger;
         var match;
         PageReviews.map((pageReview, i)=> {
             if(pageReview.ReviewId == Id)
@@ -75,8 +71,9 @@ export default class EditPage extends Component {
             else
             {
                 var matchReview = this.state.reviews[review.ReviewId];
-                if(!this.IsEqual(matchReview.Answers,review.Answers))
+                if(!this.IsEqual(matchReview.Answers,review.Answers) || !this.IsEqual(matchReview.Caption, review.Caption))
                 {
+                    console.log('i am here');
                     this.updatedReviews.push
                     (this.GetMatchPageReviewById(response.pageReviews, review.ReviewId));
                 }
@@ -92,14 +89,12 @@ export default class EditPage extends Component {
 
         var request = this.CreateRequestForEditPage();
         this.caller.editPage(request).then((response) =>{
-            debugger;
             this.setState({PageEdited: true, isLoading: false});
         });
         this.setState({isLoading: true});
     }
 
     IsEqual = (a,b) => {
-        debugger;
         return JSON.stringify(a) === JSON.stringify(b);
     }
 
