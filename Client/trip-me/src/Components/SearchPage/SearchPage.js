@@ -31,6 +31,7 @@ export default class SearchPage extends Component {
     return (
       <DiaryEntry
         Name={diary.Name}
+        Writer = {diary.Writer.UserName}
         Destination={diary.Countries}
         Type={getKeyByValue(TripTypeEnum, diary.TripType)}
         Id={diary.Id}
