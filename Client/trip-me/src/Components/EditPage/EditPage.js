@@ -81,7 +81,7 @@ export default class EditPage extends Component {
         Object.values(this.state.reviews).map((review,i) => {
             if(!this.ExistsInReviewsResponse(review,response.pageReviews))
             {
-                this.deletedReviews.push(this.GetMatchPageReviewById(response.pageReviews,review.ReviewId));
+                this.deletedReviews.push(review.ReviewId);
             }
         });
 
