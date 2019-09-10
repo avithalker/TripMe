@@ -29,7 +29,9 @@ class PageForm extends Component {
           return;
       let objectId = this.state.nextReviewObjectId;
       let reviewTypes = await this.fetchReviewTypes();
-      let pageReviews = reviews.map(review=>{
+      let sortedReviews = [...reviews]
+      sortedReviews.sort((review1, review2) => review1.DisplayOrder > review2.DisplayOrder?1:-1) 
+      let pageReviews = sortedReviews.map(review=>{
           let reviewType = reviewTypes.find(x=>x.TypeId === review.ReviewType);
           let pageReview = new PageReview(reviewType, objectId, review.ReviewId, review.Answers, review.Caption, review.PhotoUrl);
           objectId++;
