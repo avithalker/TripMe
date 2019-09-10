@@ -19,6 +19,10 @@ export default class SearchEngine extends Component {
       Countries: null
     };
   }
+    
+  OnContinentChange = event=>{
+      this.setState({ [event.target.name]: event.target.value});
+  }
 
   OnCountriesChange = countries => {
     var countriesForState = [];
@@ -44,7 +48,6 @@ export default class SearchEngine extends Component {
     caller.getDiariesBySearch(request).then(response => {
       this.props.UpdateResultsOnScreen(response);
     }).catch((err)=> {
-      debugger;
       this.props.UpdateResultsOnScreen(null);
     }
     );
@@ -53,7 +56,7 @@ export default class SearchEngine extends Component {
 
   CreateRequstForSearch = () => {
     var request = { SearchParameters: {}, OrderBy: 1, ResultLimit: 5 };
-
+      
     if (this.state.Countries != null && this.state.Countries.length > 0) {
       request.SearchParameters[2] = this.state.Countries;
     }
@@ -145,7 +148,7 @@ export default class SearchEngine extends Component {
               Options={ContinentOptions}
               FieldTitle="Continent:"
               FieldName="Continent"
-              OnChange={this.OnChangeInput}
+              OnChange={this.OnContinentChange}
             />
           </div>
         </div>
