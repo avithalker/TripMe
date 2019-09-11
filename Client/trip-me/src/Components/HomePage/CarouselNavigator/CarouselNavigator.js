@@ -23,9 +23,9 @@ export default class CarouselNavigator extends Component {
             <h1>Welcome To TripMe!!</h1>
             <h4>Commerical Website For Travelers</h4>
             <h6>Not a Member?! sign up here and start enjoying!</h6>
-            <button className="btn btn-info" href={this.SignUpLink}>
+            <a className="btn btn-info" href={this.SignUpLink}>
               SignUp
-            </button>
+            </a>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>

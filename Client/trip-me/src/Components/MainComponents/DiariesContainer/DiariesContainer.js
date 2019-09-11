@@ -40,6 +40,7 @@ export default class DiariesContainer extends Component {
         Id={diary.Id}
         Writer={diary.Writer.UserName}
         Views={diary.ViewCount}
+        ApproximatePrice = {diary.ApproximatePrice}
       />
     );
   };

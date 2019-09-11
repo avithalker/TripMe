@@ -37,6 +37,7 @@ export default class SearchPage extends Component {
         Id={diary.Id}
         CoverPhoto={diary.CoverPhotoUrl}
         Views={diary.ViewCount}
+        ApproximatePrice = {diary.ApproximatePrice}
       />
     );
   };
